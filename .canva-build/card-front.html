@@ -6,33 +6,25 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1050px;height:600px;background:#0f172a;font-family:'Inter','SF Pro Display','Helvetica Neue',sans-serif;color:#fff;overflow:hidden}
 .card{position:relative;width:1050px;height:600px;background:radial-gradient(ellipse 800px 600px at 95% 95%, rgba(34,211,238,0.22), transparent 70%), linear-gradient(135deg,#0f172a 0%, #1e293b 100%);overflow:hidden}
-/* grid */
 .grid{position:absolute;inset:0;background-image:linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px);background-size:42px 42px;mask-image:linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.95));-webkit-mask-image:linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.95))}
-/* left cyan stripe */
 .stripe{position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(180deg,#22d3ee 0%, #4a8b9c 100%);box-shadow:0 0 28px rgba(34,211,238,0.7)}
-/* logo + wordmark */
-.brand{position:absolute;top:104px;left:96px;display:flex;align-items:center;gap:28px}
+.brand{position:absolute;top:96px;left:96px;display:flex;align-items:center;gap:28px}
 .logo{width:104px;height:104px;display:flex;align-items:center;justify-content:center}
 .logo img{width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1)}
 .wordmark{font-weight:800;font-size:88px;letter-spacing:-3.5px;color:#fff;line-height:1}
-.tm{font-size:24px;vertical-align:super;font-weight:500;letter-spacing:0;margin-left:4px;color:#94a3b8}
-/* tagline */
-.tagline{position:absolute;left:96px;bottom:160px;color:#e2e8f0;font-weight:600;font-size:34px;letter-spacing:-0.6px;line-height:1.15;max-width:720px}
+.tm{font-size:28px;vertical-align:super;font-weight:500;letter-spacing:0;margin-left:4px;color:#94a3b8}
+.tagline{position:absolute;left:96px;bottom:172px;color:#e2e8f0;font-weight:600;font-size:36px;letter-spacing:-0.6px;line-height:1.15;max-width:760px}
 .tagline .accent{color:#22d3ee}
-/* mono caption bottom-right */
-.caption{position:absolute;right:80px;bottom:60px;font-family:'JetBrains Mono', monospace;font-size:18px;color:#4a8b9c;letter-spacing:0.6px;font-weight:500}
+.caption{position:absolute;right:96px;bottom:64px;font-family:'JetBrains Mono', monospace;font-size:28px;color:#4a8b9c;letter-spacing:0.4px;font-weight:500}
 .caption .dim{color:#334155}
-/* corner ticks */
-.tick{position:absolute;width:18px;height:18px;border-color:#4a8b9c}
-.tl{top:40px;left:40px;border-top:1.5px solid;border-left:1.5px solid}
-.tr{top:40px;right:40px;border-top:1.5px solid;border-right:1.5px solid}
-.bl{bottom:40px;left:40px;border-bottom:1.5px solid;border-left:1.5px solid}
-.br{bottom:40px;right:40px;border-bottom:1.5px solid;border-right:1.5px solid}
-/* sig dot pulse near caption */
-.sigdot{position:absolute;right:72px;bottom:108px;width:8px;height:8px;background:#22d3ee;border-radius:50%;box-shadow:0 0 16px #22d3ee}
-/* hash signature line */
-.hash{position:absolute;left:96px;top:248px;font-family:'JetBrains Mono', monospace;font-size:13px;color:#475569;letter-spacing:1.5px;font-weight:500}
-.hash .pre{color:#22d3ee}
+.tick{position:absolute;width:22px;height:22px;border-color:#4a8b9c}
+.tl{top:48px;left:48px;border-top:2px solid;border-left:2px solid}
+.tr{top:48px;right:48px;border-top:2px solid;border-right:2px solid}
+.bl{bottom:48px;left:48px;border-bottom:2px solid;border-left:2px solid}
+.br{bottom:48px;right:48px;border-bottom:2px solid;border-right:2px solid}
+.sigdot{position:absolute;right:88px;bottom:120px;width:10px;height:10px;background:#22d3ee;border-radius:50%;box-shadow:0 0 18px #22d3ee}
+.hash{position:absolute;left:96px;top:240px;font-family:'JetBrains Mono', monospace;font-size:28px;color:#475569;letter-spacing:1px;font-weight:500}
+.hash .pre{color:#22d3ee;margin-right:8px}
 </style></head>
 <body>
 <div class="card">
@@ -43,9 +35,9 @@ html,body{width:1050px;height:600px;background:#0f172a;font-family:'Inter','SF P
     <div class="logo"><img src="https://mutual.solutions/img/logo.png" alt=""></div>
     <div class="wordmark">mutual<span class="tm">™</span></div>
   </div>
-  <div class="hash"><span class="pre">SHA-256</span> &nbsp;7f3a · 9c2b · e441 · 8d05 · b76e · 2c19 · af83 · 6d4c</div>
+  <div class="hash"><span class="pre">SHA-256</span>7f3a · 9c2b · e441 · 8d05</div>
   <div class="tagline">Authenticity starts at the <span class="accent">source.</span></div>
   <div class="sigdot"></div>
-  <div class="caption"><span class="dim">//</span> signed-at-capture <span class="dim">·</span> c2pa</div>
+  <div class="caption"><span class="dim">//</span> signed-at-capture</div>
 </div>
 </body></html>

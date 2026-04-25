@@ -6,32 +6,32 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1050px;height:600px;background:#ffffff;font-family:'Inter','SF Pro Display','Helvetica Neue',sans-serif;color:#0f172a;overflow:hidden}
 .card{position:relative;width:1050px;height:600px;background:#ffffff;overflow:hidden}
-.stripe{position:absolute;left:0;top:0;bottom:0;width:22px;background:linear-gradient(180deg,#4a8b9c 0%, #22d3ee 100%)}
-.logo{position:absolute;top:60px;left:88px;display:flex;align-items:center;gap:18px}
-.logo img{width:54px;height:54px;object-fit:contain}
-.logo .mark-text{font-weight:800;font-size:30px;color:#0f172a;letter-spacing:-0.8px}
-.logo .mark-text .tm{font-size:11px;vertical-align:super;color:#64748b;font-weight:500}
+.stripe{position:absolute;left:0;top:0;bottom:0;width:24px;background:linear-gradient(180deg,#4a8b9c 0%, #22d3ee 100%)}
+.logo{position:absolute;top:60px;left:88px;display:flex;align-items:center;gap:20px}
+.logo img{width:60px;height:60px;object-fit:contain}
+.logo .mark-text{font-weight:800;font-size:34px;color:#0f172a;letter-spacing:-0.8px}
+.logo .mark-text .tm{font-size:14px;vertical-align:super;color:#64748b;font-weight:500}
 .identity{position:absolute;top:172px;left:88px;max-width:560px}
-.identity .name{font-weight:800;font-size:54px;letter-spacing:-1.6px;color:#0f172a;line-height:1}
-.identity .name-ko{margin-top:8px;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:26px;color:#64748b;letter-spacing:-0.4px}
-.identity .title{margin-top:16px;font-weight:600;font-size:20px;color:#4a8b9c;letter-spacing:-0.3px}
-.identity .title-ko{margin-top:4px;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:14px;color:#94a3b8;letter-spacing:-0.1px}
+.identity .name{font-weight:800;font-size:60px;letter-spacing:-1.8px;color:#0f172a;line-height:1}
+.identity .name-ko{margin-top:10px;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:32px;color:#64748b;letter-spacing:-0.4px}
+.identity .title{margin-top:18px;font-weight:600;font-size:28px;color:#4a8b9c;letter-spacing:-0.3px}
+.identity .title-ko{margin-top:6px;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:22px;color:#94a3b8;letter-spacing:-0.1px}
 .identity .rule{margin-top:22px;width:96px;height:3px;background:#4a8b9c}
-.contact{position:absolute;left:88px;bottom:72px;font-family:'JetBrains Mono', monospace;font-size:17px;line-height:1.85;color:#334155;letter-spacing:0.1px;font-weight:500}
-.contact .label{color:#94a3b8;display:inline-block;width:42px;font-weight:400}
+.contact{position:absolute;left:88px;bottom:60px;font-family:'JetBrains Mono', monospace;font-size:24px;line-height:1.85;color:#334155;letter-spacing:0.1px;font-weight:500}
+.contact .label{color:#94a3b8;display:inline-block;width:54px;font-weight:400}
 .contact a{color:#0f172a;text-decoration:none;font-weight:600}
-.aside{position:absolute;right:0;top:0;bottom:0;width:340px;background:linear-gradient(135deg,#0f172a 0%, #1e293b 100%);overflow:hidden}
+.aside{position:absolute;right:0;top:0;bottom:0;width:360px;background:linear-gradient(135deg,#0f172a 0%, #1e293b 100%);overflow:hidden}
 .aside::before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px);background-size:36px 36px}
-.aside-content{position:absolute;inset:0;padding:40px 44px;display:flex;flex-direction:column;align-items:center;color:#fff;gap:14px}
-.aside-content .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(34,211,238,0.45);border-radius:999px;font-family:'JetBrains Mono', monospace;font-size:12px;color:#22d3ee;letter-spacing:0.7px;width:fit-content;background:rgba(34,211,238,0.08);font-weight:500;align-self:flex-start}
-.aside-content .pill .dot{width:6px;height:6px;background:#22d3ee;border-radius:50%;box-shadow:0 0 10px #22d3ee}
+.aside-content{position:absolute;inset:0;padding:48px 40px;display:flex;flex-direction:column;align-items:center;color:#fff;gap:18px}
+.aside-content .pill{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border:1px solid rgba(34,211,238,0.45);border-radius:999px;font-family:'JetBrains Mono', monospace;font-size:18px;color:#22d3ee;letter-spacing:0.6px;width:fit-content;background:rgba(34,211,238,0.08);font-weight:500;align-self:flex-start}
+.aside-content .pill .dot{width:8px;height:8px;background:#22d3ee;border-radius:50%;box-shadow:0 0 10px #22d3ee}
 .qr-wrap{margin-top:6px;background:#fff;padding:10px;border-radius:6px;width:200px;height:200px;display:flex;align-items:center;justify-content:center;align-self:center}
 .qr-wrap img{width:100%;height:100%}
-.qr-label{font-family:'JetBrains Mono', monospace;font-size:10px;color:#94a3b8;letter-spacing:0.8px;text-align:center;align-self:center}
+.qr-label{font-family:'JetBrains Mono', monospace;font-size:20px;color:#cbd5e1;letter-spacing:1.4px;text-align:center;align-self:center;font-weight:500;margin-top:4px}
 .qr-label .scan{color:#22d3ee}
-.qr-label-ko{font-family:'Noto Sans KR',sans-serif;font-size:10px;color:#64748b;letter-spacing:0.4px;text-align:center;align-self:center;margin-top:2px}
-.aside-content .footer{font-family:'JetBrains Mono', monospace;font-size:10px;color:#475569;letter-spacing:0.7px;margin-top:auto;align-self:flex-start;line-height:1.6}
-.aside-content .footer .ko{font-family:'Noto Sans KR',sans-serif;color:#64748b;letter-spacing:0.2px;display:block;margin-top:3px}
+.qr-label-ko{font-family:'Noto Sans KR',sans-serif;font-size:18px;color:#94a3b8;letter-spacing:0.4px;text-align:center;align-self:center}
+.aside-content .footer{font-family:'JetBrains Mono', monospace;font-size:14px;color:#475569;letter-spacing:1.2px;margin-top:auto;align-self:flex-start;line-height:1.7}
+.aside-content .footer .ko{font-family:'Noto Sans KR',sans-serif;color:#64748b;letter-spacing:0.4px;display:block;margin-top:4px}
 .atick{position:absolute;width:14px;height:14px;border-color:#4a8b9c}
 .atl{top:24px;left:24px;border-top:1.5px solid;border-left:1.5px solid}
 .atr{top:24px;right:24px;border-top:1.5px solid;border-right:1.5px solid}
@@ -41,12 +41,10 @@ html,body{width:1050px;height:600px;background:#ffffff;font-family:'Inter','SF P
 <body>
 <div class="card">
   <div class="stripe"></div>
-
   <div class="logo">
     <img src="https://mutual.solutions/img/logo.png" alt="">
     <div class="mark-text">mutual<span class="tm">™</span></div>
   </div>
-
   <div class="identity">
     <div class="name">Yejun Jang</div>
     <div class="name-ko">장예준</div>
@@ -54,14 +52,11 @@ html,body{width:1050px;height:600px;background:#ffffff;font-family:'Inter','SF P
     <div class="title-ko">대표이사 · AI 보안</div>
     <div class="rule"></div>
   </div>
-
   <div class="contact">
-    <div><span class="label">e</span>&nbsp;&nbsp;<a>yejun@mutual.solutions</a></div>
-    <div><span class="label">w</span>&nbsp;&nbsp;<a>mutual.solutions</a></div>
-    <div><span class="label">in</span>&nbsp;&nbsp;<a>linkedin.com/in/yejunjang</a></div>
-    <div><span class="label">gh</span>&nbsp;&nbsp;<a>github.com/mutual-solutions</a></div>
+    <div><span class="label">e</span>yejun@mutual.solutions</div>
+    <div><span class="label">w</span>mutual.solutions</div>
+    <div><span class="label">in</span>linkedin.com/in/yejunjang</div>
   </div>
-
   <div class="aside">
     <div class="atick atl"></div><div class="atick atr"></div><div class="atick abl"></div><div class="atick abr"></div>
     <div class="aside-content">
@@ -69,7 +64,7 @@ html,body{width:1050px;height:600px;background:#ffffff;font-family:'Inter','SF P
       <div class="qr-wrap"><img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&qzone=1&color=0f172a&bgcolor=ffffff&data=BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AYejun%20Jang%0AN%3AJang%3BYejun%0ATITLE%3ACEO%20AI%20%26%20Security%0AORG%3Amutual%0AEMAIL%3Ayejun%40mutual.solutions%0AURL%3Ahttps%3A%2F%2Fmutual.solutions%0AEND%3AVCARD" alt=""></div>
       <div class="qr-label"><span class="scan">SCAN</span> · ADD CONTACT</div>
       <div class="qr-label-ko">스캔하여 연락처 추가</div>
-      <div class="footer">// AUTHENTICITY AT THE SOURCE<span class="ko">// 출처에서 검증된 진본</span></div>
+      <div class="footer">// AUTHENTICITY AT SOURCE<span class="ko">// 출처에서 검증된 진본</span></div>
     </div>
   </div>
 </div>
