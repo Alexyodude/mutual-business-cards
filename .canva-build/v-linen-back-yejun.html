@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1050px;height:600px;background:#f4f1ea;font-family:'Inter','SF Pro Display','Helvetica Neue',sans-serif;color:#1f2a24;overflow:hidden;-webkit-font-smoothing:antialiased}
+.card{position:relative;width:1050px;height:600px;background:#f4f1ea;overflow:hidden}
+
+.paper{position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 20% 10%, rgba(255,255,255,0.5), transparent 70%), radial-gradient(ellipse 500px 400px at 90% 90%, rgba(0,0,0,0.04), transparent 70%);pointer-events:none}.frame{position:absolute;top:32px;left:32px;right:32px;bottom:32px;border:1px solid #8aa68a33}
+.tick{position:absolute;width:18px;height:18px;border-color:#8aa68a}
+.tl{top:42px;left:42px;border-top:1.5px solid;border-left:1.5px solid}
+.tr{top:42px;right:42px;border-top:1.5px solid;border-right:1.5px solid}
+.bl{bottom:42px;left:42px;border-bottom:1.5px solid;border-left:1.5px solid}
+.br{bottom:42px;right:42px;border-bottom:1.5px solid;border-right:1.5px solid}
+</style></head><body><div class="card">
+  <div class="paper"></div><div class="frame"></div>
+  
+  <div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>
+  <div style="position:absolute;top:64px;right:96px;display:flex;align-items:center;gap:14px">
+    <img src="logo-sage.svg" style="width:48px;height:48px;object-fit:contain">
+    <div style="font-weight:800;font-size:32px;letter-spacing:-0.8px;color:#1f2a24">mutual<span style="font-size:13px;vertical-align:super;color:#718272;font-weight:500">™</span></div>
+  </div>
+  <div style="position:absolute;top:172px;left:96px;max-width:600px">
+    <div style="font-weight:800;font-size:60px;letter-spacing:-1.8px;color:#1f2a24;line-height:1">Yejun Jang</div>
+    <div style="margin-top:10px;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:32px;color:#718272;letter-spacing:-0.4px">장예준</div>
+    <div style="margin-top:18px;font-weight:600;font-size:26px;color:#5d7a5d;letter-spacing:-0.3px">CEO · AI & Security</div>
+    <div style="margin-top:6px;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:22px;color:#718272">대표이사 · AI 보안</div>
+    <div style="margin-top:26px;width:96px;height:3px;background:#5d7a5d"></div>
+  </div>
+  <div style="position:absolute;left:96px;bottom:64px;font-family:'JetBrains Mono',monospace;font-size:22px;line-height:1.85;color:#1f2a24;letter-spacing:0.1px;font-weight:500">
+    <div>yejun@mutual.solutions</div>
+    <div>mutual.solutions</div>
+    <div>linkedin.com/in/yejunjang</div>
+  </div>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&format=svg&qzone=1&color=1f2a24&bgcolor=f4f1ea&data=BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AYejun%20Jang%0AN%3AJang%3BYejun%0ATITLE%3ACEO%20AI%20%26%20Security%0AORG%3Amutual%0AEMAIL%3Ayejun%40mutual.solutions%0AURL%3Ahttps%3A%2F%2Fmutual.solutions%0AEND%3AVCARD" style="position:absolute;right:96px;bottom:96px;width:160px;height:160px;background:#f4f1ea;padding:10px;border-radius:6px;box-shadow:0 0 0 1px #5d7a5d33">
+  <div style="position:absolute;right:96px;bottom:64px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#718272;letter-spacing:1px;text-align:right;width:160px"><span style="color:#5d7a5d">SCAN</span> · ADD · <span style="font-family:'Noto Sans KR',sans-serif">스캔</span></div>
+</div></body></html>

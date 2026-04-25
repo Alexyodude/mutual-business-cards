@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1050px;height:600px;background:#fffaf0;font-family:'Inter','SF Pro Display','Helvetica Neue',sans-serif;color:#1a1a1a;overflow:hidden;-webkit-font-smoothing:antialiased}
+.card{position:relative;width:1050px;height:600px;background:#fffaf0;overflow:hidden}
+
+.paper{position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 20% 10%, rgba(255,255,255,0.5), transparent 70%), radial-gradient(ellipse 500px 400px at 90% 90%, rgba(0,0,0,0.04), transparent 70%);pointer-events:none}.frame{position:absolute;top:32px;left:32px;right:32px;bottom:32px;border:1px solid #8b1f1c33}
+.tick{position:absolute;width:18px;height:18px;border-color:#8b1f1c}
+.tl{top:42px;left:42px;border-top:1.5px solid;border-left:1.5px solid}
+.tr{top:42px;right:42px;border-top:1.5px solid;border-right:1.5px solid}
+.bl{bottom:42px;left:42px;border-bottom:1.5px solid;border-left:1.5px solid}
+.br{bottom:42px;right:42px;border-bottom:1.5px solid;border-right:1.5px solid}
+</style></head><body><div class="card">
+  <div class="paper"></div><div class="frame"></div>
+  <div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>
+  <div style="position:absolute;top:140px;left:96px;display:flex;align-items:center;gap:32px">
+    <img src="logo-red.svg" style="width:108px;height:108px;object-fit:contain">
+    <div>
+      <div style="font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:128px;letter-spacing:-6px;color:#1a1a1a;line-height:1">뮤추얼</div>
+      <div style="font-weight:600;font-size:32px;letter-spacing:-1px;color:#666;margin-top:8px">mutual<span style="font-size:14px;vertical-align:super;color:#666">™</span></div>
+    </div>
+  </div>
+  <div style="position:absolute;left:96px;bottom:144px;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:38px;color:#8b1f1c;letter-spacing:-1px;line-height:1.2">진본은 출처에서<br>시작됩니다.</div>
+  <div style="position:absolute;left:96px;right:96px;bottom:64px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:18px;color:#666;letter-spacing:0.6px"><span>C2PA · ECDSA</span><span>mutual.solutions</span></div>
+</div></body></html>

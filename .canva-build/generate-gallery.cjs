@@ -1,0 +1,192 @@
+// Generate docs/index.html with all variants × cardholders programmatically.
+
+const fs = require('fs');
+const path = require('path');
+const { variants, cardholders } = require('./variants.cjs');
+
+const OUT = path.resolve(__dirname, '..', 'docs', 'index.html');
+
+function dlBtn(href, label) {
+  return `<a class="btn" href="${href}" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg> ${label}</a>`;
+}
+
+function variantSection(v) {
+  const blocks = cardholders.map(c => `
+    <div class="card-block">
+      <div class="flip-stage" tabindex="0" role="button" aria-label="Flip ${c.name}'s ${v.id} card">
+        <div class="flip-inner">
+          <div class="flip-side front"><img src="assets/v-${v.id}-front.png" alt="" loading="lazy"></div>
+          <div class="flip-side back"><img src="assets/v-${v.id}-back-${c.id}.png" alt="" loading="lazy"></div>
+        </div>
+        <div class="flip-hint">CLICK TO FLIP</div>
+      </div>
+      <div class="side-panel">
+        <div class="panel-head">
+          <div>
+            <div class="who">${c.name}</div>
+            <div class="who-ko">${c.nameKo}</div>
+            <div class="role">${c.title.toUpperCase()}</div>
+          </div>
+        </div>
+        <div class="thumbs">
+          <div class="thumb"><img src="assets/v-${v.id}-front.png" alt=""><div class="label">FRONT</div></div>
+          <div class="thumb"><img src="assets/v-${v.id}-back-${c.id}.png" alt=""><div class="label">BACK</div></div>
+        </div>
+        <div class="actions">
+          ${dlBtn(`assets/v-${v.id}-front.png`, 'FRONT.PNG')}
+          ${dlBtn(`assets/v-${v.id}-back-${c.id}.png`, 'BACK.PNG')}
+          ${dlBtn(`assets/v-${v.id}-front.pdf`, 'FRONT.PDF · vector')}
+          ${dlBtn(`assets/v-${v.id}-back-${c.id}.pdf`, 'BACK.PDF · vector')}
+        </div>
+      </div>
+    </div>`).join('\n');
+
+  return `
+<section class="variant-section" id="v-${v.id}">
+  <div class="variant-head">
+    <div>
+      <div class="variant-tag">${v.tag}</div>
+      <h2 class="variant-title">${v.name} <span class="sub">— ${v.sub}</span></h2>
+    </div>
+  </div>
+  <div class="cards">${blocks}</div>
+</section>`;
+}
+
+function tocItem(v) {
+  return `<a href="#v-${v.id}" class="toc-link"><span class="toc-name">${v.name}</span><span class="toc-sub">${v.tag.split(' · ')[0]}</span></a>`;
+}
+
+const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mutual™ · Business Cards · ${variants.length} Variants</title>
+<meta name="description" content="Bilingual business card design system for mutual™ — ${variants.length} variants, KOR + ENG, vector-ready.">
+<link rel="icon" href="https://mutual.solutions/img/logo.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#0f172a; --bg-2:#1e293b;
+  --fg:#e2e8f0; --fg-2:#94a3b8; --fg-3:#64748b;
+  --line:rgba(148,163,184,0.14);
+  --teal:#4a8b9c; --cyan:#22d3ee;
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--fg);font-family:'Inter','SF Pro Display','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+body{background:radial-gradient(ellipse 1200px 800px at 80% -10%, rgba(34,211,238,0.10), transparent 60%),radial-gradient(ellipse 1000px 700px at 0% 110%, rgba(74,139,156,0.08), transparent 60%),var(--bg);background-attachment:fixed;position:relative}
+body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(to right, var(--line) 1px, transparent 1px), linear-gradient(to bottom, var(--line) 1px, transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 90% 80% at 50% 30%, black, transparent 80%);-webkit-mask-image:radial-gradient(ellipse 90% 80% at 50% 30%, black, transparent 80%);pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:48px 32px 96px}
+
+header{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-bottom:48px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:34px;height:34px;filter:brightness(0) invert(1)}
+.brand .word{font-weight:800;font-size:22px;letter-spacing:-0.6px}
+.brand .word .tm{font-size:11px;vertical-align:super;color:var(--fg-3);font-weight:500;margin-left:2px}
+.nav{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fg-3);letter-spacing:0.5px}
+.nav .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(34,211,238,0.35);border-radius:999px;color:var(--cyan);background:rgba(34,211,238,0.06)}
+.nav .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+
+.hero{margin-bottom:48px;max-width:880px}
+.eyebrow{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);letter-spacing:1.6px;margin-bottom:18px}
+h1{font-weight:800;font-size:clamp(40px,6vw,68px);letter-spacing:-2.4px;line-height:1.02;margin-bottom:14px}
+h1 .accent{color:var(--cyan)}
+.h1-ko{font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:clamp(20px,2.4vw,26px);color:var(--fg-3);letter-spacing:-0.6px;margin-bottom:20px}
+.lede{font-size:18px;color:var(--fg-2);max-width:740px;line-height:1.6;font-weight:500}
+
+.toc{margin:48px 0 64px;padding:24px;border:1px solid var(--line);border-radius:14px;background:rgba(30,41,59,0.4);display:grid;grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));gap:8px}
+.toc-link{display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:8px;text-decoration:none;color:var(--fg);transition:background 0.15s ease;border:1px solid transparent}
+.toc-link:hover{background:rgba(34,211,238,0.08);border-color:rgba(34,211,238,0.25)}
+.toc-name{font-weight:700;font-size:14px;letter-spacing:-0.2px}
+.toc-sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--fg-3);letter-spacing:1px}
+
+.variant-section{margin-top:96px;scroll-margin-top:24px}
+.variant-section:first-of-type{margin-top:24px}
+.variant-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:36px}
+.variant-tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fg-3);letter-spacing:1.6px;display:flex;align-items:center;gap:14px}
+.variant-tag::before{content:"";width:32px;height:1px;background:var(--teal);display:block}
+.variant-title{font-weight:700;font-size:34px;letter-spacing:-1.1px;color:var(--fg);margin-top:8px}
+.variant-title .sub{font-weight:500;color:var(--fg-3);font-size:16px;letter-spacing:-0.2px;margin-left:14px}
+
+.cards{display:flex;flex-direction:column;gap:64px;margin-top:36px}
+.card-block{display:grid;grid-template-columns:1fr;gap:32px}
+@media (min-width:1080px){.card-block{grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:start}}
+
+.flip-stage{position:relative;width:100%;aspect-ratio:1050/600;perspective:2400px;cursor:pointer}
+.flip-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 0.9s cubic-bezier(0.65,0.05,0.35,1)}
+.flip-stage.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-side{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,0.6),0 8px 28px -8px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04)}
+.flip-side img{display:block;width:100%;height:100%;object-fit:cover}
+.flip-side.back{transform:rotateY(180deg)}
+.flip-hint{position:absolute;left:18px;bottom:18px;z-index:5;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:1.2px;padding:6px 10px;border-radius:999px;background:rgba(15,23,42,0.65);backdrop-filter:blur(6px);border:1px solid rgba(34,211,238,0.3);pointer-events:none;opacity:0.92}
+.flip-stage.flipped .flip-hint{color:var(--fg-2);border-color:rgba(148,163,184,0.25)}
+
+.side-panel{display:flex;flex-direction:column;gap:22px}
+.panel-head .who{font-weight:800;font-size:26px;letter-spacing:-0.6px;line-height:1.05}
+.panel-head .who-ko{font-family:'Noto Sans KR',sans-serif;font-weight:600;font-size:15px;color:var(--fg-3);margin-top:4px;letter-spacing:-0.2px}
+.panel-head .role{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:0.6px;margin-top:8px}
+.thumbs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.thumb{aspect-ratio:1050/600;border-radius:8px;overflow:hidden;background:var(--bg-2);border:1px solid rgba(148,163,184,0.10);position:relative}
+.thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.thumb .label{position:absolute;left:10px;top:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.2px;padding:4px 8px;border-radius:4px;background:rgba(15,23,42,0.7);color:var(--fg-2);backdrop-filter:blur(4px)}
+
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;border:1px solid rgba(148,163,184,0.18);background:rgba(30,41,59,0.6);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.5px;text-decoration:none;cursor:pointer;transition:all 0.18s ease;font-weight:500}
+.btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(34,211,238,0.06)}
+.btn svg{width:13px;height:13px;flex-shrink:0}
+
+footer{margin-top:96px;padding-top:32px;border-top:1px solid rgba(148,163,184,0.12);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-3);letter-spacing:0.6px}
+footer .ko{font-family:'Noto Sans KR',sans-serif;color:var(--fg-3)}
+footer a{color:var(--cyan);text-decoration:none}
+footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">
+    <img src="https://mutual.solutions/img/logo.png" alt="">
+    <div class="word">mutual<span class="tm">™</span></div>
+  </div>
+  <div class="nav"><span class="pill"><span class="dot"></span>SIGNED · ECDSA</span></div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">// BUSINESS CARDS · ${variants.length} VARIANTS · KOR + ENG · ≥14PT</div>
+  <h1>Authenticity starts at the <span class="accent">source.</span></h1>
+  <div class="h1-ko">진본은 출처에서 시작됩니다.</div>
+  <p class="lede">${variants.length} bilingual business-card variants for mutual™ · each shared front + per-cofounder backs (Alex Jihoon Park · Yejun Jang). All body text ≥14pt. Click any card to flip. Download PNG (raster) or PDF (fully vector — text, shapes, traced logo, SVG QR) at exact 3.5″×2″ trim.</p>
+</section>
+
+<nav class="toc">
+  ${variants.map(tocItem).join('')}
+</nav>
+
+${variants.map(variantSection).join('\n')}
+
+<footer>
+  <div>// AUTHENTICITY AT THE SOURCE · <span class="ko">출처에서 검증된 진본</span></div>
+  <div>© 2026 mutual™ · <a href="https://mutual.solutions" target="_blank" rel="noopener">mutual.solutions</a></div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.flip-stage').forEach(stage => {
+    stage.addEventListener('click', (e) => { if (e.target.closest('a,button')) return; stage.classList.toggle('flipped'); });
+    stage.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stage.classList.toggle('flipped'); } });
+  });
+})();
+</script>
+</body>
+</html>
+`;
+
+fs.writeFileSync(OUT, html);
+console.log('wrote', OUT, '(' + html.length + ' chars)');
+console.log(`gallery: ${variants.length} variants × ${cardholders.length} cardholders = ${variants.length * cardholders.length} card blocks`);
