@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1050px;height:600px;background:#f7f3ec;font-family:'Inter','SF Pro Display','Helvetica Neue',sans-serif;color:#1a1a1a;overflow:hidden}
+.card{position:relative;width:1050px;height:600px;background:#f7f3ec;overflow:hidden}
+/* subtle paper texture overlay using radial gradients */
+.paper{position:absolute;inset:0;background:
+  radial-gradient(ellipse 600px 400px at 20% 10%, rgba(255,255,255,0.6), transparent 70%),
+  radial-gradient(ellipse 500px 400px at 90% 90%, rgba(74,139,156,0.05), transparent 70%);
+  pointer-events:none}
+/* hairline border inside */
+.frame{position:absolute;top:32px;left:32px;right:32px;bottom:32px;border:1px solid rgba(74,139,156,0.18)}
+/* mark + wordmark */
+.brand{position:absolute;top:104px;left:88px;display:flex;align-items:center;gap:24px}
+.brand img{width:78px;height:78px;object-fit:contain}
+.wordmark{font-weight:800;font-size:96px;letter-spacing:-3.6px;color:#0f172a;line-height:1}
+.tm{font-size:22px;vertical-align:super;font-weight:500;letter-spacing:0;margin-left:4px;color:#94a3b8}
+/* Korean-led tagline */
+.tagline{position:absolute;left:88px;bottom:160px;max-width:780px}
+.tagline .ko{font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:34px;color:#2a5561;letter-spacing:-0.8px;line-height:1.2}
+.tagline .en{margin-top:14px;font-weight:600;font-size:21px;color:#64748b;letter-spacing:-0.4px;line-height:1.3;font-style:italic}
+/* meta strip bottom */
+.meta-rule{position:absolute;left:88px;right:88px;bottom:96px;height:1px;background:#cbd5e1}
+.meta{position:absolute;left:88px;right:88px;bottom:64px;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:#64748b;letter-spacing:1.2px;text-transform:uppercase}
+.meta .left{display:flex;gap:16px}
+.meta .left span{color:#94a3b8}
+.meta .left b{color:#4a8b9c;font-weight:500}
+.meta .right{color:#94a3b8}
+/* corner registration marks */
+.reg{position:absolute;width:10px;height:10px;border-color:#4a8b9c}
+.r1{top:50px;left:50px;border-top:1px solid;border-left:1px solid}
+.r2{top:50px;right:50px;border-top:1px solid;border-right:1px solid}
+.r3{bottom:50px;left:50px;border-bottom:1px solid;border-left:1px solid}
+.r4{bottom:50px;right:50px;border-bottom:1px solid;border-right:1px solid}
+</style></head>
+<body>
+<div class="card">
+  <div class="paper"></div>
+  <div class="frame"></div>
+  <div class="reg r1"></div><div class="reg r2"></div><div class="reg r3"></div><div class="reg r4"></div>
+
+  <div class="brand">
+    <img src="https://mutual.solutions/img/logo.png" alt="">
+    <div class="wordmark">mutual<span class="tm">™</span></div>
+  </div>
+
+  <div class="tagline">
+    <div class="ko">진본은 출처에서 시작됩니다.</div>
+    <div class="en">Authenticity starts at the source.</div>
+  </div>
+
+  <div class="meta-rule"></div>
+  <div class="meta">
+    <div class="left">
+      <span><b>C2PA</b> · open standard</span>
+      <span><b>ECDSA</b> · hardware sig</span>
+      <span><b>ARM TrustZone</b></span>
+    </div>
+    <div class="right">mutual.solutions</div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1050px;height:600px;background:#f7f3ec;font-family:'Inter','SF Pro Display','Helvetica Neue',sans-serif;color:#0f172a;overflow:hidden}
+.card{position:relative;width:1050px;height:600px;background:#f7f3ec;overflow:hidden}
+.paper{position:absolute;inset:0;background:
+  radial-gradient(ellipse 600px 400px at 80% 10%, rgba(255,255,255,0.6), transparent 70%),
+  radial-gradient(ellipse 500px 400px at 10% 90%, rgba(74,139,156,0.05), transparent 70%);
+  pointer-events:none}
+.frame{position:absolute;top:32px;left:32px;right:32px;bottom:32px;border:1px solid rgba(74,139,156,0.18)}
+/* small wordmark top right */
+.brand{position:absolute;top:64px;right:96px;display:flex;align-items:center;gap:12px}
+.brand img{width:36px;height:36px;object-fit:contain}
+.brand .word{font-weight:800;font-size:22px;letter-spacing:-0.6px;color:#0f172a}
+.brand .word .tm{font-size:9px;vertical-align:super;color:#94a3b8;font-weight:500}
+/* Korean-led identity */
+.identity{position:absolute;top:184px;left:88px;max-width:880px}
+.identity .ko{font-family:'Noto Sans KR',sans-serif;font-weight:800;font-size:78px;letter-spacing:-2px;color:#0f172a;line-height:1}
+.identity .en{margin-top:16px;font-weight:700;font-size:30px;letter-spacing:-0.8px;color:#64748b;line-height:1}
+.identity .role-row{margin-top:30px;display:flex;align-items:baseline;gap:14px}
+.identity .role-row::before{content:"";display:inline-block;width:48px;height:2px;background:#4a8b9c;align-self:center}
+.identity .title-ko{font-family:'Noto Sans KR',sans-serif;font-weight:600;font-size:18px;color:#2a5561;letter-spacing:-0.2px}
+.identity .title-en{font-weight:500;font-size:15px;color:#94a3b8;letter-spacing:-0.1px}
+/* contact bottom */
+.contact{position:absolute;left:88px;right:88px;bottom:88px;display:flex;justify-content:space-between;align-items:flex-end;font-family:'JetBrains Mono',monospace}
+.contact-block{font-size:14px;line-height:1.85;color:#334155;font-weight:500}
+.contact-block .label{color:#94a3b8;display:inline-block;width:22px;font-weight:400}
+.qrtag{display:flex;flex-direction:column;align-items:center;gap:6px}
+.qrtag img{width:128px;height:128px;background:#fff;padding:6px;border-radius:4px;box-shadow:0 0 0 1px rgba(74,139,156,0.18)}
+.qrtag .lbl{font-family:'JetBrains Mono',monospace;font-size:9px;color:#94a3b8;letter-spacing:0.6px}
+.qrtag .ko{font-family:'Noto Sans KR',sans-serif;font-size:9px;color:#94a3b8}
+/* reg marks */
+.reg{position:absolute;width:10px;height:10px;border-color:#4a8b9c}
+.r1{top:50px;left:50px;border-top:1px solid;border-left:1px solid}
+.r2{top:50px;right:50px;border-top:1px solid;border-right:1px solid}
+.r3{bottom:50px;left:50px;border-bottom:1px solid;border-left:1px solid}
+.r4{bottom:50px;right:50px;border-bottom:1px solid;border-right:1px solid}
+/* footer mini */
+.foot{position:absolute;left:88px;bottom:44px;font-family:'JetBrains Mono',monospace;font-size:9px;color:#94a3b8;letter-spacing:1.4px}
+</style></head>
+<body>
+<div class="card">
+  <div class="paper"></div>
+  <div class="frame"></div>
+  <div class="reg r1"></div><div class="reg r2"></div><div class="reg r3"></div><div class="reg r4"></div>
+
+  <div class="brand">
+    <img src="https://mutual.solutions/img/logo.png" alt="">
+    <div class="word">mutual<span class="tm">™</span></div>
+  </div>
+
+  <div class="identity">
+    <div class="ko">박지훈</div>
+    <div class="en">Alex Jihoon Park</div>
+    <div class="role-row">
+      <span class="title-ko">공동창업자 · 하드웨어</span>
+      <span class="title-en">Co-founder · Hardware</span>
+    </div>
+  </div>
+
+  <div class="contact">
+    <div class="contact-block">
+      <div><span class="label">e</span> alex@mutual.solutions</div>
+      <div><span class="label">w</span> mutual.solutions</div>
+      <div><span class="label">in</span> linkedin.com/in/alexjihoonpark</div>
+    </div>
+    <div class="qrtag">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&qzone=1&color=0f172a&bgcolor=f7f3ec&data=BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AAlex%20Jihoon%20Park%0AN%3APark%3BAlex%20Jihoon%0ATITLE%3ACo-founder%20Hardware%0AORG%3Amutual%0AEMAIL%3Aalex%40mutual.solutions%0AURL%3Ahttps%3A%2F%2Fmutual.solutions%0AEND%3AVCARD" alt="">
+      <div class="lbl">SCAN · vCard</div>
+      <div class="ko">스캔 · 연락처</div>
+    </div>
+  </div>
+
+  <div class="foot">// 출처에서 검증된 진본</div>
+</div>
+</body></html>
