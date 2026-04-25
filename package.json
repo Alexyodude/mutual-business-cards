@@ -1,0 +1,27 @@
+{
+  "name": "canvaclaude",
+  "version": "1.0.0",
+  "description": "Print-ready business card system for [mutual.solutions](https://mutual.solutions) — hardware-signed video authenticity.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexyodude/mutual-business-cards.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Alexyodude/mutual-business-cards/issues"
+  },
+  "homepage": "https://github.com/Alexyodude/mutual-business-cards#readme",
+  "devDependencies": {
+    "puppeteer-core": "^24.42.0"
+  }
+}
