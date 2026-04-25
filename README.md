@@ -4,8 +4,10 @@ Print-ready business card system for [mutual.solutions](https://mutual.solutions
 
 ## Live preview
 
-Once GitHub Pages is enabled on this repo, the showcase lives at:
-**`https://alexyodude.github.io/mutual-business-cards/site/`** (flippable cards, side-by-side, downloadable PNGs)
+GitHub Pages serves the showcase at:
+**`https://alexyodude.github.io/mutual-business-cards/`** (flippable cards, side-by-side, downloadable PNGs)
+
+The site source lives in `docs/` — required by GitHub Pages when serving from a subdirectory of the main branch.
 
 ## Repo structure
 
@@ -16,7 +18,7 @@ Once GitHub Pages is enabled on this repo, the showcase lives at:
   card-back-yejun.html# back — Yejun Jang (vCard QR)
   business-card-*.png # rendered 1050×600 PNG outputs
 
-site/                 # static showcase site (deployed to GitHub Pages)
+docs/                 # static showcase site (deployed to GitHub Pages)
   index.html          # flip-card UI
   assets/             # rendered PNGs
 
