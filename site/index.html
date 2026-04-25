@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mutual™ · Business Cards</title>
+<meta name="description" content="Business card design system for mutual™ — dark, technical, defense-grade. Hardware authenticity at the source.">
+<link rel="icon" href="https://mutual.solutions/img/logo.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --bg:#0f172a; --bg-2:#1e293b; --bg-3:#0b1220;
+  --fg:#e2e8f0; --fg-2:#94a3b8; --fg-3:#64748b;
+  --line:rgba(148,163,184,0.14);
+  --teal:#4a8b9c; --cyan:#22d3ee; --cyan-glow:rgba(34,211,238,0.5);
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--fg);font-family:'Inter','SF Pro Display','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+body{
+  background:
+    radial-gradient(ellipse 1200px 800px at 80% -10%, rgba(34,211,238,0.12), transparent 60%),
+    radial-gradient(ellipse 1000px 700px at 0% 110%, rgba(74,139,156,0.10), transparent 60%),
+    var(--bg);
+  background-attachment:fixed;
+  position:relative;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background-image:linear-gradient(to right, var(--line) 1px, transparent 1px), linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(ellipse 90% 80% at 50% 30%, black, transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 80% at 50% 30%, black, transparent 80%);
+  pointer-events:none;z-index:0;
+}
+.wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:48px 32px 96px}
+
+/* Header */
+header{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-bottom:64px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:34px;height:34px;filter:brightness(0) invert(1)}
+.brand .word{font-weight:800;font-size:22px;letter-spacing:-0.6px}
+.brand .word .tm{font-size:11px;vertical-align:super;color:var(--fg-3);font-weight:500;margin-left:2px}
+.nav{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fg-3);letter-spacing:0.5px}
+.nav .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(34,211,238,0.35);border-radius:999px;color:var(--cyan);background:rgba(34,211,238,0.06)}
+.nav .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+
+/* Hero */
+.hero{margin-bottom:72px;max-width:880px}
+.eyebrow{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);letter-spacing:1.6px;margin-bottom:18px}
+.eyebrow .dim{color:var(--fg-3)}
+h1{font-weight:800;font-size:clamp(40px,6vw,72px);letter-spacing:-2.4px;line-height:1.02;margin-bottom:20px}
+h1 .accent{color:var(--cyan)}
+.lede{font-size:19px;color:var(--fg-2);max-width:720px;line-height:1.55;font-weight:500}
+
+/* Card section */
+.section-title{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fg-3);letter-spacing:1.6px;margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.section-title::before{content:"";width:32px;height:1px;background:var(--teal);display:block}
+h2{font-weight:700;font-size:30px;letter-spacing:-0.8px;margin-bottom:32px;color:var(--fg)}
+h2 .sub{font-weight:500;color:var(--fg-3);font-size:18px;letter-spacing:-0.2px;margin-left:10px}
+
+.cards{display:flex;flex-direction:column;gap:96px}
+
+.card-block{display:grid;grid-template-columns:1fr;gap:36px}
+@media (min-width:1080px){
+  .card-block{grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:start}
+}
+
+/* Flippable card */
+.flip-stage{position:relative;width:100%;aspect-ratio:1050/600;perspective:2400px;cursor:pointer}
+.flip-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 0.9s cubic-bezier(0.65,0.05,0.35,1)}
+.flip-stage.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-side{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,0.6),0 8px 28px -8px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04)}
+.flip-side img{display:block;width:100%;height:100%;object-fit:cover}
+.flip-side.back{transform:rotateY(180deg)}
+.flip-hint{position:absolute;left:18px;bottom:18px;z-index:5;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:1.2px;padding:6px 10px;border-radius:999px;background:rgba(15,23,42,0.65);backdrop-filter:blur(6px);border:1px solid rgba(34,211,238,0.3);pointer-events:none;opacity:0.9}
+.flip-stage.flipped .flip-hint{color:var(--fg-2);border-color:rgba(148,163,184,0.25)}
+
+/* Side panel */
+.side-panel{display:flex;flex-direction:column;gap:24px}
+.panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.panel-head .who{font-weight:800;font-size:30px;letter-spacing:-0.8px}
+.panel-head .role{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--cyan);letter-spacing:0.6px}
+.thumbs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.thumb{aspect-ratio:1050/600;border-radius:10px;overflow:hidden;background:var(--bg-2);border:1px solid rgba(148,163,184,0.10);position:relative}
+.thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.thumb .label{position:absolute;left:10px;top:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.2px;padding:4px 8px;border-radius:4px;background:rgba(15,23,42,0.7);color:var(--fg-2);backdrop-filter:blur(4px)}
+
+/* Action row */
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:10px;border:1px solid rgba(148,163,184,0.18);background:rgba(30,41,59,0.6);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.6px;text-decoration:none;cursor:pointer;transition:all 0.18s ease;font-weight:500}
+.btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(34,211,238,0.06)}
+.btn svg{width:14px;height:14px;flex-shrink:0}
+.btn.primary{background:var(--cyan);color:var(--bg);border-color:var(--cyan)}
+.btn.primary:hover{background:#67e8f9;border-color:#67e8f9;color:var(--bg)}
+
+/* Meta strip */
+.meta{display:flex;flex-wrap:wrap;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-3);letter-spacing:0.6px}
+.meta span{padding:5px 10px;border-radius:6px;background:rgba(30,41,59,0.5);border:1px solid rgba(148,163,184,0.10)}
+.meta span b{color:var(--fg-2);font-weight:500}
+
+/* Footer */
+footer{margin-top:96px;padding-top:32px;border-top:1px solid rgba(148,163,184,0.12);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-3);letter-spacing:0.6px}
+footer a{color:var(--cyan);text-decoration:none}
+footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">
+    <img src="https://mutual.solutions/img/logo.png" alt="">
+    <div class="word">mutual<span class="tm">™</span></div>
+  </div>
+  <div class="nav">
+    <span class="pill"><span class="dot"></span>SIGNED · ECDSA</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow"><span class="dim">//</span> BUSINESS CARDS · v2</div>
+  <h1>Authenticity starts at the <span class="accent">source.</span></h1>
+  <p class="lede">Print-ready business card system for mutual™. Dark, technical, cryptographic. Click any card to flip between front and back. Each side downloads as 1050×600 PNG, ready for 3.5″×2″ print at 300 DPI.</p>
+</section>
+
+<div class="section-title">CARDHOLDERS · 2</div>
+<h2>Co-founders <span class="sub">— shared front · individual backs</span></h2>
+
+<div class="cards">
+
+  <!-- Alex -->
+  <div class="card-block">
+    <div class="flip-stage" data-card="alex" tabindex="0" role="button" aria-label="Flip Alex's card">
+      <div class="flip-inner">
+        <div class="flip-side front"><img src="assets/front.png" alt="mutual business card front" loading="eager"></div>
+        <div class="flip-side back"><img src="assets/back-alex.png" alt="Alex Jihoon Park business card back" loading="eager"></div>
+      </div>
+      <div class="flip-hint">CLICK TO FLIP</div>
+    </div>
+    <div class="side-panel">
+      <div class="panel-head">
+        <div>
+          <div class="who">Alex Jihoon Park</div>
+        </div>
+        <div class="role">CO-FOUNDER · HARDWARE</div>
+      </div>
+      <div class="thumbs">
+        <div class="thumb"><img src="assets/front.png" alt=""><div class="label">FRONT</div></div>
+        <div class="thumb"><img src="assets/back-alex.png" alt=""><div class="label">BACK</div></div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="assets/front.png" download="mutual-card-front.png">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+          FRONT.PNG
+        </a>
+        <a class="btn primary" href="assets/back-alex.png" download="mutual-card-back-alex.png">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+          BACK.PNG
+        </a>
+      </div>
+      <div class="meta">
+        <span><b>vCard QR</b> · scan to add contact</span>
+        <span><b>1050×600</b> · 300 DPI</span>
+        <span><b>3.5″×2″</b> · US standard</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Yejun -->
+  <div class="card-block">
+    <div class="flip-stage" data-card="yejun" tabindex="0" role="button" aria-label="Flip Yejun's card">
+      <div class="flip-inner">
+        <div class="flip-side front"><img src="assets/front.png" alt="mutual business card front" loading="lazy"></div>
+        <div class="flip-side back"><img src="assets/back-yejun.png" alt="Yejun Jang business card back" loading="lazy"></div>
+      </div>
+      <div class="flip-hint">CLICK TO FLIP</div>
+    </div>
+    <div class="side-panel">
+      <div class="panel-head">
+        <div>
+          <div class="who">Yejun Jang</div>
+        </div>
+        <div class="role">CEO · AI &amp; SECURITY</div>
+      </div>
+      <div class="thumbs">
+        <div class="thumb"><img src="assets/front.png" alt=""><div class="label">FRONT</div></div>
+        <div class="thumb"><img src="assets/back-yejun.png" alt=""><div class="label">BACK</div></div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="assets/front.png" download="mutual-card-front.png">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+          FRONT.PNG
+        </a>
+        <a class="btn primary" href="assets/back-yejun.png" download="mutual-card-back-yejun.png">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+          BACK.PNG
+        </a>
+      </div>
+      <div class="meta">
+        <span><b>vCard QR</b> · scan to add contact</span>
+        <span><b>1050×600</b> · 300 DPI</span>
+        <span><b>3.5″×2″</b> · US standard</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div>// AUTHENTICITY AT THE SOURCE</div>
+  <div>© 2026 mutual™ · <a href="https://mutual.solutions" target="_blank" rel="noopener">mutual.solutions</a></div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  const stages = document.querySelectorAll('.flip-stage');
+  stages.forEach(stage => {
+    const toggle = (e) => {
+      // Don't flip if clicking a download button inside (they're outside, but be safe)
+      if (e.target.closest('a,button')) return;
+      stage.classList.toggle('flipped');
+    };
+    stage.addEventListener('click', toggle);
+    stage.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stage.classList.toggle('flipped'); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

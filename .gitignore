@@ -1,0 +1,20 @@
+# OMC + ralph state
+.omc/state/
+.omc/handoffs/
+.omc/notepad.md
+
+# Local server logs
+**/server*.log
+.canva-build/server*.log
+site/server*.log
+
+# Playwright cache
+.playwright-mcp/
+
+# Misc downloads / preview artifacts
+.canva-previews/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
