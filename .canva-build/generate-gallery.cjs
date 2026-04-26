@@ -5,9 +5,55 @@ const path = require('path');
 const { variants, cardholders } = require('./variants.cjs');
 
 const OUT = path.resolve(__dirname, '..', 'docs', 'index.html');
+const HC_FILE = path.join(__dirname, 'handcrafted-designs.json');
+const handcrafted = fs.existsSync(HC_FILE) ? JSON.parse(fs.readFileSync(HC_FILE, 'utf8')) : [];
 
 function dlBtn(href, label) {
   return `<a class="btn" href="${href}" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg> ${label}</a>`;
+}
+
+// Hand-crafted designs use per-cardholder front (h-{id}-front-{cardholder}.html).
+function handcraftedSection(d) {
+  const blocks = cardholders.map(c => `
+    <div class="card-block">
+      <div class="flip-stage" tabindex="0" role="button" aria-label="Flip ${c.name}'s ${d.id} card">
+        <div class="flip-inner">
+          <div class="flip-side front"><img src="assets/h-${d.id}-front-${c.id}.png" alt="" loading="lazy"></div>
+          <div class="flip-side back"><img src="assets/h-${d.id}-back-${c.id}.png" alt="" loading="lazy"></div>
+        </div>
+        <div class="flip-hint">CLICK TO FLIP</div>
+      </div>
+      <div class="side-panel">
+        <div class="panel-head">
+          <div>
+            <div class="who">${c.name}</div>
+            <div class="who-ko">${c.nameKo}</div>
+            <div class="role">${c.title.toUpperCase()}</div>
+          </div>
+        </div>
+        <div class="thumbs">
+          <div class="thumb"><img src="assets/h-${d.id}-front-${c.id}.png" alt=""><div class="label">FRONT</div></div>
+          <div class="thumb"><img src="assets/h-${d.id}-back-${c.id}.png" alt=""><div class="label">BACK</div></div>
+        </div>
+        <div class="actions">
+          ${dlBtn(`assets/h-${d.id}-front-${c.id}.png`, 'FRONT.PNG')}
+          ${dlBtn(`assets/h-${d.id}-back-${c.id}.png`, 'BACK.PNG')}
+          ${dlBtn(`assets/h-${d.id}-front-${c.id}.pdf`, 'FRONT.PDF · vector')}
+          ${dlBtn(`assets/h-${d.id}-back-${c.id}.pdf`, 'BACK.PDF · vector')}
+        </div>
+      </div>
+    </div>`).join('\n');
+
+  return `
+<section class="variant-section" id="h-${d.id}">
+  <div class="variant-head">
+    <div>
+      <div class="variant-tag" style="color:#fbbf24"><span style="background:#fbbf24;color:#0f172a;padding:3px 8px;border-radius:4px;letter-spacing:1.4px;font-size:10px;font-weight:700">HAND-CRAFTED</span> &nbsp; ${d.id.toUpperCase()}</div>
+      <h2 class="variant-title">${d.name} <span class="sub">— ${d.sub}</span></h2>
+    </div>
+  </div>
+  <div class="cards">${blocks}</div>
+</section>`;
 }
 
 function variantSection(v) {
@@ -55,6 +101,9 @@ function variantSection(v) {
 
 function tocItem(v) {
   return `<a href="#v-${v.id}" class="toc-link"><span class="toc-name">${v.name}</span><span class="toc-sub">${v.tag.split(' · ')[0]}</span></a>`;
+}
+function tocItemHc(d) {
+  return `<a href="#h-${d.id}" class="toc-link" style="border-color:#fbbf2455"><span class="toc-name" style="color:#fbbf24">${d.name}</span><span class="toc-sub">★ HANDCRAFTED</span></a>`;
 }
 
 const html = `<!DOCTYPE html>
@@ -163,8 +212,21 @@ footer a:hover{text-decoration:underline}
 </section>
 
 <nav class="toc">
+  ${handcrafted.map(tocItemHc).join('')}
   ${variants.map(tocItem).join('')}
 </nav>
+
+${handcrafted.length ? `<section style="margin-top:48px;padding:24px 28px;border:1px solid #fbbf24;border-radius:14px;background:rgba(251,191,36,0.04)">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#fbbf24">★ HAND-CRAFTED · ${handcrafted.length} STRUCTURALLY DISTINCT DESIGNS</div>
+  <div style="margin-top:6px;font-size:18px;color:#94a3b8;line-height:1.5">Each design below has its own composition / metaphor / typography system — not a parametric color reskin. Boarding pass, schematic, code listing, brutalist, bauhaus, receipt, passport, postage stamp, index card, magazine masthead, circuit board, polaroid.</div>
+</section>` : ''}
+
+${handcrafted.map(handcraftedSection).join('\n')}
+
+<section style="margin-top:96px;padding:24px 28px;border-top:1px solid var(--line)">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--fg-3)">PARAMETRIC MATRIX · ${variants.length} PALETTE × LAYOUT VARIANTS</div>
+  <div style="margin-top:6px;font-size:16px;color:var(--fg-2);line-height:1.5">Same base layout family, swept across ${variants.length} color palettes and 4 layouts. Use these for color exploration after picking a hand-crafted system above.</div>
+</section>
 
 ${variants.map(variantSection).join('\n')}
 

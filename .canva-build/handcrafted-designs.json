@@ -1,0 +1,74 @@
+[
+  {
+    "id": "boarding",
+    "name": "Boarding Pass",
+    "sub": "flight-ticket layout · gate/seat/barcode",
+    "perCardholderFront": true
+  },
+  {
+    "id": "schematic",
+    "name": "Schematic",
+    "sub": "engineering blueprint · component callouts",
+    "perCardholderFront": true
+  },
+  {
+    "id": "yaml",
+    "name": "YAML",
+    "sub": "card-as-config · syntax-highlighted",
+    "perCardholderFront": true
+  },
+  {
+    "id": "brutalist",
+    "name": "Brutalist",
+    "sub": "concrete blocks · all-caps · zero whitespace",
+    "perCardholderFront": true
+  },
+  {
+    "id": "bauhaus",
+    "name": "Bauhaus",
+    "sub": "primary-color geometric shapes · asymmetric",
+    "perCardholderFront": true
+  },
+  {
+    "id": "receipt",
+    "name": "Receipt",
+    "sub": "thermal-printer ticker · ASCII dividers",
+    "perCardholderFront": true
+  },
+  {
+    "id": "passport",
+    "name": "Passport",
+    "sub": "official document · multiple stamps",
+    "perCardholderFront": true
+  },
+  {
+    "id": "stamp",
+    "name": "Postage Stamp",
+    "sub": "perforated edges · denomination",
+    "perCardholderFront": true
+  },
+  {
+    "id": "index",
+    "name": "Index Card",
+    "sub": "ruled library card · call number",
+    "perCardholderFront": true
+  },
+  {
+    "id": "masthead",
+    "name": "Masthead",
+    "sub": "magazine cover · display serif · dateline",
+    "perCardholderFront": true
+  },
+  {
+    "id": "circuit",
+    "name": "Circuit Board",
+    "sub": "PCB layout · copper traces · pads",
+    "perCardholderFront": true
+  },
+  {
+    "id": "polaroid",
+    "name": "Polaroid",
+    "sub": "instant photo · handwritten caption",
+    "perCardholderFront": true
+  }
+]
