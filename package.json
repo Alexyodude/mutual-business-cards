@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Alexyodude/mutual-business-cards#readme",
   "devDependencies": {
     "potrace": "^2.1.8",
-    "puppeteer-core": "^24.42.0"
+    "puppeteer-core": "^24.42.0",
+    "qrcode": "^1.5.4"
   }
 }

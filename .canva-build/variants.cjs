@@ -1,166 +1,135 @@
-// 12 business-card variants for mutual™.
-// Each variant = a theme. Cards share a common bilingual layout
-// (Korean + English, vCard QR, ≥14pt body floor).
+// 100+ business-card variants for mutual™.
+// Variants are generated programmatically from a curated set of color palettes,
+// layout patterns, and decoration treatments. Each variant exposes the same
+// shape consumed by generate-variants.cjs, render-all.cjs, generate-gallery.cjs.
 
 const cardholders = [
   {
-    id: 'alex',
-    name: 'Alex Jihoon Park',
-    nameKo: '박지훈',
-    title: 'Co-founder · Hardware',
-    titleKo: '공동창업자 · 하드웨어',
-    email: 'alex@mutual.solutions',
-    linkedin: 'linkedin.com/in/alexjihoonpark',
-    vcardN: 'Park%3BAlex%20Jihoon',
-    vcardFN: 'Alex%20Jihoon%20Park',
-    vcardTitle: 'Co-founder%20Hardware',
-    vcardEmail: 'alex%40mutual.solutions',
+    id: 'alex',  name: 'Alex Jihoon Park', nameKo: '박지훈',
+    title: 'Co-founder · Hardware', titleKo: '공동창업자 · 하드웨어',
+    email: 'alex@mutual.solutions', linkedin: 'linkedin.com/in/alexjihoonpark',
+    vcardN: 'Park%3BAlex%20Jihoon', vcardFN: 'Alex%20Jihoon%20Park',
+    vcardTitle: 'Co-founder%20Hardware', vcardEmail: 'alex%40mutual.solutions',
   },
   {
-    id: 'yejun',
-    name: 'Yejun Jang',
-    nameKo: '장예준',
-    title: 'CEO · AI & Security',
-    titleKo: '대표이사 · AI 보안',
-    email: 'yejun@mutual.solutions',
-    linkedin: 'linkedin.com/in/yejunjang',
-    vcardN: 'Jang%3BYejun',
-    vcardFN: 'Yejun%20Jang',
-    vcardTitle: 'CEO%20AI%20%26%20Security',
-    vcardEmail: 'yejun%40mutual.solutions',
+    id: 'yejun', name: 'Yejun Jang',       nameKo: '장예준',
+    title: 'CEO · AI & Security', titleKo: '대표이사 · AI 보안',
+    email: 'yejun@mutual.solutions', linkedin: 'linkedin.com/in/yejunjang',
+    vcardN: 'Jang%3BYejun', vcardFN: 'Yejun%20Jang',
+    vcardTitle: 'CEO%20AI%20%26%20Security', vcardEmail: 'yejun%40mutual.solutions',
   },
 ];
 
-// theme keys:
-//   bg, fg, fgDim, accent, accentSoft, paper (bool), grid (bool), wordmarkColor,
-//   logoFile (logo-white | logo-teal | logo-dark | logo-amber | logo-mono | ...),
-//   qrFg, qrBg (HEX without #),
-//   font, mono (Google Fonts family names),
-//   tag (one-line description shown in gallery)
-const variants = [
-  {
-    id: 'tech', name: 'Lab', sub: 'dark · cyan · signed-at-source',
-    tag: 'TECH · 기술 / 다크',
-    bg: '#0f172a', bgGrad: 'linear-gradient(135deg,#0f172a 0%, #1e293b 100%)',
-    fg: '#ffffff', fgDim: '#94a3b8', accent: '#22d3ee', accentSoft: '#4a8b9c',
-    paper: false, grid: true, wordmarkColor: '#ffffff',
-    logoFile: 'logo-white.svg',
-    qrFg: '0f172a', qrBg: 'ffffff',
-    font: 'Inter', mono: 'JetBrains+Mono',
-  },
-  {
-    id: 'paper', name: 'Press', sub: 'warm cream · Hangul-led',
-    tag: 'PAPER · 종이 / 한글 우선',
-    bg: '#f7f3ec', bgGrad: '#f7f3ec',
-    fg: '#0f172a', fgDim: '#64748b', accent: '#4a8b9c', accentSoft: '#2a5561',
-    paper: true, grid: false, wordmarkColor: '#0f172a',
-    logoFile: 'logo-teal.svg',
-    qrFg: '0f172a', qrBg: 'f7f3ec',
-    font: 'Inter', mono: 'JetBrains+Mono',
-  },
-  {
-    id: 'noir', name: 'Noir', sub: 'pitch black · electric cyan',
-    tag: 'NOIR · 블랙 / 전기 시안',
-    bg: '#000000', bgGrad: 'linear-gradient(180deg,#000 0%, #0a0a0a 100%)',
-    fg: '#ffffff', fgDim: '#888', accent: '#22d3ee', accentSoft: '#0891b2',
-    paper: false, grid: false, wordmarkColor: '#22d3ee',
-    logoFile: 'logo-white.svg',
-    qrFg: '000000', qrBg: 'ffffff',
-    font: 'Inter', mono: 'JetBrains+Mono',
-  },
-  {
-    id: 'exec', name: 'Counsel', sub: 'navy · gold · classic corporate',
-    tag: 'EXEC · 네이비 / 금장',
-    bg: '#fafaf7', bgGrad: '#fafaf7',
-    fg: '#0a1f3d', fgDim: '#5b6478', accent: '#b08d3a', accentSoft: '#8b6f2c',
-    paper: true, grid: false, wordmarkColor: '#0a1f3d',
-    logoFile: 'logo-navy.svg',
-    qrFg: '0a1f3d', qrBg: 'fafaf7',
-    font: 'Inter', mono: 'JetBrains+Mono',
-  },
-  {
-    id: 'mono', name: 'Achromat', sub: 'pure grayscale · no accent',
-    tag: 'MONO · 흑백 / 미니멀',
-    bg: '#ffffff', bgGrad: '#ffffff',
-    fg: '#111111', fgDim: '#888', accent: '#111111', accentSoft: '#444',
-    paper: false, grid: false, wordmarkColor: '#111111',
-    logoFile: 'logo-black.svg',
-    qrFg: '111111', qrBg: 'ffffff',
-    font: 'Inter', mono: 'JetBrains+Mono',
-  },
-  {
-    id: 'terminal', name: 'CRT', sub: 'green-on-black · monospace',
-    tag: 'TERMINAL · 터미널 / 모노',
-    bg: '#0a0d0a', bgGrad: 'radial-gradient(ellipse at center, #0a1410 0%, #050805 100%)',
-    fg: '#22ff88', fgDim: '#0a8d4a', accent: '#22ff88', accentSoft: '#0a8d4a',
-    paper: false, grid: true, wordmarkColor: '#22ff88',
-    logoFile: 'logo-green.svg',
-    qrFg: '22ff88', qrBg: '0a0d0a',
-    font: 'JetBrains+Mono', mono: 'JetBrains+Mono',
-  },
-  {
-    id: 'archive', name: 'Archive', sub: 'sepia · serif feel · vintage',
-    tag: 'ARCHIVE · 아카이브 / 세피아',
-    bg: '#ece4d2', bgGrad: '#ece4d2',
-    fg: '#2c1d0a', fgDim: '#6b5236', accent: '#8b4513', accentSoft: '#a8682b',
-    paper: true, grid: false, wordmarkColor: '#2c1d0a',
-    logoFile: 'logo-sepia.svg',
-    qrFg: '2c1d0a', qrBg: 'ece4d2',
-    font: 'Inter', mono: 'JetBrains+Mono',
-  },
-  {
-    id: 'neon', name: 'Vapor', sub: 'cyan→magenta gradient · synth',
-    tag: 'NEON · 네온 / 그라디언트',
-    bg: '#0d0a1f', bgGrad: 'linear-gradient(135deg,#0d0a1f 0%, #1a0f3a 60%, #2a0f4a 100%)',
-    fg: '#ffffff', fgDim: '#a78bfa', accent: '#f0abfc', accentSoft: '#22d3ee',
-    paper: false, grid: false, wordmarkColor: '#ffffff',
-    logoFile: 'logo-magenta.svg',
-    qrFg: 'ffffff', qrBg: '0d0a1f',
-    font: 'Inter', mono: 'JetBrains+Mono',
-  },
-  {
-    id: 'linen', name: 'Linen', sub: 'off-white · sage green · natural',
-    tag: 'LINEN · 리넨 / 세이지',
-    bg: '#f4f1ea', bgGrad: '#f4f1ea',
-    fg: '#1f2a24', fgDim: '#718272', accent: '#5d7a5d', accentSoft: '#8aa68a',
-    paper: true, grid: false, wordmarkColor: '#1f2a24',
-    logoFile: 'logo-sage.svg',
-    qrFg: '1f2a24', qrBg: 'f4f1ea',
-    font: 'Inter', mono: 'JetBrains+Mono',
-  },
-  {
-    id: 'duotone', name: 'Duotone', sub: 'half dark · half light split',
-    tag: 'DUOTONE · 듀오톤 / 분할',
-    bg: '#0f172a', bgGrad: 'linear-gradient(90deg,#0f172a 0%, #0f172a 50%, #f7f3ec 50%, #f7f3ec 100%)',
-    fg: '#ffffff', fgDim: '#94a3b8', accent: '#22d3ee', accentSoft: '#4a8b9c',
-    paper: false, grid: false, wordmarkColor: '#ffffff',
-    logoFile: 'logo-white.svg',
-    qrFg: '0f172a', qrBg: 'f7f3ec',
-    font: 'Inter', mono: 'JetBrains+Mono',
+// ────────────────────────────────────────────────────────────────────
+// Palettes — each defines color & "feel" identity (24 entries)
+// fields: id, name, bg, fg, fgDim, accent, accentSoft, paper, grid,
+// logoColor (one of: white,teal,navy,black,green,sepia,magenta,sage,red,amber)
+// ────────────────────────────────────────────────────────────────────
+const palettes = [
+  // Dark / technical
+  { id: 'tech',     name: 'Lab',        bg: '#0f172a', fg: '#fff',     fgDim: '#94a3b8', accent: '#22d3ee', accentSoft: '#4a8b9c', paper: false, grid: true,  logoColor: 'white',   bgGrad: 'linear-gradient(135deg,#0f172a 0%,#1e293b 100%)' },
+  { id: 'noir',     name: 'Noir',       bg: '#000000', fg: '#fff',     fgDim: '#888',    accent: '#22d3ee', accentSoft: '#0891b2', paper: false, grid: false, logoColor: 'white',   bgGrad: 'linear-gradient(180deg,#000 0%,#0a0a0a 100%)' },
+  { id: 'ocean',    name: 'Bathyscaph', bg: '#031e3a', fg: '#fff',     fgDim: '#7da4c4', accent: '#06b6d4', accentSoft: '#0e7490', paper: false, grid: true,  logoColor: 'white',   bgGrad: 'linear-gradient(180deg,#031e3a 0%,#062241 50%,#031424 100%)' },
+  { id: 'cobalt',   name: 'Cobalt',     bg: '#0a1f4a', fg: '#fff',     fgDim: '#9ab1de', accent: '#3b82f6', accentSoft: '#2563eb', paper: false, grid: false, logoColor: 'white',   bgGrad: 'linear-gradient(135deg,#0a1f4a 0%,#1e3a8a 100%)' },
+  { id: 'plum',     name: 'Plum',       bg: '#1e0f2e', fg: '#fff',     fgDim: '#b8a3c7', accent: '#c084fc', accentSoft: '#a855f7', paper: false, grid: false, logoColor: 'white',   bgGrad: 'linear-gradient(135deg,#1e0f2e 0%,#2d1b3d 100%)' },
+  { id: 'forest',   name: 'Pine',       bg: '#0a1f14', fg: '#fff',     fgDim: '#9ab8a3', accent: '#10b981', accentSoft: '#059669', paper: false, grid: false, logoColor: 'green',   bgGrad: 'linear-gradient(135deg,#0a1f14 0%,#142a1f 100%)' },
+  { id: 'crimson',  name: 'Vermilion',  bg: '#1a0606', fg: '#fff',     fgDim: '#cba0a0', accent: '#dc2626', accentSoft: '#991b1b', paper: false, grid: false, logoColor: 'red',     bgGrad: 'linear-gradient(135deg,#1a0606 0%,#2a0a0a 100%)' },
+  { id: 'mocha',    name: 'Mocha',      bg: '#1f1410', fg: '#fff',     fgDim: '#b8a594', accent: '#d97706', accentSoft: '#92400e', paper: false, grid: false, logoColor: 'amber',   bgGrad: 'linear-gradient(135deg,#1f1410 0%,#2b1c14 100%)' },
+  { id: 'onyx',     name: 'Onyx',       bg: '#0a0a0a', fg: '#fff',     fgDim: '#888',    accent: '#fbbf24', accentSoft: '#d97706', paper: false, grid: false, logoColor: 'amber',   bgGrad: 'linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%)' },
+  { id: 'graphite', name: 'Graphite',   bg: '#1c1c1c', fg: '#fff',     fgDim: '#a3a3a3', accent: '#fafafa', accentSoft: '#d4d4d4', paper: false, grid: false, logoColor: 'white',   bgGrad: 'linear-gradient(180deg,#1c1c1c 0%,#262626 100%)' },
+  { id: 'midnight', name: 'Midnight',   bg: '#0c1635', fg: '#fff',     fgDim: '#94a3d8', accent: '#fcd34d', accentSoft: '#f59e0b', paper: false, grid: true,  logoColor: 'amber',   bgGrad: 'linear-gradient(180deg,#0c1635 0%,#1a2456 100%)' },
+  { id: 'terminal', name: 'CRT',        bg: '#0a0d0a', fg: '#22ff88', fgDim: '#0a8d4a', accent: '#22ff88', accentSoft: '#0a8d4a', paper: false, grid: true,  logoColor: 'green',   bgGrad: 'radial-gradient(ellipse at center,#0a1410 0%,#050805 100%)' },
+  { id: 'neon',     name: 'Vapor',      bg: '#0d0a1f', fg: '#fff',     fgDim: '#a78bfa', accent: '#f0abfc', accentSoft: '#22d3ee', paper: false, grid: false, logoColor: 'magenta', bgGrad: 'linear-gradient(135deg,#0d0a1f 0%,#1a0f3a 60%,#2a0f4a 100%)' },
+
+  // Light / paper
+  { id: 'paper',    name: 'Press',      bg: '#f7f3ec', fg: '#0f172a', fgDim: '#64748b', accent: '#4a8b9c', accentSoft: '#2a5561', paper: true,  grid: false, logoColor: 'teal',    bgGrad: '#f7f3ec' },
+  { id: 'linen',    name: 'Linen',      bg: '#f4f1ea', fg: '#1f2a24', fgDim: '#718272', accent: '#5d7a5d', accentSoft: '#8aa68a', paper: true,  grid: false, logoColor: 'sage',    bgGrad: '#f4f1ea' },
+  { id: 'archive',  name: 'Archive',    bg: '#ece4d2', fg: '#2c1d0a', fgDim: '#6b5236', accent: '#8b4513', accentSoft: '#a8682b', paper: true,  grid: false, logoColor: 'sepia',   bgGrad: '#ece4d2' },
+  { id: 'exec',     name: 'Counsel',    bg: '#fafaf7', fg: '#0a1f3d', fgDim: '#5b6478', accent: '#b08d3a', accentSoft: '#8b6f2c', paper: true,  grid: false, logoColor: 'navy',    bgGrad: '#fafaf7' },
+  { id: 'mono',     name: 'Achromat',   bg: '#fff',    fg: '#111',    fgDim: '#888',    accent: '#111',    accentSoft: '#444',    paper: false, grid: false, logoColor: 'black',   bgGrad: '#fff' },
+  { id: 'bone',     name: 'Bone',       bg: '#f0ebe0', fg: '#1a1a1a', fgDim: '#7a7065', accent: '#8b6f47', accentSoft: '#5e4a30', paper: true,  grid: false, logoColor: 'sepia',   bgGrad: '#f0ebe0' },
+  { id: 'pearl',    name: 'Pearl',      bg: '#fcfbf8', fg: '#2a2a2a', fgDim: '#999',    accent: '#7d8c93', accentSoft: '#52606d', paper: true,  grid: false, logoColor: 'navy',    bgGrad: '#fcfbf8' },
+  { id: 'mint',     name: 'Mint',       bg: '#eef7f1', fg: '#0f3322', fgDim: '#5a8170', accent: '#0d9488', accentSoft: '#0f766e', paper: true,  grid: false, logoColor: 'sage',    bgGrad: '#eef7f1' },
+  { id: 'rose',     name: 'Rose',       bg: '#fdf2f5', fg: '#3a0f1c', fgDim: '#8a5a6e', accent: '#be123c', accentSoft: '#881337', paper: true,  grid: false, logoColor: 'red',     bgGrad: '#fdf2f5' },
+  { id: 'peach',    name: 'Peach',      bg: '#fef3eb', fg: '#3d1f0a', fgDim: '#8c6850', accent: '#ea580c', accentSoft: '#c2410c', paper: true,  grid: false, logoColor: 'amber',   bgGrad: '#fef3eb' },
+  { id: 'lavender', name: 'Lavender',   bg: '#f5f1fa', fg: '#1e0e3d', fgDim: '#7a6e94', accent: '#7c3aed', accentSoft: '#6d28d9', paper: true,  grid: false, logoColor: 'magenta', bgGrad: '#f5f1fa' },
+  { id: 'jade',     name: 'Jade',       bg: '#06251c', fg: '#fff',    fgDim: '#8aaba0', accent: '#34d399', accentSoft: '#10b981', paper: false, grid: false, logoColor: 'green',   bgGrad: 'linear-gradient(135deg,#06251c 0%,#0a3a2a 100%)' },
+  { id: 'ember',    name: 'Ember',      bg: '#1a0b06', fg: '#fff',    fgDim: '#c79b8a', accent: '#fb923c', accentSoft: '#ea580c', paper: false, grid: false, logoColor: 'amber',   bgGrad: 'linear-gradient(135deg,#1a0b06 0%,#2e1808 100%)' },
+  { id: 'sky',      name: 'Sky',        bg: '#eef6fc', fg: '#0c1e3a', fgDim: '#6e89aa', accent: '#0284c7', accentSoft: '#075985', paper: true,  grid: false, logoColor: 'navy',    bgGrad: '#eef6fc' },
+  { id: 'taupe',    name: 'Taupe',      bg: '#e7e1d6', fg: '#2a2218', fgDim: '#7c6f5a', accent: '#78350f', accentSoft: '#451a03', paper: true,  grid: false, logoColor: 'sepia',   bgGrad: '#e7e1d6' },
+];
+
+// ────────────────────────────────────────────────────────────────────
+// Layout patterns — define structural variations
+// ────────────────────────────────────────────────────────────────────
+const layouts = [
+  { id: 'general',  name: '·' },           // current default layout
+  { id: 'centered', name: 'Center' },       // wordmark centered, name centered
+  { id: 'edge',     name: 'Edge' },         // big stripe down one side, content offset
+  { id: 'asym',     name: 'Asym' },         // big asymmetric block
+];
+
+// Special-case full-layout variants (kept from earlier batches)
+const specialVariants = [
+  { id: 'duotone',  name: 'Duotone',   sub: 'half dark · half light split',  tag: 'DUOTONE · 듀오톤 / 분할',
+    bg: '#0f172a', bgGrad: 'linear-gradient(90deg,#0f172a 0%,#0f172a 50%,#f7f3ec 50%,#f7f3ec 100%)',
+    fg: '#fff', fgDim: '#94a3b8', accent: '#22d3ee', accentSoft: '#4a8b9c',
+    paper: false, grid: false, wordmarkColor: '#fff', logoFile: 'logo-white.svg',
+    qrFg: '0f172a', qrBg: 'f7f3ec', font: 'Inter', mono: 'JetBrains+Mono',
     isDuotone: true,
   },
-  {
-    id: 'korean', name: 'Hangul', sub: '뮤추얼 wordmark · Korean primary',
-    tag: 'KOREAN · 한글 우선 / 뮤추얼',
+  { id: 'korean',   name: 'Hangul',    sub: '뮤추얼 wordmark · Korean primary',  tag: 'KOREAN · 한글 우선',
     bg: '#fffaf0', bgGrad: '#fffaf0',
     fg: '#1a1a1a', fgDim: '#666', accent: '#c4302b', accentSoft: '#8b1f1c',
-    paper: true, grid: false, wordmarkColor: '#1a1a1a',
-    logoFile: 'logo-red.svg',
-    qrFg: '1a1a1a', qrBg: 'fffaf0',
-    font: 'Inter', mono: 'JetBrains+Mono',
+    paper: true, grid: false, wordmarkColor: '#1a1a1a', logoFile: 'logo-red.svg',
+    qrFg: '1a1a1a', qrBg: 'fffaf0', font: 'Inter', mono: 'JetBrains+Mono',
     isKorean: true,
   },
-  {
-    id: 'idcard', name: 'Clearance', sub: 'security badge · ID-grade',
-    tag: 'ID-CARD · 보안 배지',
+  { id: 'idcard',   name: 'Clearance', sub: 'security badge · ID-grade',   tag: 'ID-CARD · 보안 배지',
     bg: '#fafafa', bgGrad: '#fafafa',
     fg: '#1a1a1a', fgDim: '#666', accent: '#dc2626', accentSoft: '#7f1d1d',
-    paper: false, grid: false, wordmarkColor: '#1a1a1a',
-    logoFile: 'logo-red.svg',
-    qrFg: '1a1a1a', qrBg: 'fafafa',
-    font: 'Inter', mono: 'JetBrains+Mono',
+    paper: false, grid: false, wordmarkColor: '#1a1a1a', logoFile: 'logo-red.svg',
+    qrFg: '1a1a1a', qrBg: 'fafafa', font: 'Inter', mono: 'JetBrains+Mono',
     isIdCard: true,
   },
 ];
 
-module.exports = { variants, cardholders };
+// ────────────────────────────────────────────────────────────────────
+// Build the variant array: special variants first, then palette × layout combos.
+// ────────────────────────────────────────────────────────────────────
+function buildVariants() {
+  const out = [...specialVariants];
+
+  for (const p of palettes) {
+    for (const l of layouts) {
+      const vid = l.id === 'general' ? p.id : `${p.id}-${l.id}`;
+      const sub = `${p.name.toLowerCase()} · ${l.name === '·' ? 'standard' : l.name.toLowerCase()}`;
+      const tag = `${p.name.toUpperCase()} · ${l.name.toUpperCase()}`;
+      out.push({
+        id: vid,
+        name: l.id === 'general' ? p.name : `${p.name} ${l.name}`,
+        sub,
+        tag,
+        bg: p.bg,
+        bgGrad: p.bgGrad,
+        fg: p.fg,
+        fgDim: p.fgDim,
+        accent: p.accent,
+        accentSoft: p.accentSoft,
+        paper: p.paper,
+        grid: p.grid,
+        wordmarkColor: p.fg,
+        logoFile: `logo-${p.logoColor}.svg`,
+        qrFg: p.fg.replace('#', '').padEnd(6, '0').slice(0, 6),
+        qrBg: p.bg.replace('#', '').padEnd(6, '0').slice(0, 6),
+        font: 'Inter',
+        mono: 'JetBrains+Mono',
+        layout: l.id,
+      });
+    }
+  }
+  return out;
+}
+
+const variants = buildVariants();
+module.exports = { variants, cardholders, palettes, layouts };

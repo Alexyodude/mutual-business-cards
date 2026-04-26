@@ -5,19 +5,18 @@ const fs = require('fs');
 const path = require('path');
 const { variants, cardholders } = require('./variants.cjs');
 
-const QR_BASE = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&format=svg&qzone=1';
-
-function qrUrl(c, qrFg, qrBg) {
-  const data = `BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3A${c.vcardFN}%0AN%3A${c.vcardN}%0ATITLE%3A${c.vcardTitle}%0AORG%3Amutual%0AEMAIL%3A${c.vcardEmail}%0AURL%3Ahttps%3A%2F%2Fmutual.solutions%0AEND%3AVCARD`;
-  return `${QR_BASE}&color=${qrFg}&bgcolor=${qrBg}&data=${data}`;
-}
+// QR codes are pre-generated locally as SVG to avoid network calls during render.
+// See generate-qr.cjs. The same QR is used across all variants per cardholder
+// (color is the same; variant theme tinting via container only).
+function qrUrl(c) { return `qr-${c.id}.svg`; }
 
 function commonHead(v) {
+  // Use system fonts instead of Google Fonts CDN (CDN was the render bottleneck).
+  // Inter / JetBrains Mono fall back to system equivalents; Korean falls back to Malgun Gothic / Apple SD Gothic Neo.
   return `<!DOCTYPE html><html><head><meta charset="utf-8">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=${v.font}:wght@400;500;600;700;800;900&family=${v.mono}:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1050px;height:600px;background:${v.bg};font-family:'${v.font.replace(/\+/g,' ')}','SF Pro Display','Helvetica Neue',sans-serif;color:${v.fg};overflow:hidden;-webkit-font-smoothing:antialiased}
+html,body{width:1050px;height:600px;background:${v.bg};font-family:'${v.font.replace(/\+/g,' ')}','Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,'Malgun Gothic','Apple SD Gothic Neo',sans-serif;color:${v.fg};overflow:hidden;-webkit-font-smoothing:antialiased}
 .card{position:relative;width:1050px;height:600px;background:${v.bgGrad};overflow:hidden}
 ${v.grid ? `.grid{position:absolute;inset:0;background-image:linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);background-size:42px 42px;mask-image:linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.95));-webkit-mask-image:linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.95))}` : ''}
 ${v.paper ? `.paper{position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 20% 10%, rgba(255,255,255,0.5), transparent 70%), radial-gradient(ellipse 500px 400px at 90% 90%, rgba(0,0,0,0.04), transparent 70%);pointer-events:none}.frame{position:absolute;top:32px;left:32px;right:32px;bottom:32px;border:1px solid ${v.accentSoft}33}` : ''}
@@ -80,24 +79,55 @@ function renderFront(v) {
   <div style="position:absolute;left:64px;right:64px;bottom:48px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:18px;color:${v.fgDim};letter-spacing:0.6px;border-top:1px solid ${v.fgDim}33;padding-top:16px"><span style="color:${v.accent};font-weight:600">CLEARED · 인증</span><span>SERIAL · 0001</span><span>mutual.solutions</span></div>
 </div>`;
   } else {
-    // GENERAL FRONT — used by tech, paper, noir, exec, mono, terminal, archive, neon, linen
+    // GENERAL FRONT — layout-aware
+    const layout = v.layout || 'general';
     const wordmarkSize = 96;
     const taglineKoSize = v.paper ? 38 : 36;
     const taglineEnSize = 30;
+
+    // Layout-specific style overrides (positioning + decorations)
+    let stripe = '';
+    let brandStyle = 'top:104px;left:96px;';
+    let brandJustify = 'flex-start';
+    let taglineStyle = 'left:96px;bottom:172px;text-align:left';
+    let taglineAlign = 'left';
+    let metaStyle = 'left:96px;right:96px;bottom:60px';
+    let extraDecor = '';
+
+    if (layout === 'centered') {
+      brandStyle = 'top:120px;left:50%;transform:translateX(-50%);';
+      brandJustify = 'center';
+      taglineStyle = 'left:0;right:0;bottom:172px;text-align:center';
+      taglineAlign = 'center';
+      metaStyle = 'left:96px;right:96px;bottom:60px';
+    } else if (layout === 'edge') {
+      stripe = `<div style="position:absolute;left:0;top:0;bottom:0;width:42px;background:linear-gradient(180deg,${v.accent} 0%,${v.accentSoft} 100%);box-shadow:0 0 30px ${v.accent}66"></div>`;
+      brandStyle = 'top:104px;left:120px;';
+      taglineStyle = 'left:120px;bottom:172px;text-align:left';
+      metaStyle = 'left:120px;right:96px;bottom:60px';
+    } else if (layout === 'asym') {
+      extraDecor = `<div style="position:absolute;right:-40px;top:-40px;width:280px;height:280px;background:${v.accent}22;transform:rotate(45deg);z-index:0"></div><div style="position:absolute;right:-100px;bottom:-100px;width:380px;height:380px;background:${v.accent}11;transform:rotate(45deg);z-index:0;border:2px solid ${v.accent}44"></div>`;
+      brandStyle = 'top:88px;left:64px;';
+      taglineStyle = 'left:64px;bottom:172px;text-align:left';
+      metaStyle = 'left:64px;right:64px;bottom:60px';
+    }
+
     body = `<div class="card">
   ${v.grid ? '<div class="grid"></div>' : ''}
   ${v.paper ? '<div class="paper"></div><div class="frame"></div>' : ''}
+  ${extraDecor}
+  ${stripe}
   <div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>
-  <div style="position:absolute;top:104px;left:96px;display:flex;align-items:center;gap:28px">
+  <div style="position:absolute;${brandStyle}display:flex;align-items:center;gap:28px;justify-content:${brandJustify};z-index:2">
     <img src="${v.logoFile}" style="width:104px;height:104px;object-fit:contain">
     <div style="font-weight:800;font-size:${wordmarkSize}px;letter-spacing:-3.8px;color:${v.wordmarkColor};line-height:1">mutual<span style="font-size:24px;vertical-align:super;font-weight:500;letter-spacing:0;margin-left:4px;color:${v.fgDim}">™</span></div>
   </div>
-  <div style="position:absolute;left:96px;bottom:172px">
+  <div style="position:absolute;${taglineStyle};z-index:2">
     <div style="font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:${taglineKoSize}px;color:${v.accentSoft};letter-spacing:-0.8px;line-height:1.2">진본은 출처에서 시작됩니다.</div>
     <div style="margin-top:14px;font-weight:600;font-size:${taglineEnSize}px;color:${v.fgDim};letter-spacing:-0.4px;line-height:1.3;font-style:italic">Authenticity starts at the source.</div>
   </div>
-  <div style="position:absolute;left:96px;right:96px;bottom:96px;height:1px;background:${v.fgDim}44"></div>
-  <div style="position:absolute;left:96px;right:96px;bottom:60px;display:flex;justify-content:space-between;align-items:center;font-family:'${v.mono.replace(/\+/g,' ')}',monospace;font-size:24px;color:${v.fgDim};letter-spacing:0.6px;font-weight:500">
+  <div style="position:absolute;${metaStyle.replace(';bottom:60px',';bottom:96px;height:1px;background:'+v.fgDim+'44')}"></div>
+  <div style="position:absolute;${metaStyle};display:flex;justify-content:space-between;align-items:center;font-family:'${v.mono.replace(/\+/g,' ')}',monospace;font-size:24px;color:${v.fgDim};letter-spacing:0.6px;font-weight:500;z-index:2">
     <div style="display:flex;gap:20px"><span style="color:${v.accent};font-weight:600">C2PA</span><span>·</span><span style="color:${v.accent};font-weight:600">ECDSA</span><span>·</span><span style="color:${v.accent};font-weight:600">TrustZone</span></div>
     <div>mutual.solutions</div>
   </div>
@@ -114,7 +144,7 @@ function renderBack(v, c) {
   const isDuotone = v.isDuotone;
 
   // qr svg url
-  const qr = qrUrl(c, v.qrFg, v.qrBg);
+  const qr = qrUrl(c);
 
   let body;
 
