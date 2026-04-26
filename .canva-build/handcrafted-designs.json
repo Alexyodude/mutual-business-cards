@@ -214,5 +214,89 @@
     "name": "Manga Panel",
     "sub": "comic book panel · speech bubble · halftone",
     "perCardholderFront": true
+  },
+  {
+    "id": "kawaii",
+    "name": "Kawaii Stickers",
+    "sub": "pastel sticker pack · cute",
+    "perCardholderFront": true
+  },
+  {
+    "id": "deco",
+    "name": "Art Deco",
+    "sub": "geometric · gold gilding · Gatsby",
+    "perCardholderFront": true
+  },
+  {
+    "id": "psychedelic",
+    "name": "Psychedelic",
+    "sub": "60s op-art · swirl · neon",
+    "perCardholderFront": true
+  },
+  {
+    "id": "scandi",
+    "name": "Scandi",
+    "sub": "Nordic minimal · birch · pale",
+    "perCardholderFront": true
+  },
+  {
+    "id": "noirfilm",
+    "name": "Noir Film",
+    "sub": "film noir poster · venetian blinds",
+    "perCardholderFront": true
+  },
+  {
+    "id": "field",
+    "name": "Field Notes",
+    "sub": "pocket notebook · ruled · pencil",
+    "perCardholderFront": true
+  },
+  {
+    "id": "wireframe",
+    "name": "Wireframe",
+    "sub": "UI mockup · low-fidelity · annotations",
+    "perCardholderFront": true
+  },
+  {
+    "id": "rx",
+    "name": "Prescription Rx",
+    "sub": "pharmacy label · dosage · take 2 daily",
+    "perCardholderFront": true
+  },
+  {
+    "id": "plate",
+    "name": "License Plate",
+    "sub": "state license plate · embossed",
+    "perCardholderFront": true
+  },
+  {
+    "id": "graffiti",
+    "name": "Graffiti",
+    "sub": "street tag · spray · drip",
+    "perCardholderFront": true
+  },
+  {
+    "id": "botanical",
+    "name": "Botanical",
+    "sub": "Victorian plate · serif · scientific",
+    "perCardholderFront": true
+  },
+  {
+    "id": "marquee",
+    "name": "Marquee",
+    "sub": "theater marquee · bulb light · vegas",
+    "perCardholderFront": true
+  },
+  {
+    "id": "newspaper",
+    "name": "Newspaper",
+    "sub": "broadsheet front page · masthead · headline",
+    "perCardholderFront": true
+  },
+  {
+    "id": "cassette",
+    "name": "Cassette",
+    "sub": "audio tape label · TDK · mixtape",
+    "perCardholderFront": true
   }
 ]

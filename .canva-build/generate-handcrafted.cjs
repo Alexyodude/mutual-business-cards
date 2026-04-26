@@ -1919,6 +1919,503 @@ designs.push({
 </div>${TAIL}`,
 });
 
+// ─── 37. KAWAII — pastel sticker collection ───
+designs.push({ id:'kawaii', name:'Kawaii Stickers', sub:'pastel sticker pack · cute',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#ffe4ec;padding:40px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:20px;font-family:'Comic Sans MS','Inter',sans-serif">
+  <div style="background:#a78bfa;border-radius:24px;padding:24px;color:#fff;font-size:80px;font-weight:900;width:200px;height:200px;display:flex;align-items:center;justify-content:center;transform:rotate(-6deg);box-shadow:0 6px 0 #6d28d9">m♡</div>
+  <div style="background:#fbbf24;border-radius:50%;padding:24px;color:#fff;font-size:32px;font-weight:900;width:160px;height:160px;display:flex;align-items:center;justify-content:center;transform:rotate(8deg);box-shadow:0 6px 0 #d97706;text-align:center">진본<br>★</div>
+  <div style="background:#22d3ee;border-radius:30px;padding:24px;color:#fff;font-size:24px;font-weight:900;width:280px;height:120px;display:flex;align-items:center;justify-content:center;transform:rotate(-3deg);box-shadow:0 6px 0 #0891b2;text-align:center">authenticity!<br>♡♡♡</div>
+  <div style="background:#fff;border:6px solid #f472b6;border-radius:50%;padding:20px;color:#f472b6;font-size:60px;font-weight:900;width:140px;height:140px;display:flex;align-items:center;justify-content:center;transform:rotate(12deg);box-shadow:0 6px 0 #ec4899">m™</div>
+  <div style="background:#86efac;border-radius:18px;padding:20px;color:#166534;font-size:20px;font-weight:900;width:240px;height:140px;display:flex;align-items:center;justify-content:center;transform:rotate(5deg);box-shadow:0 6px 0 #16a34a;text-align:center">SIGNED!<br>✓ verified ♡</div>
+  <div style="background:#fff;border:6px dashed #f472b6;border-radius:18px;padding:14px;color:#a78bfa;font-size:18px;font-weight:900;width:240px;display:flex;align-items:center;justify-content:center;transform:rotate(-8deg);text-align:center">진본은 출처에서<br>시작됩니다 ♡</div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#ffe4ec;padding:36px 48px;color:#1a1a1a;font-family:'Comic Sans MS','Inter',sans-serif;display:flex;align-items:center;gap:32px">
+  <div style="background:#a78bfa;border-radius:24px;padding:24px;color:#fff;width:280px;height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-4deg);box-shadow:0 8px 0 #6d28d9">
+    <div style="font-size:80px;font-weight:900">${c.name.split(' ')[0].charAt(0)}♡</div>
+    <div class="ko" style="font-size:24px;margin-top:8px">${c.nameKo}</div>
+  </div>
+  <div style="flex:1">
+    <div style="font-size:48px;font-weight:900;color:#a78bfa;line-height:1">${c.name}!</div>
+    <div style="margin-top:14px;font-size:22px;color:#f472b6;font-weight:900">★ ${c.title} ★</div>
+    <div class="ko" style="font-size:18px;color:#666">${c.titleKo}</div>
+    <div style="margin-top:18px;font-family:'Comic Sans MS',sans-serif;font-size:18px;line-height:1.85;color:#1a1a1a">
+      <div>♡ ${c.email}</div><div>♡ ${c.linkedin}</div><div>♡ mutual.solutions</div>
+    </div>
+  </div>
+  <div style="background:#fff;padding:8px;border:6px solid #f472b6;border-radius:18px;width:140px;height:140px"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+</div>${TAIL}` });
+
+// ─── 38. ART DECO — geometric gold gilding ───
+designs.push({ id:'deco', name:'Art Deco', sub:'geometric · gold gilding · Gatsby',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#0a1626;padding:36px;color:#d4af37;font-family:'Georgia',serif;position:relative">
+  <div style="position:absolute;inset:18px;border:3px solid #d4af37"></div>
+  <div style="position:absolute;inset:30px;border:1px solid #d4af37"></div>
+  <div style="position:relative;z-index:2;text-align:center;padding:48px">
+    <div style="font-size:18px;letter-spacing:8px">— EST · 2026 —</div>
+    <svg width="120" height="80" viewBox="0 0 120 80" style="margin:14px auto;display:block"><path d="M10,70 L60,10 L110,70 M30,50 L60,20 L90,50 M40,40 L60,30 L80,40" stroke="#d4af37" stroke-width="2" fill="none"/></svg>
+    <div style="font-size:130px;font-weight:700;letter-spacing:-4px;font-style:italic;color:#f5e6b8;line-height:.95">mutual<sup style="font-size:24px;color:#d4af37">™</sup></div>
+    <div style="margin-top:8px;font-size:22px;letter-spacing:6px;color:#d4af37">— AUTHENTICITY —</div>
+    <div style="margin:18px auto;width:200px;height:1px;background:#d4af37"></div>
+    <div style="font-size:24px;font-style:italic">"At the source · 출처"</div>
+    <svg width="120" height="80" viewBox="0 0 120 80" style="margin:18px auto;display:block;transform:rotate(180deg)"><path d="M10,70 L60,10 L110,70 M30,50 L60,20 L90,50" stroke="#d4af37" stroke-width="2" fill="none"/></svg>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#0a1626;padding:36px;color:#d4af37;font-family:'Georgia',serif;position:relative">
+  <div style="position:absolute;inset:18px;border:3px solid #d4af37"></div>
+  <div style="position:absolute;inset:30px;border:1px solid #d4af37"></div>
+  <div style="position:relative;z-index:2;padding:48px;display:grid;grid-template-columns:1fr 140px;gap:32px;height:100%">
+    <div>
+      <div style="font-size:14px;letter-spacing:6px">— PERSONNEL —</div>
+      <div style="margin-top:14px;font-size:60px;font-weight:700;letter-spacing:-1.6px;font-style:italic;color:#f5e6b8;line-height:1">${c.name}</div>
+      <div class="ko" style="font-size:32px;color:#d4af37;font-family:'Noto Sans KR','Malgun Gothic',sans-serif">${c.nameKo}</div>
+      <div style="margin:18px 0;width:160px;height:1px;background:#d4af37"></div>
+      <div style="font-size:22px;font-style:italic">${c.title}</div>
+      <div class="ko" style="font-size:16px;color:#a08530;font-family:'Noto Sans KR','Malgun Gothic',sans-serif">${c.titleKo}</div>
+      <div style="margin-top:32px;font-family:'JetBrains Mono',monospace;font-size:16px;line-height:1.85;color:#f5e6b8">
+        <div><span style="color:#d4af37">·</span> ${c.email}</div>
+        <div><span style="color:#d4af37">·</span> ${c.linkedin}</div>
+        <div><span style="color:#d4af37">·</span> mutual.solutions</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px">
+      <div style="background:#f5e6b8;padding:8px;border:2px solid #d4af37;width:140px;height:140px"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px">— SCAN —</div>
+    </div>
+  </div>
+</div>${TAIL}` });
+
+// ─── 39. PSYCHEDELIC — 60s op-art ───
+designs.push({ id:'psychedelic', name:'Psychedelic', sub:'60s op-art · swirl · neon',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:radial-gradient(circle at 30% 50%,#ff006e 0%,transparent 40%),radial-gradient(circle at 70% 50%,#fb5607 0%,transparent 40%),radial-gradient(circle at 50% 80%,#ffbe0b 0%,transparent 50%),#3a0ca3;padding:40px;color:#fff;font-family:'Inter','Helvetica',sans-serif;display:flex;align-items:center;justify-content:center;text-align:center">
+  <div>
+    <div style="font-size:200px;font-weight:900;letter-spacing:-8px;line-height:.9;text-shadow:6px 6px 0 #ff006e,12px 12px 0 #fb5607,18px 18px 0 #ffbe0b">mutual</div>
+    <div style="margin-top:18px;font-size:28px;font-weight:700;letter-spacing:-0.4px;font-style:italic;color:#fff;text-shadow:3px 3px 0 #ff006e">~ authenticity at the source ~</div>
+    <div class="ko" style="margin-top:10px;font-size:22px;color:#ffbe0b;text-shadow:2px 2px 0 #ff006e">진본은 출처에서 시작됩니다</div>
+    <div style="margin-top:20px;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:3px;color:#fff">// ★ ⚡ ✦ C2PA ✦ ECDSA ✦ ⚡ ★</div>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:radial-gradient(circle at 80% 30%,#ff006e 0%,transparent 50%),radial-gradient(circle at 20% 70%,#fb5607 0%,transparent 50%),#3a0ca3;padding:36px 48px;color:#fff;font-family:'Inter','Helvetica',sans-serif">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:3px;color:#ffbe0b">★ ✦ PERSONNEL ✦ ★</div>
+  <div style="margin-top:14px;font-size:78px;font-weight:900;letter-spacing:-2px;line-height:.95;text-shadow:5px 5px 0 #ff006e,10px 10px 0 #fb5607">${c.name}</div>
+  <div class="ko" style="margin-top:8px;font-size:30px;color:#ffbe0b;text-shadow:3px 3px 0 #ff006e">${c.nameKo}</div>
+  <div style="margin-top:14px;font-size:24px;font-weight:700;font-style:italic">~ ${c.title} ~</div>
+  <div class="ko" style="font-size:18px;color:#ffbe0b">~ ${c.titleKo} ~</div>
+  <div style="margin-top:18px;display:grid;grid-template-columns:1fr 140px;gap:24px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:18px;line-height:1.85">
+      <div>✦ ${c.email}</div><div>✦ ${c.linkedin}</div><div>✦ mutual.solutions</div>
+    </div>
+    <div style="background:#fff;padding:8px;border:4px solid #ffbe0b;width:140px;height:140px;box-shadow:6px 6px 0 #ff006e"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+  </div>
+</div>${TAIL}` });
+
+// ─── 40. SCANDI — Scandinavian minimal ───
+designs.push({ id:'scandi', name:'Scandi', sub:'Nordic minimal · birch · pale',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#fafaf6;padding:80px;color:#2a2a2a;font-family:'Inter','Helvetica',sans-serif;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#888">EST · 2026 · SEOUL</div>
+    <div style="margin-top:32px;width:80px;height:4px;background:#2a2a2a"></div>
+    <div style="margin-top:36px;font-size:88px;font-weight:300;letter-spacing:-3px;line-height:1;color:#2a2a2a">mutual<sup style="font-size:18px;color:#888;font-weight:400">™</sup></div>
+  </div>
+  <div>
+    <div style="font-size:30px;font-weight:300;color:#2a2a2a;line-height:1.3;max-width:600px">"Authenticity, simply, at the source."</div>
+    <div class="ko" style="margin-top:10px;font-size:22px;color:#666;font-weight:400">진본은 출처에서 시작됩니다.</div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:end;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#888">
+    <span>·  ·  ·  ·  ·  ·  ·  ·  ·  ·</span>
+    <span>mutual.solutions</span>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#fafaf6;padding:80px;color:#2a2a2a;font-family:'Inter','Helvetica',sans-serif;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#888">·  PERSONNEL  ·</div>
+    <div style="margin-top:24px;font-size:60px;font-weight:300;letter-spacing:-1.6px;line-height:1">${c.name}</div>
+    <div class="ko" style="margin-top:6px;font-size:30px;color:#888;font-weight:400">${c.nameKo}</div>
+    <div style="margin-top:24px;width:48px;height:2px;background:#2a2a2a"></div>
+    <div style="margin-top:18px;font-size:20px;font-weight:400;color:#2a2a2a">${c.title}</div>
+    <div class="ko" style="font-size:16px;color:#888">${c.titleKo}</div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:end">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2;color:#2a2a2a">
+      <div>${c.email}</div><div>${c.linkedin}</div><div>mutual.solutions</div>
+    </div>
+    <div style="background:#fff;padding:8px;border:1px solid #2a2a2a;width:120px;height:120px"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+  </div>
+</div>${TAIL}` });
+
+// ─── 41. NOIR FILM — film noir poster ───
+designs.push({ id:'noirfilm', name:'Noir Film', sub:'film noir poster · venetian blinds',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#0a0a0a;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 18px,rgba(255,255,255,0.04) 18px,rgba(255,255,255,0.04) 24px);padding:48px;color:#f5f5f0;font-family:'Georgia',serif;display:flex;flex-direction:column;justify-content:space-between;position:relative">
+  <div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:6px;color:#dc2626">— A FEATURE PRESENTATION · 1947 —</div>
+    <div style="margin-top:28px;font-size:120px;font-weight:700;letter-spacing:-3px;font-style:italic;line-height:.95;color:#fff;text-shadow:3px 3px 0 #dc2626">"mutual"</div>
+    <div style="margin-top:14px;font-size:34px;font-weight:600;letter-spacing:-0.6px;color:#dc2626;font-style:italic">— authenticity at the source —</div>
+  </div>
+  <div style="font-family:'Georgia',serif;font-style:italic;line-height:1.4">
+    <div style="font-size:24px;color:#f5f5f0">"In a city of fakes,<br>only one thing is real."</div>
+    <div class="ko" style="margin-top:10px;font-size:18px;color:#dc2626;font-family:'Noto Sans KR','Malgun Gothic',sans-serif">"가짜의 도시, 단 하나의 진본."</div>
+  </div>
+  <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#888;border-top:1px solid #444;padding-top:14px">
+    <span>★ STARRING · MUTUAL™</span><span>SHOWS DAILY</span><span>mutual.solutions</span>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#0a0a0a;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 18px,rgba(255,255,255,0.04) 18px,rgba(255,255,255,0.04) 24px);padding:48px;color:#f5f5f0;font-family:'Georgia',serif">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#dc2626">— FEATURING · ${c.id === 'alex' ? '01' : '02'} —</div>
+  <div style="margin-top:14px;font-size:72px;font-weight:700;font-style:italic;letter-spacing:-2px;color:#fff;text-shadow:3px 3px 0 #dc2626;line-height:1">${c.name}</div>
+  <div class="ko" style="margin-top:6px;font-size:32px;color:#dc2626;font-family:'Noto Sans KR','Malgun Gothic',sans-serif">${c.nameKo}</div>
+  <div style="margin-top:20px;font-size:22px;font-style:italic;color:#f5f5f0">"as ${c.title}"</div>
+  <div class="ko" style="font-size:16px;color:#888">"${c.titleKo}"</div>
+  <div style="margin-top:24px;display:grid;grid-template-columns:1fr 140px;gap:24px;align-items:end">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:16px;line-height:1.85;color:#f5f5f0">
+      <div><span style="color:#dc2626">·</span> ${c.email}</div>
+      <div><span style="color:#dc2626">·</span> ${c.linkedin}</div>
+      <div><span style="color:#dc2626">·</span> mutual.solutions</div>
+    </div>
+    <div style="background:#f5f5f0;padding:6px;width:140px;height:140px"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+  </div>
+</div>${TAIL}` });
+
+// ─── 42. FIELD NOTES — pocket notebook page ───
+designs.push({ id:'field', name:'Field Notes', sub:'pocket notebook · ruled · pencil',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#f5f0e0;background-image:linear-gradient(transparent 27px,#a8c8d8 27px,#a8c8d8 28px,transparent 28px);background-size:100% 28px;padding:40px 50px;color:#1a1a1a;font-family:'Courier New',monospace;position:relative">
+  <div style="position:absolute;left:0;top:0;width:60px;height:100%;background:repeating-linear-gradient(0deg,transparent 0,transparent 27px,#dc2626 27px,#dc2626 28px);background-size:100% 28px"></div>
+  <div style="position:absolute;left:60px;top:0;width:1px;height:100%;background:#dc2626"></div>
+  <div style="margin-left:60px;padding-left:24px">
+    <div style="height:28px;font-size:14px;color:#888;letter-spacing:2px">// FIELD NOTES · 2026.04.26 · CITY</div>
+    <div style="height:28px;font-size:36px;font-weight:700;font-family:'Bradley Hand','Comic Sans MS',cursive;color:#1a1a1a;display:flex;align-items:flex-end;padding-bottom:4px">mutual™ — authenticity at the source</div>
+    <div style="height:28px"></div>
+    <div style="height:28px;font-size:18px;font-family:'Bradley Hand','Comic Sans MS',cursive;display:flex;align-items:flex-end;padding-bottom:4px">→ build hardware. sign at capture. verify by anyone.</div>
+    <div style="height:28px;font-size:16px;font-family:'Bradley Hand','Comic Sans MS',cursive;color:#666;display:flex;align-items:flex-end;padding-bottom:4px;font-family:'Noto Sans KR','Malgun Gothic',sans-serif">→ 진본은 출처에서 시작됩니다.</div>
+    <div style="height:28px"></div>
+    <div style="height:28px;font-size:18px;font-family:'Bradley Hand','Comic Sans MS',cursive;display:flex;align-items:flex-end;padding-bottom:4px">★ C2PA — open standard</div>
+    <div style="height:28px;font-size:18px;font-family:'Bradley Hand','Comic Sans MS',cursive;display:flex;align-items:flex-end;padding-bottom:4px">★ ECDSA — hardware sig</div>
+    <div style="height:28px;font-size:18px;font-family:'Bradley Hand','Comic Sans MS',cursive;display:flex;align-items:flex-end;padding-bottom:4px">★ ARM TrustZone — root</div>
+    <div style="height:28px"></div>
+    <div style="height:28px;font-size:14px;color:#888;letter-spacing:1.5px;display:flex;align-items:flex-end">// page 01 · mutual.solutions</div>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#f5f0e0;background-image:linear-gradient(transparent 27px,#a8c8d8 27px,#a8c8d8 28px,transparent 28px);background-size:100% 28px;padding:40px 50px;color:#1a1a1a;font-family:'Courier New',monospace;position:relative">
+  <div style="position:absolute;left:0;top:0;width:60px;height:100%;background:repeating-linear-gradient(0deg,transparent 0,transparent 27px,#dc2626 27px,#dc2626 28px);background-size:100% 28px"></div>
+  <div style="position:absolute;left:60px;top:0;width:1px;height:100%;background:#dc2626"></div>
+  <div style="margin-left:60px;padding-left:24px">
+    <div style="height:28px;font-size:14px;color:#888;letter-spacing:2px">// PERSONNEL · ${c.id === 'alex' ? '01' : '02'}</div>
+    <div style="height:28px;font-size:30px;font-weight:700;font-family:'Bradley Hand','Comic Sans MS',cursive;display:flex;align-items:flex-end;padding-bottom:4px">${c.name}</div>
+    <div style="height:28px;font-size:22px;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;color:#666;display:flex;align-items:flex-end;padding-bottom:4px">${c.nameKo}</div>
+    <div style="height:28px;font-size:18px;font-family:'Bradley Hand','Comic Sans MS',cursive;color:#dc2626;display:flex;align-items:flex-end;padding-bottom:4px">→ ${c.title}</div>
+    <div style="height:28px;font-size:16px;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;color:#666;display:flex;align-items:flex-end;padding-bottom:4px">→ ${c.titleKo}</div>
+    <div style="height:28px"></div>
+    <div style="height:28px;font-size:16px;display:flex;align-items:flex-end;padding-bottom:4px">e &nbsp; ${c.email}</div>
+    <div style="height:28px;font-size:16px;display:flex;align-items:flex-end;padding-bottom:4px">w &nbsp; mutual.solutions</div>
+    <div style="height:28px;font-size:16px;display:flex;align-items:flex-end;padding-bottom:4px">in &nbsp;${c.linkedin}</div>
+  </div>
+  <div style="position:absolute;bottom:30px;right:48px;background:#fff;padding:6px;border:1px solid #1a1a1a;width:120px;height:120px;transform:rotate(-2deg)"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+</div>${TAIL}` });
+
+// ─── 43. WIREFRAME — UI mockup ───
+designs.push({ id:'wireframe', name:'Wireframe', sub:'UI mockup · low-fidelity · annotations',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#fafafa;padding:32px 40px;color:#1a1a1a;font-family:'Inter','Helvetica',sans-serif;font-size:14px;display:flex;flex-direction:column;gap:14px">
+  <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px dashed #888;padding-bottom:8px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#888">// WIREFRAME · MTL.001 · v1</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#888">[ low-fi ]</div>
+  </div>
+  <div style="border:2px dashed #888;padding:24px;flex:1;display:flex;flex-direction:column;gap:14px;background:#fff">
+    <div style="border:2px dashed #888;padding:14px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#666;letter-spacing:1px">▢ NAV ▢ &nbsp; mutual™ &nbsp;|&nbsp; about &nbsp;|&nbsp; product &nbsp;|&nbsp; contact</div>
+    <div style="border:2px dashed #888;padding:32px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+      <div style="font-size:48px;font-weight:900;letter-spacing:-1.5px;color:#1a1a1a">[ HERO · mutual™ ]</div>
+      <div style="font-size:18px;color:#666">"Authenticity starts at the source."</div>
+      <div class="ko" style="font-size:16px;color:#888;font-family:'Noto Sans KR','Malgun Gothic',sans-serif">진본은 출처에서 시작됩니다.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+      <div style="border:2px dashed #888;padding:14px;text-align:center;background:#f0f0f0">▢ feature 1<br>C2PA</div>
+      <div style="border:2px dashed #888;padding:14px;text-align:center;background:#f0f0f0">▢ feature 2<br>ECDSA</div>
+      <div style="border:2px dashed #888;padding:14px;text-align:center;background:#f0f0f0">▢ feature 3<br>TrustZone</div>
+    </div>
+    <div style="border:2px dashed #888;padding:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#666;letter-spacing:1px;text-align:center">▢ FOOTER ▢ © 2026 mutual™</div>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#fafafa;padding:32px 40px;color:#1a1a1a;font-family:'Inter','Helvetica',sans-serif;display:flex;flex-direction:column;gap:14px">
+  <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px dashed #888;padding-bottom:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#888"><span>// PROFILE.SCREEN · ${c.id.toUpperCase()}</span><span>[ low-fi ]</span></div>
+  <div style="border:2px dashed #888;padding:24px;flex:1;background:#fff;display:grid;grid-template-columns:120px 1fr 140px;gap:24px">
+    <div style="border:2px dashed #888;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:#666;letter-spacing:1px;text-align:center">▢<br>AVATAR<br>▢</div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#888">[ NAME ]</div>
+      <div style="font-size:36px;font-weight:700;letter-spacing:-0.6px">${c.name}</div>
+      <div class="ko" style="font-size:20px;color:#666">${c.nameKo}</div>
+      <div style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#888">[ ROLE ]</div>
+      <div style="font-size:18px;color:#1a1a1a">${c.title} · <span class="ko" style="font-family:'Noto Sans KR','Malgun Gothic',sans-serif">${c.titleKo}</span></div>
+      <div style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#888">[ CONTACT ]</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.85">
+        <div>${c.email}</div><div>${c.linkedin}</div><div>mutual.solutions</div>
+      </div>
+    </div>
+    <div style="border:2px dashed #888;background:#f0f0f0;display:flex;align-items:center;justify-content:center;padding:8px"><div style="background:#fff;padding:4px;width:100%;height:100%"><img class="qr" src="qr-${c.id}.svg" alt=""></div></div>
+  </div>
+</div>${TAIL}` });
+
+// ─── 44. PRESCRIPTION — pharmacy Rx label ───
+designs.push({ id:'rx', name:'Prescription Rx', sub:'pharmacy label · dosage · take 2 daily',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#fff8e7;padding:36px 48px;color:#1a1a1a;font-family:'Courier New',monospace;border:6px solid #b91c1c;box-sizing:border-box">
+  <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #b91c1c;padding-bottom:12px">
+    <div style="font-size:48px;font-weight:900;letter-spacing:-1px;color:#b91c1c">℞</div>
+    <div style="text-align:right">
+      <div style="font-size:18px;letter-spacing:2px;font-weight:700;color:#b91c1c">MUTUAL PHARMACY · 약국</div>
+      <div style="font-size:12px;color:#666;letter-spacing:1px">EST. 2026 · SEOUL</div>
+    </div>
+  </div>
+  <div style="margin-top:18px">
+    <div style="font-size:14px;color:#666;letter-spacing:1.5px">RX FOR · 처방</div>
+    <div style="font-size:36px;font-weight:700;letter-spacing:-0.6px">CHRONIC INAUTHENTICITY</div>
+    <div style="font-size:18px;color:#b91c1c">진본 결핍증 · 만성</div>
+    <div style="margin-top:18px;font-size:14px;color:#666;letter-spacing:1.5px">DRUG · 약품</div>
+    <div style="font-size:42px;font-weight:900;letter-spacing:-1px;color:#b91c1c">mutual™ · 100mg</div>
+    <div style="margin-top:14px;font-size:14px;color:#666;letter-spacing:1.5px">DIRECTIONS · 복용법</div>
+    <div style="font-size:20px;line-height:1.5;color:#1a1a1a">"Sign at the source. Verify by anyone."<br>한국어: 출처에서 서명. 누구나 검증.<br><br>★ TAKE 1 CARD AS NEEDED · 필요시 1매 ★</div>
+  </div>
+  <div style="position:absolute;bottom:30px;left:48px;right:48px;display:flex;justify-content:space-between;font-size:12px;color:#666;letter-spacing:1.5px;border-top:2px dashed #b91c1c;padding-top:8px">
+    <span>// REFILLS · UNLIMITED</span><span>NDC · 0001-MTL</span><span>mutual.solutions</span>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#fff8e7;padding:36px 48px;color:#1a1a1a;font-family:'Courier New',monospace;border:6px solid #b91c1c;box-sizing:border-box">
+  <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #b91c1c;padding-bottom:12px">
+    <div style="font-size:32px;font-weight:900;color:#b91c1c">℞ ATTENDING</div>
+    <div style="font-size:12px;color:#666;letter-spacing:1.5px">DEA · MTL-${c.id === 'alex' ? '001' : '002'}</div>
+  </div>
+  <div style="margin-top:18px">
+    <div style="font-size:13px;color:#666;letter-spacing:1.5px">DR · 의사</div>
+    <div style="font-size:42px;font-weight:700;letter-spacing:-0.6px;line-height:1">${c.name}, ${c.title.split(' ')[0]}.</div>
+    <div style="font-size:24px;color:#b91c1c">${c.nameKo}</div>
+    <div style="margin-top:14px;font-size:18px;color:#1a1a1a">SPECIALTY · ${c.title}</div>
+    <div style="font-size:14px;color:#666">전공 · ${c.titleKo}</div>
+    <div style="margin-top:24px;font-size:13px;color:#666;letter-spacing:1.5px">CONTACT · 연락처</div>
+    <div style="font-size:18px;line-height:1.85;color:#1a1a1a">
+      <div>e: ${c.email}</div>
+      <div>w: mutual.solutions</div>
+      <div>in: ${c.linkedin}</div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:36px;right:48px;background:#fff;padding:6px;border:2px solid #b91c1c;width:120px;height:120px"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+  <div style="position:absolute;bottom:30px;left:48px;font-size:14px;color:#b91c1c;font-weight:700;font-style:italic;font-family:'Bradley Hand','Comic Sans MS',cursive">— Dr. ${c.name.split(' ')[0]} 진료·</div>
+</div>${TAIL}` });
+
+// ─── 45. LICENSE PLATE ───
+designs.push({ id:'plate', name:'License Plate', sub:'state license plate · embossed',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#1a1a1a;padding:24px;display:flex;align-items:center;justify-content:center">
+  <div style="width:880px;height:480px;background:linear-gradient(180deg,#1d4ed8 0%,#1e3a8a 100%);border:8px solid #fff;border-radius:24px;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,0.5),inset 0 4px 12px rgba(255,255,255,0.2);display:flex;flex-direction:column;justify-content:space-between">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div style="font-family:'Georgia',serif;font-size:24px;font-weight:700;letter-spacing:3px;color:#fbbf24;text-shadow:2px 2px 0 rgba(0,0,0,0.3)">★ MUTUAL ★ EST.2026</div>
+      <div style="background:#fbbf24;color:#1a1a1a;padding:6px 14px;border-radius:8px;font-family:'Inter','Helvetica',sans-serif;font-size:14px;font-weight:900;letter-spacing:2px">FOUNDER</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Inter','Impact','Helvetica',sans-serif;font-size:200px;font-weight:900;letter-spacing:-2px;color:#fff;text-shadow:6px 6px 0 rgba(0,0,0,0.5);line-height:1">M-001</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;color:#fff">
+      <div style="font-family:'Georgia',serif;font-size:18px;font-style:italic;letter-spacing:2px">"Authenticity at the Source"</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:2px;color:#fbbf24">★ 진본의 출처 ★</div>
+    </div>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#1a1a1a;padding:24px;display:flex;align-items:center;justify-content:center">
+  <div style="width:880px;height:480px;background:linear-gradient(180deg,#1d4ed8,#1e3a8a);border:8px solid #fff;border-radius:24px;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,0.5);display:flex;flex-direction:column;justify-content:space-between">
+    <div style="display:flex;justify-content:space-between;align-items:center;color:#fbbf24;font-family:'Georgia',serif;font-size:18px;letter-spacing:3px;font-weight:700">
+      <span>★ REGISTERED ★</span><span>${c.id === 'alex' ? 'ALEX' : 'YEJUN'}</span>
+    </div>
+    <div style="text-align:center;color:#fff">
+      <div style="font-family:'Inter','Impact','Helvetica',sans-serif;font-size:90px;font-weight:900;letter-spacing:-2px;line-height:.95;text-shadow:5px 5px 0 rgba(0,0,0,0.4)">${c.name.toUpperCase()}</div>
+      <div class="ko" style="font-size:34px;color:#fbbf24;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;margin-top:6px">${c.nameKo}</div>
+      <div style="margin-top:12px;font-family:'Georgia',serif;font-size:20px;font-style:italic">${c.title}</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:end">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.6;color:#fff">
+        <div>${c.email}</div><div>mutual.solutions</div>
+      </div>
+      <div style="background:#fff;padding:6px;width:100px;height:100px;border-radius:6px"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+    </div>
+  </div>
+</div>${TAIL}` });
+
+// ─── 46. GRAFFITI — street tag spray ───
+designs.push({ id:'graffiti', name:'Graffiti', sub:'street tag · spray · drip',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#2a2a2a;padding:32px;color:#fff;font-family:'Impact','Arial Black',sans-serif;position:relative;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2210%22 cy=%2010%22 r=%221%22 fill=%22%23444%22/><circle cx=%2230%22 cy=%2030%22 r=%221%22 fill=%22%23444%22/></svg>')">
+  <div style="font-size:280px;font-weight:900;letter-spacing:-12px;line-height:.85;color:#fff;font-style:italic;text-shadow:8px 8px 0 #ff006e,16px 16px 0 #fbbf24;transform:skew(-8deg);position:relative">mutual<sup style="font-size:50px;color:#ff006e">™</sup></div>
+  <div style="margin-top:24px;font-size:48px;font-weight:900;letter-spacing:-1.5px;color:#ff006e;text-shadow:4px 4px 0 #fff;transform:rotate(-3deg)">REAL · ★ · 진본</div>
+  <div style="margin-top:14px;font-family:'Bradley Hand','Comic Sans MS',cursive;font-size:30px;color:#fbbf24;font-style:italic">"hard-signed since '26"</div>
+  <div style="position:absolute;bottom:32px;left:32px;right:32px;display:flex;justify-content:space-between;font-family:'Impact',sans-serif;font-size:18px;letter-spacing:2px;color:#ff006e">
+    <span>★ AUTHENTICITY @ THE SOURCE ★</span><span>★ M.SOL ★</span>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#2a2a2a;padding:36px 48px;color:#fff;font-family:'Impact','Arial Black',sans-serif">
+  <div style="font-family:'Bradley Hand','Comic Sans MS',cursive;font-size:24px;color:#fbbf24;font-style:italic">— tag · ${c.id === 'alex' ? 'AJP' : 'YJ'} —</div>
+  <div style="margin-top:14px;font-size:96px;font-weight:900;letter-spacing:-3px;line-height:.95;font-style:italic;text-shadow:6px 6px 0 #ff006e,12px 12px 0 #fbbf24;transform:skew(-6deg)">${c.name}</div>
+  <div class="ko" style="margin-top:14px;font-size:36px;color:#ff006e;font-weight:900;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;text-shadow:3px 3px 0 #fff">${c.nameKo}</div>
+  <div style="margin-top:14px;font-size:24px;font-weight:900;letter-spacing:-0.6px;color:#fbbf24;font-style:italic">★ ${c.title} ★</div>
+  <div style="margin-top:18px;display:grid;grid-template-columns:1fr 140px;gap:24px;align-items:end">
+    <div style="font-family:'Bradley Hand','Comic Sans MS',cursive;font-size:22px;line-height:1.7;color:#fff;font-style:italic">
+      <div>★ ${c.email}</div><div>★ ${c.linkedin}</div><div>★ mutual.solutions</div>
+    </div>
+    <div style="background:#fff;padding:8px;border:6px solid #ff006e;width:140px;height:140px;transform:rotate(-3deg);box-shadow:6px 6px 0 #fbbf24"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+  </div>
+</div>${TAIL}` });
+
+// ─── 47. BOTANICAL — Victorian botanical plate ───
+designs.push({ id:'botanical', name:'Botanical', sub:'Victorian plate · serif · scientific',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#f4ede0;padding:48px 80px;color:#1a3a1a;font-family:'Georgia',serif;text-align:center;position:relative">
+  <div style="position:absolute;inset:24px;border:1px solid #1a3a1a;pointer-events:none"></div>
+  <div style="position:absolute;inset:32px;border:1px solid #1a3a1a;pointer-events:none"></div>
+  <div style="position:relative;z-index:2;padding-top:16px">
+    <div style="font-size:14px;letter-spacing:6px;font-style:italic;color:#5a7a5a">— FLORA AUTHENTICA · 식물 도감 —</div>
+    <div style="margin-top:14px;font-size:28px;font-style:italic;color:#1a3a1a">No. CXXVI · Plate I</div>
+    <svg width="200" height="160" viewBox="0 0 200 160" style="margin:14px auto;display:block"><path d="M100,150 L100,30 M100,30 Q70,40 50,80 M100,30 Q130,40 150,80 M100,60 Q80,70 65,100 M100,60 Q120,70 135,100 M100,90 Q85,100 75,120 M100,90 Q115,100 125,120" stroke="#1a3a1a" stroke-width="2" fill="none"/><circle cx="50" cy="80" r="6" fill="#5a7a5a"/><circle cx="150" cy="80" r="6" fill="#5a7a5a"/><circle cx="65" cy="100" r="5" fill="#5a7a5a"/><circle cx="135" cy="100" r="5" fill="#5a7a5a"/></svg>
+    <div style="margin-top:8px;font-size:60px;font-weight:700;letter-spacing:-1.6px;font-style:italic;color:#1a3a1a">Mutualium™</div>
+    <div style="margin-top:6px;font-size:18px;font-style:italic;color:#5a7a5a">verum-fontis · authentic-source</div>
+    <div style="margin:14px auto;width:120px;height:1px;background:#1a3a1a"></div>
+    <div style="font-size:18px;font-style:italic;color:#1a3a1a;line-height:1.5">"A perennial signature.<br>Sown at source. Verified everywhere."</div>
+    <div class="ko" style="margin-top:8px;font-size:14px;color:#5a7a5a;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;font-style:italic">진본은 출처에서 시작됩니다</div>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#f4ede0;padding:48px 64px;color:#1a3a1a;font-family:'Georgia',serif;position:relative">
+  <div style="position:absolute;inset:24px;border:1px solid #1a3a1a;pointer-events:none"></div>
+  <div style="position:relative;z-index:2;display:grid;grid-template-columns:140px 1fr 140px;gap:24px;height:100%;align-items:center">
+    <div style="text-align:center">
+      <svg width="140" height="180" viewBox="0 0 140 180"><path d="M70,170 L70,30 M70,30 Q40,40 25,70 M70,30 Q100,40 115,70 M70,55 Q50,65 40,90 M70,55 Q90,65 100,90" stroke="#1a3a1a" stroke-width="2" fill="none"/><circle cx="25" cy="70" r="6" fill="#5a7a5a"/><circle cx="115" cy="70" r="6" fill="#5a7a5a"/></svg>
+      <div style="font-style:italic;font-size:11px;color:#5a7a5a;letter-spacing:2px;margin-top:6px">FIG. ${c.id === 'alex' ? 'I' : 'II'}</div>
+    </div>
+    <div>
+      <div style="font-size:14px;letter-spacing:4px;font-style:italic;color:#5a7a5a">— SPECIMEN · 표본 —</div>
+      <div style="margin-top:14px;font-size:48px;font-weight:700;font-style:italic;letter-spacing:-1.4px;line-height:1">${c.name}</div>
+      <div class="ko" style="font-size:26px;color:#5a7a5a;font-family:'Noto Sans KR','Malgun Gothic',sans-serif">${c.nameKo}</div>
+      <div style="margin:14px 0;width:120px;height:1px;background:#1a3a1a"></div>
+      <div style="font-size:18px;font-style:italic">${c.title}</div>
+      <div class="ko" style="font-size:14px;color:#5a7a5a;font-family:'Noto Sans KR','Malgun Gothic',sans-serif">${c.titleKo}</div>
+      <div style="margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.85">
+        <div><span style="color:#5a7a5a">·</span> ${c.email}</div>
+        <div><span style="color:#5a7a5a">·</span> ${c.linkedin}</div>
+        <div><span style="color:#5a7a5a">·</span> mutual.solutions</div>
+      </div>
+    </div>
+    <div style="background:#fff;padding:6px;border:1px solid #1a3a1a;width:140px;height:140px"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+  </div>
+</div>${TAIL}` });
+
+// ─── 48. MARQUEE — vintage theater marquee ───
+designs.push({ id:'marquee', name:'Marquee', sub:'theater marquee · bulb light · vegas',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#1a0a0a;padding:32px;color:#fff;font-family:'Georgia',serif;display:flex;align-items:center;justify-content:center">
+  <div style="width:920px;height:520px;background:#000;border:6px solid #fbbf24;padding:24px;position:relative;display:flex;align-items:center;justify-content:center">
+    <div style="position:absolute;top:-8px;left:0;right:0;display:flex;justify-content:space-around"><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div><div style="width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 16px #fff"></div><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div><div style="width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 16px #fff"></div><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div></div>
+    <div style="position:absolute;bottom:-8px;left:0;right:0;display:flex;justify-content:space-around"><div style="width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 16px #fff"></div><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div><div style="width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 16px #fff"></div><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div><div style="width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 16px #fff"></div><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div><div style="width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24"></div></div>
+    <div style="text-align:center">
+      <div style="font-size:14px;letter-spacing:8px;color:#fbbf24">★ NOW PLAYING ★</div>
+      <div style="margin-top:18px;font-size:140px;font-weight:700;letter-spacing:-3px;color:#fbbf24;text-shadow:0 0 30px #fbbf24,0 0 60px #ff006e;line-height:1;font-style:italic">mutual<sup style="font-size:30px">™</sup></div>
+      <div style="margin-top:18px;font-size:30px;color:#fff;font-style:italic">"Authenticity at the Source"</div>
+      <div class="ko" style="margin-top:8px;font-size:22px;color:#fbbf24">진본의 출처 · 24시간 상영</div>
+    </div>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#1a0a0a;padding:32px;color:#fff;font-family:'Georgia',serif">
+  <div style="height:100%;background:#000;border:6px solid #fbbf24;padding:36px 48px;display:flex;flex-direction:column;justify-content:space-between">
+    <div style="text-align:center;font-size:14px;letter-spacing:6px;color:#fbbf24">★ STARRING · ${c.id === 'alex' ? '01' : '02'} ★</div>
+    <div style="text-align:center">
+      <div style="font-size:80px;font-weight:700;font-style:italic;letter-spacing:-1.6px;color:#fbbf24;text-shadow:0 0 20px #fbbf24;line-height:1">${c.name}</div>
+      <div class="ko" style="font-size:34px;color:#fff;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;margin-top:6px">${c.nameKo}</div>
+      <div style="margin-top:14px;font-size:24px;font-style:italic;color:#fff">"${c.title}"</div>
+      <div class="ko" style="font-size:18px;color:#888">"${c.titleKo}"</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:end">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:16px;line-height:1.85;color:#fbbf24">
+        <div>★ ${c.email}</div><div>★ ${c.linkedin}</div><div>★ mutual.solutions</div>
+      </div>
+      <div style="background:#fff;padding:6px;width:120px;height:120px;box-shadow:0 0 20px #fbbf24"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+    </div>
+  </div>
+</div>${TAIL}` });
+
+// ─── 49. NEWSPAPER — front page ───
+designs.push({ id:'newspaper', name:'Newspaper', sub:'broadsheet front page · masthead · headline',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#f5f0e0;padding:24px 32px;color:#1a1a1a;font-family:'Georgia',serif">
+  <div style="text-align:center;border-bottom:4px double #1a1a1a;padding-bottom:8px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px">VOL. I · NO. 1 · SEOUL · TUESDAY, APRIL 26, 2026 · ESTABLISHED MMXXVI</div>
+    <div style="margin-top:6px;font-size:88px;font-weight:900;letter-spacing:-3px;font-style:italic;line-height:.95">The Mutual Times</div>
+    <div style="margin-top:4px;font-size:14px;font-style:italic;letter-spacing:2px;color:#666">— ALL THE NEWS THAT'S SIGNED, AT THE SOURCE —</div>
+  </div>
+  <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#dc2626;font-weight:700">★ HEADLINE ★</div>
+      <div style="margin-top:6px;font-size:42px;font-weight:900;letter-spacing:-1.2px;line-height:1">"Authenticity Starts at the Source"</div>
+      <div style="margin-top:8px;font-size:14px;color:#666;font-style:italic">— mutual™ debuts hardware-signed video, sets new standard for trust in the post-AI internet</div>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#1a1a1a">▸ TECH</div>
+      <div style="margin-top:6px;font-size:18px;line-height:1.5;column-count:1">Engineers in Seoul announce new <strong>SRA</strong> module: Sign-Right-Away. Built on C2PA, ECDSA, ARM TrustZone. Verifiable by anyone. Demo at mutual.solutions...</div>
+      <div class="ko" style="margin-top:8px;font-size:14px;color:#666;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;font-style:italic">진본은 출처에서 시작됩니다.</div>
+    </div>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#f5f0e0;padding:24px 32px;color:#1a1a1a;font-family:'Georgia',serif">
+  <div style="border-bottom:4px double #1a1a1a;padding-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px">▸ SECTION B · PERSONNEL · PAGE 1</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px">★ THE MUTUAL TIMES ★</div>
+  </div>
+  <div style="margin-top:14px;display:grid;grid-template-columns:160px 1fr 140px;gap:24px;align-items:start">
+    <div style="background:#1a1a1a;color:#f5f0e0;padding:14px;text-align:center;font-family:'Helvetica',sans-serif;font-size:60px;font-weight:900;letter-spacing:-1px;line-height:1.1">${c.name.split(' ')[0].charAt(0)}<br>${c.name.split(' ').slice(-1)[0].charAt(0)}</div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#dc2626;font-weight:700">★ FEATURE ★</div>
+      <div style="margin-top:6px;font-size:54px;font-weight:900;letter-spacing:-1.5px;line-height:1">${c.name}</div>
+      <div class="ko" style="font-size:28px;color:#666;font-style:italic;font-family:'Noto Sans KR','Malgun Gothic',sans-serif">${c.nameKo}</div>
+      <div style="margin-top:10px;font-size:18px;font-style:italic">${c.title} · ${c.titleKo}</div>
+      <div style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.85">
+        <div><strong>EMAIL:</strong> ${c.email}</div>
+        <div><strong>WEB:</strong> mutual.solutions</div>
+        <div><strong>IN:</strong> ${c.linkedin}</div>
+      </div>
+    </div>
+    <div><div style="background:#fff;padding:6px;border:1px solid #1a1a1a;width:140px;height:140px"><img class="qr" src="qr-${c.id}.svg" alt=""></div><div style="margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-align:center;color:#666">SCAN · vCard</div></div>
+  </div>
+  <div style="position:absolute;bottom:24px;left:32px;right:32px;border-top:2px solid #1a1a1a;padding-top:8px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#666"><span>© 2026 The Mutual Times</span><span>SUBSCRIBE · mutual.solutions</span></div>
+</div>${TAIL}` });
+
+// ─── 50. CASSETTE — audio cassette tape label ───
+designs.push({ id:'cassette', name:'Cassette', sub:'audio tape label · TDK · mixtape',
+  front:c=>`${HEAD}<div style="width:1050px;height:600px;background:#f0e8d0;padding:48px;display:flex;align-items:center;justify-content:center">
+  <div style="width:880px;height:540px;background:linear-gradient(180deg,#444 0%,#222 100%);padding:24px;border-radius:14px;box-shadow:0 12px 36px rgba(0,0,0,0.5);position:relative">
+    <div style="background:linear-gradient(180deg,#fbbf24,#d97706);height:100%;border-radius:8px;padding:24px 32px;color:#1a1a1a;font-family:'Courier New',monospace;display:flex;flex-direction:column;justify-content:space-between;position:relative">
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #1a1a1a;padding-bottom:8px">
+        <div style="font-size:18px;font-weight:900;letter-spacing:3px">★ MUTUAL ★ COMPACT TAPE</div>
+        <div style="font-size:14px;font-weight:700;letter-spacing:2px">SIDE A · 90 MIN</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:32px;justify-content:center">
+        <div style="width:80px;height:80px;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center"><div style="width:30px;height:30px;border-radius:50%;background:#fbbf24"></div></div>
+        <div style="text-align:center">
+          <div style="font-family:'Inter','Helvetica',sans-serif;font-size:80px;font-weight:900;letter-spacing:-2px;line-height:.95">mutual™</div>
+          <div style="margin-top:6px;font-size:18px;font-style:italic;font-weight:700">— authenticity at the source —</div>
+        </div>
+        <div style="width:80px;height:80px;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center"><div style="width:30px;height:30px;border-radius:50%;background:#fbbf24"></div></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;border-top:2px solid #1a1a1a;padding-top:8px;font-size:14px;font-weight:700;letter-spacing:2px">
+        <span>★ DOLBY NR · C2PA</span><span>NORMAL BIAS</span><span>120 µs EQ</span>
+      </div>
+    </div>
+  </div>
+</div>${TAIL}`,
+  back:c=>`${HEAD}<div style="width:1050px;height:600px;background:#f0e8d0;padding:48px;display:flex;align-items:center;justify-content:center">
+  <div style="width:880px;height:540px;background:linear-gradient(180deg,#444,#222);padding:24px;border-radius:14px;box-shadow:0 12px 36px rgba(0,0,0,0.5)">
+    <div style="background:linear-gradient(180deg,#fbbf24,#d97706);height:100%;border-radius:8px;padding:24px 32px;color:#1a1a1a;font-family:'Courier New',monospace;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="display:flex;justify-content:space-between;border-bottom:2px solid #1a1a1a;padding-bottom:8px">
+        <div style="font-size:18px;font-weight:900;letter-spacing:3px">★ SIDE B · ${c.id === 'alex' ? 'A.J.P' : 'Y.J'} ★</div>
+        <div style="font-size:14px;letter-spacing:2px">RECORDED · 2026</div>
+      </div>
+      <div>
+        <div style="font-family:'Inter','Helvetica',sans-serif;font-size:54px;font-weight:900;letter-spacing:-1.4px;line-height:1">${c.name.toUpperCase()}</div>
+        <div class="ko" style="font-size:30px;color:#1a1a1a;font-family:'Noto Sans KR','Malgun Gothic',sans-serif">${c.nameKo}</div>
+        <div style="margin-top:14px;font-size:18px;font-weight:700;font-style:italic">"${c.title}"</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 100px;gap:24px;align-items:end">
+        <div style="font-size:14px;line-height:1.85;font-weight:700">
+          <div>► ${c.email}</div><div>► ${c.linkedin}</div><div>► mutual.solutions</div>
+        </div>
+        <div style="background:#fff;padding:6px;width:100px;height:100px;border:2px solid #1a1a1a"><img class="qr" src="qr-${c.id}.svg" alt=""></div>
+      </div>
+    </div>
+  </div>
+</div>${TAIL}` });
+
 // =================================================================
 // EMIT
 // =================================================================
