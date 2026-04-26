@@ -142,5 +142,77 @@
     "name": "Certificate",
     "sub": "diploma · calligraphic seal · ribbon",
     "perCardholderFront": true
+  },
+  {
+    "id": "subway",
+    "name": "Subway Sign",
+    "sub": "MTA-style transit · pictogram · line bullet",
+    "perCardholderFront": true
+  },
+  {
+    "id": "stencil",
+    "name": "Stencil",
+    "sub": "military stencil paint · spray-paint · USDA",
+    "perCardholderFront": true
+  },
+  {
+    "id": "tape",
+    "name": "Tape Label",
+    "sub": "Dymo embossed strip · stacked rows",
+    "perCardholderFront": true
+  },
+  {
+    "id": "swiss",
+    "name": "Swiss Grid",
+    "sub": "Müller-Brockmann · helvetica · ratio",
+    "perCardholderFront": true
+  },
+  {
+    "id": "riso",
+    "name": "Risograph",
+    "sub": "two-tone overprint · paper grain · zine",
+    "perCardholderFront": true
+  },
+  {
+    "id": "typewriter",
+    "name": "Typewriter",
+    "sub": "manual typewriter · ink ribbon · onion paper",
+    "perCardholderFront": true
+  },
+  {
+    "id": "element",
+    "name": "Element",
+    "sub": "periodic table block · atomic number",
+    "perCardholderFront": true
+  },
+  {
+    "id": "coupon",
+    "name": "Coupon",
+    "sub": "perforated tear-off · ticket · admit one",
+    "perCardholderFront": true
+  },
+  {
+    "id": "menu",
+    "name": "Menu",
+    "sub": "vintage restaurant menu · prix fixe",
+    "perCardholderFront": true
+  },
+  {
+    "id": "sheet",
+    "name": "Photo Sheet",
+    "sub": "multi-polaroid arrangement · scrapbook",
+    "perCardholderFront": true
+  },
+  {
+    "id": "chip",
+    "name": "Silicon Die",
+    "sub": "IC top-down · pin labels · die shot",
+    "perCardholderFront": true
+  },
+  {
+    "id": "manga",
+    "name": "Manga Panel",
+    "sub": "comic book panel · speech bubble · halftone",
+    "perCardholderFront": true
   }
 ]
