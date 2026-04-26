@@ -70,5 +70,77 @@
     "name": "Polaroid",
     "sub": "instant photo · handwritten caption",
     "perCardholderFront": true
+  },
+  {
+    "id": "trading",
+    "name": "Trading Card",
+    "sub": "sports/TCG · stat bars · holographic foil",
+    "perCardholderFront": true
+  },
+  {
+    "id": "vinyl",
+    "name": "Vinyl Sleeve",
+    "sub": "record cover · track listing back",
+    "perCardholderFront": true
+  },
+  {
+    "id": "plaque",
+    "name": "Museum Plaque",
+    "sub": "engraved bronze · serif · museum label",
+    "perCardholderFront": true
+  },
+  {
+    "id": "terminal",
+    "name": "Terminal",
+    "sub": "bash login session · prompt",
+    "perCardholderFront": true
+  },
+  {
+    "id": "pixel",
+    "name": "Pixel Cart",
+    "sub": "8-bit cartridge · pixel-art sprite · retro",
+    "perCardholderFront": true
+  },
+  {
+    "id": "infographic",
+    "name": "Infographic",
+    "sub": "data viz · bar charts · % authentic",
+    "perCardholderFront": true
+  },
+  {
+    "id": "mondrian",
+    "name": "Mondrian",
+    "sub": "strict grid · primary colors · art print",
+    "perCardholderFront": true
+  },
+  {
+    "id": "calligraphy",
+    "name": "Calligraphy",
+    "sub": "ink-wash texture · serif · East Asian",
+    "perCardholderFront": true
+  },
+  {
+    "id": "isometric",
+    "name": "Isometric",
+    "sub": "3D iso cube · technical illustration",
+    "perCardholderFront": true
+  },
+  {
+    "id": "poster",
+    "name": "Concert Poster",
+    "sub": "bold drop-shadow type · gig flyer",
+    "perCardholderFront": true
+  },
+  {
+    "id": "keycard",
+    "name": "Access Keycard",
+    "sub": "corporate access · magstripe · NFC pad",
+    "perCardholderFront": true
+  },
+  {
+    "id": "certificate",
+    "name": "Certificate",
+    "sub": "diploma · calligraphic seal · ribbon",
+    "perCardholderFront": true
   }
 ]
