@@ -76,7 +76,11 @@ function handcraftedSection(d) {
 function variantSection(v) {
   const blocks = cardholders.map(c => {
     const anchor = `card-v-${v.id}-${c.id}`;
-    const front = `assets/v-${v.id}-front.png`;
+    // perCardholderFront variants (Lab Edge family) get a per-holder front
+    // file instead of a shared one — Alex carries the antimutual brand.
+    const front = v.perCardholderFront
+      ? `assets/v-${v.id}-front-${c.id}.png`
+      : `assets/v-${v.id}-front.png`;
     const back  = `assets/v-${v.id}-back-${c.id}.png`;
     return `
     <div class="card-block" id="${anchor}">
@@ -102,9 +106,9 @@ function variantSection(v) {
         <div class="actions">
           ${shareBtn(anchor)}
           ${fsBtn(front, back, `${c.name} · ${v.name}`, anchor)}
-          ${dlBtn(`assets/v-${v.id}-front.png`, 'FRONT.PNG')}
+          ${dlBtn(front, 'FRONT.PNG')}
           ${dlBtn(`assets/v-${v.id}-back-${c.id}.png`, 'BACK.PNG')}
-          ${dlBtn(`assets/v-${v.id}-front.pdf`, 'FRONT.PDF · vector')}
+          ${dlBtn(front.replace(/\.png$/, '.pdf'), 'FRONT.PDF · vector')}
           ${dlBtn(`assets/v-${v.id}-back-${c.id}.pdf`, 'BACK.PDF · vector')}
         </div>
       </div>

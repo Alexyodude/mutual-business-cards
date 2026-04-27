@@ -159,6 +159,9 @@ const labEdgeVariants = labEdgeRiffs.map(r => ({
   tag:  `LAB · EDGE / ${r.key.toUpperCase()}`,
   // Rendered by generate-lab-edge.cjs — generate-variants.cjs must skip these.
   external: true,
+  // Front is per-cardholder (Alex carries antimutual brand, Yejun mutual);
+  // generate-gallery.cjs reads this flag to swap asset path patterns.
+  perCardholderFront: true,
 }));
 
 const variants = [...buildVariants(), ...labEdgeVariants];

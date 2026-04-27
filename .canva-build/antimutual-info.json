@@ -1,0 +1,24 @@
+{
+  "imgs": [
+    {
+      "src": "https://anti.mutual.solutions/img/antimutual-dark.png",
+      "alt": "",
+      "width": 1067,
+      "height": 992,
+      "cls": "logo__mark"
+    },
+    {
+      "src": "https://anti.mutual.solutions/img/antimutual-dark.png",
+      "alt": "",
+      "width": 1067,
+      "height": 992,
+      "cls": "foot__mark"
+    }
+  ],
+  "svgs": [],
+  "links": [
+    "https://anti.mutual.solutions/img/antimutual-dark.png",
+    "https://anti.mutual.solutions/img/antimutual-dark.png"
+  ],
+  "title": "anti.mutual — real or not. we make you prove it."
+}

@@ -12,9 +12,9 @@ const HOLDERS = ['alex', 'yejun'];
 
 const tasks = [];
 for (const k of KEYS) {
-  tasks.push({ html: `v-tech-edge-${k}-front.html`, name: `v-tech-edge-${k}-front` });
   for (const h of HOLDERS) {
-    tasks.push({ html: `v-tech-edge-${k}-back-${h}.html`, name: `v-tech-edge-${k}-back-${h}` });
+    tasks.push({ html: `v-tech-edge-${k}-front-${h}.html`, name: `v-tech-edge-${k}-front-${h}` });
+    tasks.push({ html: `v-tech-edge-${k}-back-${h}.html`,  name: `v-tech-edge-${k}-back-${h}` });
   }
 }
 

@@ -208,11 +208,18 @@ const EDGES = {
 // =================================================================
 // FRONT — shared layout, edge treatment swapped per variant
 // =================================================================
-function renderFront(key) {
+function renderFront(key, c) {
   const e = EDGES[key];
   const p = e.palette || DEFAULT_PALETTE;
   const li = e.leftInset;
   const ri = e.rightInset;
+  // Per-cardholder logo + wordmark on the front (Alex carries antimutual,
+  // Yejun stays mutual). c may be null/undefined for legacy callers.
+  const logoFile = (c && c.logoFile) || p.logoFile;
+  const wordmarkText = (c && c.logoFile === 'logo-antimutual.png') ? 'antimutual' : 'mutual';
+  const siteText = c
+    ? (c.website || 'https://mutual.solutions').replace(/^https?:\/\//, '')
+    : 'mutual.solutions';
   // FEK-1 gets a forensic-flavored badge row (FEK-1 · FORENSIC); every
   // other variant keeps the canonical mutual badges.
   const isFek = (p === FEK1_PALETTE);
@@ -234,10 +241,10 @@ function renderFront(key) {
   ${e.decor()}
   ${e.hideTicks ? '' : '<div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>'}
 
-  <!-- mutual wordmark -->
+  <!-- wordmark (per-cardholder: antimutual for Alex, mutual otherwise) -->
   <div style="position:absolute;top:104px;left:${li}px;display:flex;align-items:center;gap:28px;z-index:2">
-    <img src="${p.logoFile}" style="width:104px;height:104px;object-fit:contain">
-    <div style="font-weight:800;font-size:96px;letter-spacing:-3.8px;color:${p.fg};line-height:1">mutual<span style="font-size:24px;vertical-align:super;font-weight:500;letter-spacing:0;margin-left:4px;color:${p.fgDim}">™</span></div>
+    <img src="${logoFile}" style="width:104px;height:104px;object-fit:contain">
+    <div style="font-weight:800;font-size:96px;letter-spacing:-3.8px;color:${p.fg};line-height:1">${wordmarkText}<span style="font-size:24px;vertical-align:super;font-weight:500;letter-spacing:0;margin-left:4px;color:${p.fgDim}">™</span></div>
   </div>
 
   <!-- tagline (Korean primary, English secondary) -->
@@ -252,7 +259,7 @@ function renderFront(key) {
   <!-- meta row -->
   <div class="mono" style="position:absolute;left:${li}px;right:${ri}px;bottom:60px;display:flex;justify-content:space-between;align-items:center;font-size:24px;color:${p.fgDim};letter-spacing:0.6px;font-weight:500;z-index:2">
     ${badgeRow}
-    <div>mutual.solutions</div>
+    <div>${siteText}</div>
   </div>
   ${e.frontOverlay ? e.frontOverlay() : ''}
 </div>${TAIL}`;
@@ -327,13 +334,12 @@ function renderBack(key, c) {
 const keys = Object.keys(EDGES);
 let n = 0;
 for (const k of keys) {
-  fs.writeFileSync(path.join(OUT, `v-tech-edge-${k}-front.html`), enforceMinFont(renderFront(k)));
-  n++;
   for (const c of HOLDERS) {
-    fs.writeFileSync(path.join(OUT, `v-tech-edge-${k}-back-${c.id}.html`), enforceMinFont(renderBack(k, c)));
-    n++;
+    fs.writeFileSync(path.join(OUT, `v-tech-edge-${k}-front-${c.id}.html`), enforceMinFont(renderFront(k, c)));
+    fs.writeFileSync(path.join(OUT, `v-tech-edge-${k}-back-${c.id}.html`),  enforceMinFont(renderBack(k, c)));
+    n += 2;
   }
 }
 
-console.log(`wrote ${n} files (${keys.length} variants × 3 sides):`);
+console.log(`wrote ${n} files (${keys.length} variants × ${HOLDERS.length} cardholders × 2 sides):`);
 keys.forEach(k => console.log(`  v-tech-edge-${k}  — ${EDGES[k].sub}`));
