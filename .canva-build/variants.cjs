@@ -10,6 +10,9 @@ const cardholders = [
     email: 'alex@mutual.solutions', linkedin: 'linkedin.com/in/alexjihoonpark',
     vcardN: 'Park%3BAlex%20Jihoon', vcardFN: 'Alex%20Jihoon%20Park',
     vcardTitle: 'Co-founder%20Hardware', vcardEmail: 'alex%40mutual.solutions',
+    // Personal-brand overrides — Alex represents the antimutual subdomain.
+    website: 'https://anti.mutual.solutions',
+    logoFile: 'logo-antimutual.png',
   },
   {
     id: 'yejun', name: 'Yejun Jang',       nameKo: '장예준',
@@ -17,6 +20,8 @@ const cardholders = [
     email: 'yejun@mutual.solutions', linkedin: 'linkedin.com/in/yejunjang',
     vcardN: 'Jang%3BYejun', vcardFN: 'Yejun%20Jang',
     vcardTitle: 'CEO%20AI%20%26%20Security', vcardEmail: 'yejun%40mutual.solutions',
+    website: 'https://mutual.solutions',
+    // logoFile omitted → falls back to palette default (logo-white / logo-amber).
   },
 ];
 
@@ -145,6 +150,7 @@ const labEdgeRiffs = [
   { key: 'frame',   name: 'Lab Edge Frame',   sub: 'closed-loop perimeter frame' },
   { key: 'halo',    name: 'Lab Edge Halo',    sub: 'single line · diffuse halo' },
   { key: 'capture', name: 'Lab Edge Capture', sub: 'halo edge · camera-capture viewfinder' },
+  { key: 'fek1',    name: 'Lab Edge FEK-1',   sub: 'forensic gold halo · no decorations' },
 ];
 const labEdgeVariants = labEdgeRiffs.map(r => ({
   id:   `tech-edge-${r.key}`,

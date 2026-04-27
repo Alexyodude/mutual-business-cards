@@ -168,6 +168,20 @@ const EDGES = {
       <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>
       <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>`,
   },
+  fek1: {
+    sub: 'forensic FEK-1 · gold halo edge only',
+    leftInset: 130, rightInset: 96,
+    palette: FEK1_PALETTE,
+    hideTicks: true,
+    decor: () => {
+      const A = FEK1_PALETTE.accent;
+      return `
+      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${A}33 0%, transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${A} 12%,${A} 88%,transparent 100%);box-shadow:0 0 18px ${A},0 0 36px ${A}66,0 0 64px ${A}33"></div>
+      <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>
+      <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>`;
+    },
+  },
   capture: {
     sub: 'halo edge · forensic FEK-1 (gold on black)',
     leftInset: 130, rightInset: 96,
@@ -211,7 +225,7 @@ function renderFront(key) {
 <div class="card">
   <div class="grid"></div>
   ${e.decor()}
-  <div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>
+  ${e.hideTicks ? '' : '<div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>'}
 
   <!-- mutual wordmark -->
   <div style="position:absolute;top:104px;left:${li}px;display:flex;align-items:center;gap:28px;z-index:2">
@@ -244,11 +258,14 @@ const HOLDERS = [
   { id: 'alex',  name: 'Alex Jihoon Park', nameKo: '박지훈',
     title: 'Co-founder · Hardware', titleKo: '공동창업자 · 하드웨어',
     email: 'alex@mutual.solutions', linkedin: 'linkedin.com/in/alexjihoonpark',
-    qr: 'qr-alex.svg' },
+    qr: 'qr-alex.svg',
+    website: 'https://anti.mutual.solutions',
+    logoFile: 'logo-antimutual.png' },
   { id: 'yejun', name: 'Yejun Jang', nameKo: '장예준',
     title: 'CEO · AI & Security', titleKo: '대표이사 · AI 보안',
     email: 'yejun@mutual.solutions', linkedin: 'linkedin.com/in/yejunjang',
-    qr: 'qr-yejun.svg' },
+    qr: 'qr-yejun.svg',
+    website: 'https://mutual.solutions' },
 ];
 
 function renderBack(key, c) {
@@ -256,16 +273,23 @@ function renderBack(key, c) {
   const p = e.palette || DEFAULT_PALETTE;
   const li = e.leftInset;
   const ri = e.rightInset;
+  // Per-cardholder logo override (e.g. Alex → antimutual logo).
+  const logoFile = c.logoFile || p.logoFile;
+  // Wordmark text mirrors the cardholder's brand: Alex carries the antimutual
+  // identity (anti.mutual.solutions); everyone else stays mutual™.
+  const wordmark = c.logoFile === 'logo-antimutual.png'
+    ? `antimutual<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span>`
+    : `mutual<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span>`;
   return `${renderHead(p)}
 <div class="card">
   <div class="grid"></div>
   ${e.decor()}
-  <div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>
+  ${e.hideTicks ? '' : '<div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>'}
 
   <!-- small wordmark -->
   <div style="position:absolute;top:64px;right:${ri}px;display:flex;align-items:center;gap:14px;z-index:2">
-    <img src="${p.logoFile}" style="width:48px;height:48px;object-fit:contain">
-    <div style="font-weight:800;font-size:32px;letter-spacing:-0.8px;color:${p.fg}">mutual<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
+    <img src="${logoFile}" style="width:48px;height:48px;object-fit:contain">
+    <div style="font-weight:800;font-size:32px;letter-spacing:-0.8px;color:${p.fg}">${wordmark}</div>
   </div>
 
   <!-- name block -->
@@ -280,7 +304,7 @@ function renderBack(key, c) {
   <!-- contact mono block -->
   <div class="mono" style="position:absolute;left:${li}px;bottom:64px;font-size:22px;line-height:1.85;color:${p.fg};letter-spacing:0.1px;font-weight:500;z-index:2">
     <div>${c.email}</div>
-    <div>mutual.solutions</div>
+    <div>${(c.website || 'https://mutual.solutions').replace(/^https?:\/\//, '')}</div>
     <div>${c.linkedin}</div>
   </div>
 
