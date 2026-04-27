@@ -140,6 +140,58 @@ const EDGES = {
       <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>
       <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>`,
   },
+  capture: {
+    sub: 'halo edge · camera-capture viewfinder',
+    leftInset: 130, rightInset: 96,
+    // Same halo edge as halo variant
+    decor: () => `
+      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${ACCENT}33 0%, transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${ACCENT} 12%,${ACCENT} 88%,transparent 100%);box-shadow:0 0 18px ${ACCENT},0 0 36px ${ACCENT}66,0 0 64px ${ACCENT}33"></div>
+      <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>
+      <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>`,
+    // Camera-capture viewfinder overlaid on the front. Frame coords:
+    //   top:64  bottom:64  left:108  right:64  → 878 × 472
+    frontOverlay: () => `
+      <!-- Rule-of-thirds gridlines (very faint cyan) -->
+      <div style="position:absolute;top:64px;bottom:64px;left:401px;width:1px;background:${ACCENT}1f;z-index:1;pointer-events:none"></div>
+      <div style="position:absolute;top:64px;bottom:64px;right:357px;width:1px;background:${ACCENT}1f;z-index:1;pointer-events:none"></div>
+      <div style="position:absolute;left:108px;right:64px;top:221px;height:1px;background:${ACCENT}1f;z-index:1;pointer-events:none"></div>
+      <div style="position:absolute;left:108px;right:64px;top:378px;height:1px;background:${ACCENT}1f;z-index:1;pointer-events:none"></div>
+
+      <!-- Outer focus brackets (4 L-shaped corners) -->
+      <div style="position:absolute;top:64px;left:108px;width:36px;height:36px;border-top:2px solid ${ACCENT};border-left:2px solid ${ACCENT};box-shadow:0 -1px 10px ${ACCENT}66,-1px 0 10px ${ACCENT}66;z-index:3"></div>
+      <div style="position:absolute;top:64px;right:64px;width:36px;height:36px;border-top:2px solid ${ACCENT};border-right:2px solid ${ACCENT};box-shadow:0 -1px 10px ${ACCENT}66,1px 0 10px ${ACCENT}66;z-index:3"></div>
+      <div style="position:absolute;bottom:64px;left:108px;width:36px;height:36px;border-bottom:2px solid ${ACCENT};border-left:2px solid ${ACCENT};box-shadow:0 1px 10px ${ACCENT}66,-1px 0 10px ${ACCENT}66;z-index:3"></div>
+      <div style="position:absolute;bottom:64px;right:64px;width:36px;height:36px;border-bottom:2px solid ${ACCENT};border-right:2px solid ${ACCENT};box-shadow:0 1px 10px ${ACCENT}66,1px 0 10px ${ACCENT}66;z-index:3"></div>
+
+      <!-- Center crosshair (small + at frame center, x=549, y=300) -->
+      <div style="position:absolute;left:545px;top:294px;width:13px;height:1.5px;background:${ACCENT}aa;z-index:3"></div>
+      <div style="position:absolute;left:550px;top:289px;width:1.5px;height:13px;background:${ACCENT}aa;z-index:3"></div>
+      <div style="position:absolute;left:543px;top:298px;width:5px;height:1.5px;background:${ACCENT};box-shadow:0 0 6px ${ACCENT};z-index:3"></div>
+      <div style="position:absolute;left:556px;top:298px;width:5px;height:1.5px;background:${ACCENT};box-shadow:0 0 6px ${ACCENT};z-index:3"></div>
+      <div style="position:absolute;left:550px;top:284px;width:1.5px;height:5px;background:${ACCENT};box-shadow:0 0 6px ${ACCENT};z-index:3"></div>
+      <div style="position:absolute;left:550px;top:300px;width:1.5px;height:5px;background:${ACCENT};box-shadow:0 0 6px ${ACCENT};z-index:3"></div>
+
+      <!-- REC indicator (top-right of viewfinder, just below the bracket) -->
+      <div class="mono" style="position:absolute;top:62px;right:120px;display:flex;align-items:center;gap:10px;font-size:18px;color:${ACCENT};letter-spacing:1.6px;font-weight:600;z-index:3">
+        <div style="width:11px;height:11px;border-radius:50%;background:${ACCENT};box-shadow:0 0 14px ${ACCENT},0 0 4px ${ACCENT}"></div>
+        REC
+      </div>
+
+      <!-- Timecode (under REC) -->
+      <div class="mono" style="position:absolute;top:90px;right:120px;font-size:13px;color:${FG_DIM};letter-spacing:1.4px;z-index:3">00:00:01:24</div>
+
+      <!-- Capture metadata (just inside bottom-right bracket, above the divider) -->
+      <div class="mono" style="position:absolute;bottom:138px;right:120px;display:flex;gap:14px;font-size:13px;color:${FG_DIM};letter-spacing:1.2px;z-index:3">
+        <span>1/125s</span><span style="color:${ACCENT}66">·</span><span>f/2.8</span><span style="color:${ACCENT}66">·</span><span>ISO 100</span><span style="color:${ACCENT}66">·</span><span>23.976fps</span>
+      </div>
+
+      <!-- Aspect-ratio safe-area markers (16:9 center band) -->
+      <div style="position:absolute;left:108px;top:96px;width:8px;height:1px;background:${ACCENT}99;z-index:3"></div>
+      <div style="position:absolute;left:108px;bottom:96px;width:8px;height:1px;background:${ACCENT}99;z-index:3"></div>
+      <div style="position:absolute;right:64px;top:96px;width:8px;height:1px;background:${ACCENT}99;z-index:3"></div>
+      <div style="position:absolute;right:64px;bottom:96px;width:8px;height:1px;background:${ACCENT}99;z-index:3"></div>`,
+  },
 };
 
 // =================================================================
@@ -175,6 +227,7 @@ function renderFront(key) {
     <div style="display:flex;gap:20px"><span style="color:${ACCENT};font-weight:600">C2PA</span><span>·</span><span style="color:${ACCENT};font-weight:600">ECDSA</span><span>·</span><span style="color:${ACCENT};font-weight:600">TrustZone</span></div>
     <div>mutual.solutions</div>
   </div>
+  ${e.frontOverlay ? e.frontOverlay() : ''}
 </div>${TAIL}`;
 }
 

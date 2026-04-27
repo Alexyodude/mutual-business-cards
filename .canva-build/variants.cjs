@@ -138,12 +138,13 @@ function buildVariants() {
 // sections with TOC entries, deep links, and downloadable assets.
 // ────────────────────────────────────────────────────────────────────
 const labEdgeRiffs = [
-  { key: 'dual',  name: 'Lab Edge Dual',  sub: 'twin bars · mirrored edges' },
-  { key: 'stack', name: 'Lab Edge Stack', sub: 'stacked barcode bars' },
-  { key: 'notch', name: 'Lab Edge Notch', sub: 'notched edge · mounting cutout' },
-  { key: 'pulse', name: 'Lab Edge Pulse', sub: 'equalizer · signal scanlines' },
-  { key: 'frame', name: 'Lab Edge Frame', sub: 'closed-loop perimeter frame' },
-  { key: 'halo',  name: 'Lab Edge Halo',  sub: 'single line · diffuse halo' },
+  { key: 'dual',    name: 'Lab Edge Dual',    sub: 'twin bars · mirrored edges' },
+  { key: 'stack',   name: 'Lab Edge Stack',   sub: 'stacked barcode bars' },
+  { key: 'notch',   name: 'Lab Edge Notch',   sub: 'notched edge · mounting cutout' },
+  { key: 'pulse',   name: 'Lab Edge Pulse',   sub: 'equalizer · signal scanlines' },
+  { key: 'frame',   name: 'Lab Edge Frame',   sub: 'closed-loop perimeter frame' },
+  { key: 'halo',    name: 'Lab Edge Halo',    sub: 'single line · diffuse halo' },
+  { key: 'capture', name: 'Lab Edge Capture', sub: 'halo edge · camera-capture viewfinder' },
 ];
 const labEdgeVariants = labEdgeRiffs.map(r => ({
   id:   `tech-edge-${r.key}`,
