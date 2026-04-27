@@ -225,6 +225,9 @@ function renderFront(key) {
   const enTagline = isFek
     ? 'Cameras and mics. Proven real.'
     : 'Authenticity starts at the source.';
+  const koTagline = isFek
+    ? '카메라와 마이크. 진본을 증명합니다.'
+    : '진본은 출처에서 시작됩니다.';
   return `${renderHead(p)}
 <div class="card">
   <div class="grid"></div>
@@ -239,7 +242,7 @@ function renderFront(key) {
 
   <!-- tagline (Korean primary, English secondary) -->
   <div style="position:absolute;left:${li}px;bottom:172px;text-align:left;z-index:2">
-    <div class="ko" style="font-weight:700;font-size:36px;color:${p.accentSoft};letter-spacing:-0.8px;line-height:1.2">진본은 출처에서 시작됩니다.</div>
+    <div class="ko" style="font-weight:700;font-size:36px;color:${p.accentSoft};letter-spacing:-0.8px;line-height:1.2">${koTagline}</div>
     <div style="margin-top:14px;font-weight:600;font-size:30px;color:${p.fgDim};letter-spacing:-0.4px;line-height:1.3;font-style:italic;${enTaglineExtra}">${enTagline}</div>
   </div>
 
@@ -259,8 +262,8 @@ function renderFront(key) {
 // BACK — same edge treatment, per-cardholder content
 // =================================================================
 const HOLDERS = [
-  { id: 'alex',  name: 'Alex Jihoon Park', nameKo: '박지훈',
-    title: 'Co-founder · Hardware', titleKo: '공동창업자 · 하드웨어',
+  { id: 'alex',  name: 'Jihoon (Alex) Park', nameKo: '박지훈',
+    title: 'CTO · Hardware', titleKo: '최고기술책임자 · 하드웨어',
     email: 'alex@mutual.solutions', linkedin: 'linkedin.com/in/alexjihoonpark',
     qr: 'qr-alex.svg',
     website: 'https://anti.mutual.solutions',
