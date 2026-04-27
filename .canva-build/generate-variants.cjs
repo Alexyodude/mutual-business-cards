@@ -5,6 +5,13 @@ const fs = require('fs');
 const path = require('path');
 const { variants, cardholders } = require('./variants.cjs');
 
+// Enforce business-card minimum text size — see .canva-build/fix-min-font.cjs
+const MIN_FONT_PX = 12;
+function enforceMinFont(html) {
+  return html.replace(/font-size:\s*(\d+(?:\.\d+)?)px/g, (m, n) =>
+    parseFloat(n) < MIN_FONT_PX ? `font-size:${MIN_FONT_PX}px` : m);
+}
+
 // QR codes are pre-generated locally as SVG to avoid network calls during render.
 // See generate-qr.cjs. The same QR is used across all variants per cardholder
 // (color is the same; variant theme tinting via container only).
@@ -250,12 +257,13 @@ function renderBack(v, c) {
 const outDir = __dirname;
 let count = 0;
 for (const v of variants) {
+  if (v.external) continue; // rendered by another generator (e.g. generate-lab-edge.cjs)
   const front = renderFront(v);
-  fs.writeFileSync(path.join(outDir, `v-${v.id}-front.html`), front);
+  fs.writeFileSync(path.join(outDir, `v-${v.id}-front.html`), enforceMinFont(front));
   count++;
   for (const c of cardholders) {
     const back = renderBack(v, c);
-    fs.writeFileSync(path.join(outDir, `v-${v.id}-back-${c.id}.html`), back);
+    fs.writeFileSync(path.join(outDir, `v-${v.id}-back-${c.id}.html`), enforceMinFont(back));
     count++;
   }
   console.log(`✓ ${v.id}  →  v-${v.id}-front.html, v-${v.id}-back-alex.html, v-${v.id}-back-yejun.html`);

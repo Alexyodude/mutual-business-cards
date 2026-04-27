@@ -12,14 +12,28 @@ function dlBtn(href, label) {
   return `<a class="btn" href="${href}" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg> ${label}</a>`;
 }
 
+// Share — copies a deep link (location + #card-anchor) to clipboard.
+function shareBtn(anchor) {
+  return `<button type="button" class="btn share-btn" data-anchor="${anchor}" aria-label="Copy link to this card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> SHARE</button>`;
+}
+
+// Full-screen — opens a modal with a flippable enlarged card.
+function fsBtn(front, back, name, anchor) {
+  return `<button type="button" class="btn fs-btn" data-front="${front}" data-back="${back}" data-name="${name}" data-anchor="${anchor}" aria-label="Open in full screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V3h5M21 8V3h-5M3 16v5h5M21 16v5h-5"/></svg> FULL SCREEN</button>`;
+}
+
 // Hand-crafted designs use per-cardholder front (h-{id}-front-{cardholder}.html).
 function handcraftedSection(d) {
-  const blocks = cardholders.map(c => `
-    <div class="card-block">
+  const blocks = cardholders.map(c => {
+    const anchor = `card-h-${d.id}-${c.id}`;
+    const front = `assets/h-${d.id}-front-${c.id}.png`;
+    const back  = `assets/h-${d.id}-back-${c.id}.png`;
+    return `
+    <div class="card-block" id="${anchor}">
       <div class="flip-stage" tabindex="0" role="button" aria-label="Flip ${c.name}'s ${d.id} card">
         <div class="flip-inner">
-          <div class="flip-side front"><img src="assets/h-${d.id}-front-${c.id}.png" alt="" loading="lazy"></div>
-          <div class="flip-side back"><img src="assets/h-${d.id}-back-${c.id}.png" alt="" loading="lazy"></div>
+          <div class="flip-side front"><img src="${front}" alt="" loading="lazy"></div>
+          <div class="flip-side back"><img src="${back}" alt="" loading="lazy"></div>
         </div>
         <div class="flip-hint">CLICK TO FLIP</div>
       </div>
@@ -32,17 +46,20 @@ function handcraftedSection(d) {
           </div>
         </div>
         <div class="thumbs">
-          <div class="thumb"><img src="assets/h-${d.id}-front-${c.id}.png" alt=""><div class="label">FRONT</div></div>
-          <div class="thumb"><img src="assets/h-${d.id}-back-${c.id}.png" alt=""><div class="label">BACK</div></div>
+          <div class="thumb"><img src="${front}" alt=""><div class="label">FRONT</div></div>
+          <div class="thumb"><img src="${back}" alt=""><div class="label">BACK</div></div>
         </div>
         <div class="actions">
+          ${shareBtn(anchor)}
+          ${fsBtn(front, back, `${c.name} · ${d.name}`, anchor)}
           ${dlBtn(`assets/h-${d.id}-front-${c.id}.png`, 'FRONT.PNG')}
           ${dlBtn(`assets/h-${d.id}-back-${c.id}.png`, 'BACK.PNG')}
           ${dlBtn(`assets/h-${d.id}-front-${c.id}.pdf`, 'FRONT.PDF · vector')}
           ${dlBtn(`assets/h-${d.id}-back-${c.id}.pdf`, 'BACK.PDF · vector')}
         </div>
       </div>
-    </div>`).join('\n');
+    </div>`;
+  }).join('\n');
 
   return `
 <section class="variant-section" id="h-${d.id}">
@@ -57,12 +74,16 @@ function handcraftedSection(d) {
 }
 
 function variantSection(v) {
-  const blocks = cardholders.map(c => `
-    <div class="card-block">
+  const blocks = cardholders.map(c => {
+    const anchor = `card-v-${v.id}-${c.id}`;
+    const front = `assets/v-${v.id}-front.png`;
+    const back  = `assets/v-${v.id}-back-${c.id}.png`;
+    return `
+    <div class="card-block" id="${anchor}">
       <div class="flip-stage" tabindex="0" role="button" aria-label="Flip ${c.name}'s ${v.id} card">
         <div class="flip-inner">
-          <div class="flip-side front"><img src="assets/v-${v.id}-front.png" alt="" loading="lazy"></div>
-          <div class="flip-side back"><img src="assets/v-${v.id}-back-${c.id}.png" alt="" loading="lazy"></div>
+          <div class="flip-side front"><img src="${front}" alt="" loading="lazy"></div>
+          <div class="flip-side back"><img src="${back}" alt="" loading="lazy"></div>
         </div>
         <div class="flip-hint">CLICK TO FLIP</div>
       </div>
@@ -75,17 +96,20 @@ function variantSection(v) {
           </div>
         </div>
         <div class="thumbs">
-          <div class="thumb"><img src="assets/v-${v.id}-front.png" alt=""><div class="label">FRONT</div></div>
-          <div class="thumb"><img src="assets/v-${v.id}-back-${c.id}.png" alt=""><div class="label">BACK</div></div>
+          <div class="thumb"><img src="${front}" alt=""><div class="label">FRONT</div></div>
+          <div class="thumb"><img src="${back}" alt=""><div class="label">BACK</div></div>
         </div>
         <div class="actions">
+          ${shareBtn(anchor)}
+          ${fsBtn(front, back, `${c.name} · ${v.name}`, anchor)}
           ${dlBtn(`assets/v-${v.id}-front.png`, 'FRONT.PNG')}
           ${dlBtn(`assets/v-${v.id}-back-${c.id}.png`, 'BACK.PNG')}
           ${dlBtn(`assets/v-${v.id}-front.pdf`, 'FRONT.PDF · vector')}
           ${dlBtn(`assets/v-${v.id}-back-${c.id}.pdf`, 'BACK.PDF · vector')}
         </div>
       </div>
-    </div>`).join('\n');
+    </div>`;
+  }).join('\n');
 
   return `
 <section class="variant-section" id="v-${v.id}">
@@ -161,7 +185,9 @@ h1 .accent{color:var(--cyan)}
 .variant-title .sub{font-weight:500;color:var(--fg-3);font-size:16px;letter-spacing:-0.2px;margin-left:14px}
 
 .cards{display:flex;flex-direction:column;gap:64px;margin-top:36px}
-.card-block{display:grid;grid-template-columns:1fr;gap:32px}
+.card-block{display:grid;grid-template-columns:1fr;gap:32px;scroll-margin-top:32px}
+.card-block:target{outline:2px solid var(--cyan);outline-offset:24px;border-radius:16px;animation:flash 1.4s ease-out}
+@keyframes flash{0%,40%{outline-color:var(--cyan);box-shadow:0 0 60px rgba(34,211,238,0.25)}100%{outline-color:transparent;box-shadow:0 0 0 transparent}}
 @media (min-width:1080px){.card-block{grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:start}}
 
 .flip-stage{position:relative;width:100%;aspect-ratio:1050/600;perspective:2400px;cursor:pointer}
@@ -186,11 +212,34 @@ h1 .accent{color:var(--cyan)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;border:1px solid rgba(148,163,184,0.18);background:rgba(30,41,59,0.6);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.5px;text-decoration:none;cursor:pointer;transition:all 0.18s ease;font-weight:500}
 .btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(34,211,238,0.06)}
 .btn svg{width:13px;height:13px;flex-shrink:0}
+.share-btn,.fs-btn{border-color:rgba(34,211,238,0.4);color:var(--cyan)}
+.share-btn:hover,.fs-btn:hover{background:rgba(34,211,238,0.12);border-color:var(--cyan)}
 
 footer{margin-top:96px;padding-top:32px;border-top:1px solid rgba(148,163,184,0.12);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-3);letter-spacing:0.6px}
 footer .ko{font-family:'Noto Sans KR',sans-serif;color:var(--fg-3)}
 footer a{color:var(--cyan);text-decoration:none}
 footer a:hover{text-decoration:underline}
+
+/* ─── Full-screen modal ─── */
+.fs-modal{position:fixed;inset:0;background:rgba(8,12,24,0.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:1000;display:none;align-items:center;justify-content:center;flex-direction:column;padding:40px}
+.fs-modal.open{display:flex}
+.fs-stage{position:relative;width:min(94vw, calc(86vh * 1.75));aspect-ratio:1050/600;perspective:3200px;cursor:pointer;max-height:86vh}
+.fs-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 0.9s cubic-bezier(0.65,0.05,0.35,1)}
+.fs-stage.flipped .fs-inner{transform:rotateY(180deg)}
+.fs-side{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.04)}
+.fs-side img{display:block;width:100%;height:100%;object-fit:cover}
+.fs-back{transform:rotateY(180deg)}
+.fs-bar{display:flex;align-items:center;justify-content:space-between;width:min(94vw, calc(86vh * 1.75));margin-top:20px;font-family:'JetBrains Mono',monospace;color:var(--fg-2);letter-spacing:1.2px;font-size:13px}
+.fs-bar .fs-name{color:var(--fg);font-weight:600;letter-spacing:-0.2px;font-family:'Inter',sans-serif;font-size:16px}
+.fs-bar .fs-actions{display:flex;gap:10px}
+.fs-close{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);background:rgba(15,23,42,0.7);color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:all 0.18s ease}
+.fs-close:hover{border-color:var(--cyan);color:var(--cyan)}
+.fs-flip-btn{padding:8px 14px;border-radius:8px;border:1px solid rgba(34,211,238,0.4);background:rgba(34,211,238,0.08);color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;font-weight:500}
+.fs-flip-btn:hover{background:rgba(34,211,238,0.18)}
+
+/* ─── Toast ─── */
+.toast{position:fixed;bottom:32px;left:50%;transform:translate(-50%, 120px);background:#0f172a;border:1px solid var(--cyan);color:var(--cyan);padding:11px 18px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;z-index:1100;transition:transform 0.3s cubic-bezier(0.5,0,0.2,1);pointer-events:none;box-shadow:0 12px 36px rgba(0,0,0,0.4),0 0 24px rgba(34,211,238,0.25)}
+.toast.show{transform:translate(-50%, 0)}
 </style>
 </head>
 <body>
@@ -208,7 +257,7 @@ footer a:hover{text-decoration:underline}
   <div class="eyebrow">// BUSINESS CARDS · ${variants.length} VARIANTS · KOR + ENG · ≥14PT</div>
   <h1>Authenticity starts at the <span class="accent">source.</span></h1>
   <div class="h1-ko">진본은 출처에서 시작됩니다.</div>
-  <p class="lede">${variants.length} bilingual business-card variants for mutual™ · each shared front + per-cofounder backs (Alex Jihoon Park · Yejun Jang). All body text ≥14pt. Click any card to flip. Download PNG (raster) or PDF (fully vector — text, shapes, traced logo, SVG QR) at exact 3.5″×2″ trim.</p>
+  <p class="lede">${variants.length} bilingual business-card variants for mutual™ · each shared front + per-cofounder backs (Alex Jihoon Park · Yejun Jang). Click any card to flip · use SHARE to copy a deep link · use FULL SCREEN for an enlarged flippable view. Download PNG (raster) or PDF (fully vector — text, shapes, traced logo, SVG QR) at exact 3.5″×2″ trim.</p>
 </section>
 
 <nav class="toc">
@@ -237,11 +286,124 @@ ${variants.map(variantSection).join('\n')}
 
 </div>
 
+<!-- Full-screen modal (single instance, populated on demand) -->
+<div id="fs-modal" class="fs-modal" role="dialog" aria-modal="true" aria-label="Card full-screen view">
+  <button class="fs-close" type="button" aria-label="Close full screen">×</button>
+  <div class="fs-stage" tabindex="0" role="button" aria-label="Click to flip">
+    <div class="fs-inner">
+      <div class="fs-side fs-front"><img id="fs-front-img" src="" alt=""></div>
+      <div class="fs-side fs-back"><img id="fs-back-img" src="" alt=""></div>
+    </div>
+  </div>
+  <div class="fs-bar">
+    <div class="fs-name" id="fs-name">—</div>
+    <div class="fs-actions">
+      <button type="button" class="fs-flip-btn" id="fs-flip-btn">FLIP</button>
+      <button type="button" class="fs-flip-btn" id="fs-share-btn">SHARE</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast (single instance) -->
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
 <script>
 (function(){
+  // ─── Card flip (in-page) ───
   document.querySelectorAll('.flip-stage').forEach(stage => {
     stage.addEventListener('click', (e) => { if (e.target.closest('a,button')) return; stage.classList.toggle('flipped'); });
     stage.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stage.classList.toggle('flipped'); } });
+  });
+
+  // ─── Toast ───
+  const toast = document.getElementById('toast');
+  let toastTimer = 0;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  // ─── Share — copies deep link to clipboard (or uses Web Share on mobile) ───
+  async function copyLink(anchor) {
+    const url = location.origin + location.pathname + '#' + anchor;
+    try {
+      if (navigator.share && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+        await navigator.share({ title: 'mutual™ business card', url });
+        return;
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        // legacy fallback
+        const ta = document.createElement('textarea');
+        ta.value = url; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+      }
+      showToast('Link copied · ' + anchor);
+    } catch (err) {
+      showToast('Copy failed — ' + (err.message || 'unknown'));
+    }
+  }
+  document.querySelectorAll('.share-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.stopPropagation(); copyLink(btn.dataset.anchor); });
+  });
+
+  // ─── Full-screen modal ───
+  const modal     = document.getElementById('fs-modal');
+  const fsStage   = modal.querySelector('.fs-stage');
+  const fsFront   = document.getElementById('fs-front-img');
+  const fsBack    = document.getElementById('fs-back-img');
+  const fsName    = document.getElementById('fs-name');
+  const fsClose   = modal.querySelector('.fs-close');
+  const fsFlipBtn = document.getElementById('fs-flip-btn');
+  const fsShareBtn = document.getElementById('fs-share-btn');
+  let currentAnchor = '';
+
+  function openFs(front, back, name, anchor) {
+    fsFront.src = front;
+    fsBack.src  = back;
+    fsName.textContent = name || '';
+    currentAnchor = anchor || '';
+    fsStage.classList.remove('flipped');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (modal.requestFullscreen) {
+      modal.requestFullscreen().catch(() => {/* user-gesture required; fallback to in-page modal */});
+    }
+  }
+  function closeFs() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(()=>{});
+    }
+  }
+  function flipFs() { fsStage.classList.toggle('flipped'); }
+
+  document.querySelectorAll('.fs-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openFs(btn.dataset.front, btn.dataset.back, btn.dataset.name, btn.dataset.anchor);
+    });
+  });
+  fsClose.addEventListener('click', closeFs);
+  fsStage.addEventListener('click', flipFs);
+  fsStage.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flipFs(); } });
+  fsFlipBtn.addEventListener('click', (e) => { e.stopPropagation(); flipFs(); });
+  fsShareBtn.addEventListener('click', (e) => { e.stopPropagation(); if (currentAnchor) copyLink(currentAnchor); });
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeFs(); });
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') closeFs();
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key.toLowerCase() === 'f') flipFs();
+  });
+  document.addEventListener('fullscreenchange', () => {
+    // If user exits browser fullscreen via ESC/F11, also close the modal so they're not stuck.
+    if (!document.fullscreenElement && modal.classList.contains('open')) {
+      // Keep modal open but un-fullscreened — let close button handle it.
+    }
   });
 })();
 </script>

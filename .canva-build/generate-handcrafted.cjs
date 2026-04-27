@@ -10,6 +10,13 @@ const { cardholders } = require('./variants.cjs');
 
 const OUT = __dirname;
 
+// Enforce business-card minimum text size — see .canva-build/fix-min-font.cjs
+const MIN_FONT_PX = 12;
+function enforceMinFont(html) {
+  return html.replace(/font-size:\s*(\d+(?:\.\d+)?)px/g, (m, n) =>
+    parseFloat(n) < MIN_FONT_PX ? `font-size:${MIN_FONT_PX}px` : m);
+}
+
 // Common preamble — system fonts, no CDN. Korean falls back gracefully.
 const HEAD = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -2422,8 +2429,8 @@ designs.push({ id:'cassette', name:'Cassette', sub:'audio tape label · TDK · m
 let count = 0;
 for (const d of designs) {
   for (const c of cardholders) {
-    fs.writeFileSync(path.join(OUT, `h-${d.id}-front-${c.id}.html`), d.front(c));
-    fs.writeFileSync(path.join(OUT, `h-${d.id}-back-${c.id}.html`), d.back(c));
+    fs.writeFileSync(path.join(OUT, `h-${d.id}-front-${c.id}.html`), enforceMinFont(d.front(c)));
+    fs.writeFileSync(path.join(OUT, `h-${d.id}-back-${c.id}.html`),  enforceMinFont(d.back(c)));
     count += 2;
   }
   console.log(`✓ ${d.id}  → 4 files (front+back × Alex+Yejun)`);
