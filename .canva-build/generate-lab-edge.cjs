@@ -213,14 +213,18 @@ function renderFront(key) {
   const p = e.palette || DEFAULT_PALETTE;
   const li = e.leftInset;
   const ri = e.rightInset;
-  // FEK-1 gets a forensic-flavored badge row (FEK-1 · FORENSIC · ECDSA);
-  // every other variant keeps the canonical mutual badges.
+  // FEK-1 gets a forensic-flavored badge row (FEK-1 · FORENSIC); every
+  // other variant keeps the canonical mutual badges.
   const isFek = (p === FEK1_PALETTE);
   const badgeRow = isFek
-    ? `<div style="display:flex;gap:20px"><span style="color:${p.accent};font-weight:600">FEK-1</span><span>·</span><span style="color:${p.accent};font-weight:600">FORENSIC</span><span>·</span><span style="color:${p.accent};font-weight:600">ECDSA</span></div>`
+    ? `<div style="display:flex;gap:20px"><span style="color:${p.accent};font-weight:600">FEK-1</span><span>·</span><span style="color:${p.accent};font-weight:600">FORENSIC</span></div>`
     : `<div style="display:flex;gap:20px"><span style="color:${p.accent};font-weight:600">C2PA</span><span>·</span><span style="color:${p.accent};font-weight:600">ECDSA</span><span>·</span><span style="color:${p.accent};font-weight:600">TrustZone</span></div>`;
   // FEK-1 uses serif-italic for the English tagline (matches forensic page)
+  // and a shorter antimutual-flavored slogan.
   const enTaglineExtra = isFek ? `font-family:'Playfair Display','Georgia','Times New Roman',serif;` : '';
+  const enTagline = isFek
+    ? 'Cameras and mics. Proven real.'
+    : 'Authenticity starts at the source.';
   return `${renderHead(p)}
 <div class="card">
   <div class="grid"></div>
@@ -236,7 +240,7 @@ function renderFront(key) {
   <!-- tagline (Korean primary, English secondary) -->
   <div style="position:absolute;left:${li}px;bottom:172px;text-align:left;z-index:2">
     <div class="ko" style="font-weight:700;font-size:36px;color:${p.accentSoft};letter-spacing:-0.8px;line-height:1.2">진본은 출처에서 시작됩니다.</div>
-    <div style="margin-top:14px;font-weight:600;font-size:30px;color:${p.fgDim};letter-spacing:-0.4px;line-height:1.3;font-style:italic;${enTaglineExtra}">Authenticity starts at the source.</div>
+    <div style="margin-top:14px;font-weight:600;font-size:30px;color:${p.fgDim};letter-spacing:-0.4px;line-height:1.3;font-style:italic;${enTaglineExtra}">${enTagline}</div>
   </div>
 
   <!-- divider -->
