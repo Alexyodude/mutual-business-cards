@@ -253,7 +253,7 @@ function renderFront(key, c) {
 
   <!-- QR + English label -->
   <img src="${c.qr}" style="position:absolute;right:${ri}px;bottom:96px;width:160px;height:160px;background:${p.qrBg};padding:10px;border-radius:6px;box-shadow:0 0 0 1px ${p.accent}33;z-index:2">
-  <div class="mono" style="position:absolute;right:${ri}px;bottom:64px;font-size:18px;color:${p.accent};letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">SCAN TO VISIT</div>
+  <div class="mono" style="position:absolute;right:${ri}px;bottom:64px;font-size:18px;color:${p.accent};letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">LEARN MORE</div>
   ${e.frontOverlay ? e.frontOverlay() : ''}
 </div>${TAIL}`;
 }
@@ -285,11 +285,6 @@ function renderBack(key, c) {
   // Korean wordmark — company is mutual (뮤추얼) regardless of which logo
   // mark the cardholder carries. antimutual is a product/subdomain.
   const koWordmark = '뮤추얼';
-  // Korean tagline pairs with the FEK-1 / mutual variant on the front.
-  const isFek = (p === FEK1_PALETTE);
-  const koTagline = isFek
-    ? '카메라와 마이크. 진본을 증명합니다.'
-    : '진본은 출처에서 시작됩니다.';
   return `${renderHead(p)}
 <div class="card">
   <div class="grid"></div>
@@ -302,12 +297,11 @@ function renderBack(key, c) {
     <div class="ko" style="font-weight:800;font-size:32px;letter-spacing:-1px;color:${p.fg}">${koWordmark}<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
   </div>
 
-  <!-- name block (Korean — mirrors the English front layout) -->
+  <!-- name block (Korean — mirrors the English front layout, no tagline) -->
   <div style="position:absolute;top:172px;left:${li}px;max-width:600px;z-index:2">
     <div class="ko" style="font-weight:800;font-size:60px;letter-spacing:-1.8px;color:${p.fg};line-height:1">${c.nameKo}</div>
     <div class="ko" style="margin-top:18px;font-weight:600;font-size:28px;color:${p.accent};letter-spacing:-0.4px">${c.titleKo}</div>
     <div style="margin-top:26px;width:96px;height:3px;background:${p.accent}"></div>
-    <div class="ko" style="margin-top:22px;font-weight:500;font-size:22px;color:${p.fgDim};letter-spacing:-0.4px;line-height:1.4">${koTagline}</div>
   </div>
 
   <!-- contact mono block (URLs/emails are language-neutral identifiers) -->
@@ -319,7 +313,7 @@ function renderBack(key, c) {
 
   <!-- QR + Korean label -->
   <img src="${c.qr}" style="position:absolute;right:${ri}px;bottom:96px;width:160px;height:160px;background:${p.qrBg};padding:10px;border-radius:6px;box-shadow:0 0 0 1px ${p.accent}33;z-index:2">
-  <div class="ko" style="position:absolute;right:${ri}px;bottom:64px;font-size:18px;color:${p.accent};letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">스캔하여 방문</div>
+  <div class="ko" style="position:absolute;right:${ri}px;bottom:64px;font-size:18px;color:${p.accent};letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">더 알아보기</div>
 </div>${TAIL}`;
 }
 
