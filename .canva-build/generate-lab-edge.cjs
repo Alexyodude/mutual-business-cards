@@ -247,10 +247,12 @@ function renderFront(key, c) {
   ${e.decor()}
 
 
-  <!-- mutual wordmark (top-right) -->
-  <div style="position:absolute;top:60px;right:${ri}px;display:flex;align-items:center;gap:16px;z-index:2">
+  <!-- mutual wordmark (top-right). Locked height + Pretendard so the
+       wordmark + TM render identically on front and back regardless of
+       which body fonts loaded. -->
+  <div style="position:absolute;top:60px;right:${ri}px;display:flex;align-items:center;gap:16px;height:60px;font-family:'Pretendard','Inter',sans-serif;z-index:2">
     <img src="${logoFile}" style="width:60px;height:60px;object-fit:contain">
-    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.wordmarkColor || p.fg}">mutual<span style="font-size:28px;vertical-align:top;line-height:1;color:${p.fgDim};font-weight:700;margin-left:2px">™</span></div>
+    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.wordmarkColor || p.fg};line-height:60px;height:60px;display:inline-flex;align-items:center">mutual<span style="font-size:28px;color:${p.fgDim};font-weight:700;margin-left:2px;align-self:flex-start;line-height:60px;height:60px">™</span></div>
   </div>
 
   <!-- name block (English — centered, slogan on English side) -->
@@ -309,10 +311,11 @@ function renderBack(key, c) {
   ${e.decor()}
 
 
-  <!-- mutual wordmark (English on both sides) -->
-  <div style="position:absolute;top:60px;right:${ri}px;display:flex;align-items:center;gap:16px;z-index:2">
+  <!-- mutual wordmark (English on both sides). Same locked-height
+       structure as the front so both wordmarks render identically. -->
+  <div style="position:absolute;top:60px;right:${ri}px;display:flex;align-items:center;gap:16px;height:60px;font-family:'Pretendard','Inter',sans-serif;z-index:2">
     <img src="${logoFile}" style="width:60px;height:60px;object-fit:contain">
-    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.wordmarkColor || p.fg}">${koWordmark}<span style="font-size:28px;vertical-align:top;line-height:1;color:${p.fgDim};font-weight:700;margin-left:2px">™</span></div>
+    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.wordmarkColor || p.fg};line-height:60px;height:60px;display:inline-flex;align-items:center">${koWordmark}<span style="font-size:28px;color:${p.fgDim};font-weight:700;margin-left:2px;align-self:flex-start;line-height:60px;height:60px">™</span></div>
   </div>
 
   <!-- name block (Korean — centered, mirrors the English front) -->

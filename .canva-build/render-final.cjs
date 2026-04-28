@@ -44,8 +44,12 @@ for (const side of SIDES) {
     const png = path.join(OUT, `${t.stem}.png`);
     const pdf = path.join(OUT, `${t.stem}.pdf`);
     try {
-      await page.goto(url, { waitUntil: 'load', timeout: 12000 });
-      await page.evaluate(() => new Promise(r => setTimeout(r, 200)));
+      await page.goto(url, { waitUntil: 'networkidle0', timeout: 20000 });
+      // Wait for Pretendard webfont (CDN) — ensures front and back render
+      // with the same font; otherwise the wordmark "mutual" can fall back
+      // to a different system font on one side, shifting glyph widths.
+      await page.evaluate(() => document.fonts.ready);
+      await page.evaluate(() => new Promise(r => setTimeout(r, 400)));
       await page.screenshot({ path: png, type: 'png' });
       // Vector PDF at exact 3.5"x2" trim. CSS px (96/in) and PDF pt
       // (72/in) differ — 1050 CSS px is 787.5 pt of natural width.

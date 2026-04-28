@@ -25,10 +25,11 @@ html,body{width:1050px;height:600px;background:#0f172a;font-family:'Pretendard',
       <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:#22d3ee;border-radius:50%;box-shadow:0 0 16px #22d3ee"></div>
 
 
-  <!-- mutual wordmark (English on both sides) -->
-  <div style="position:absolute;top:60px;right:96px;display:flex;align-items:center;gap:16px;z-index:2">
+  <!-- mutual wordmark (English on both sides). Same locked-height
+       structure as the front so both wordmarks render identically. -->
+  <div style="position:absolute;top:60px;right:96px;display:flex;align-items:center;gap:16px;height:60px;font-family:'Pretendard','Inter',sans-serif;z-index:2">
     <img src="logo-white.svg" style="width:60px;height:60px;object-fit:contain">
-    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:#c9a84c">mutual<span style="font-size:28px;vertical-align:top;line-height:1;color:#94a3b8;font-weight:700;margin-left:2px">™</span></div>
+    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:#c9a84c;line-height:60px;height:60px;display:inline-flex;align-items:center">mutual<span style="font-size:28px;color:#94a3b8;font-weight:700;margin-left:2px;align-self:flex-start;line-height:60px;height:60px">™</span></div>
   </div>
 
   <!-- name block (Korean — centered, mirrors the English front) -->
