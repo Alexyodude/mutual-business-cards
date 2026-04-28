@@ -220,7 +220,7 @@ function renderFront(key, c) {
   // company wordmark always reads "mutual"; antimutual is a subdomain.
   const logoFile = c.logoFile || p.logoFile;
   const isFek = (p === FEK1_PALETTE);
-  const enTagline = 'Hardware-signed cameras and mics. Prooving Reality.';
+  const enTagline = 'Rebuilding trust.';
   const taglineExtra = isFek ? `font-family:'Playfair Display','Georgia','Times New Roman',serif;` : '';
   return `${renderHead(p)}
 <div class="card">
