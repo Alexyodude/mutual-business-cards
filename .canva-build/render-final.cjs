@@ -47,13 +47,17 @@ for (const side of SIDES) {
       await page.goto(url, { waitUntil: 'load', timeout: 12000 });
       await page.evaluate(() => new Promise(r => setTimeout(r, 200)));
       await page.screenshot({ path: png, type: 'png' });
-      // Vector PDF at exact 3.5"x2" trim, no margins, prints background.
+      // Vector PDF at exact 3.5"x2" trim. The 1050×600 viewport must be
+      // scaled down to 252×144 pt (= 3.5"×2") or Chrome creates extra
+      // pages for overflow. Scale = 252 / 1050 = 0.24.
       await page.pdf({
         path: pdf,
         width: '3.5in', height: '2in',
         printBackground: true,
         preferCSSPageSize: false,
         margin: { top: 0, right: 0, bottom: 0, left: 0 },
+        scale: 0.24,
+        pageRanges: '1',
       });
       const sizePng = (fs.statSync(png).size / 1024).toFixed(0);
       const sizePdf = (fs.statSync(pdf).size / 1024).toFixed(0);
