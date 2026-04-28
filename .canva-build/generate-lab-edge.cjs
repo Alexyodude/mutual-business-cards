@@ -39,17 +39,19 @@ const DEFAULT_PALETTE = {
   qrBg:      '#0f172a',
 };
 
-// FEK-1 palette — AnchorCam Forensic Evaluation Kit (gold on black).
-// Sourced from mutual.solutions/forensic page.
+// FEK-1 palette — mutual brand on a near-black navy, with the forensic
+// gold reserved for the halo edge as a signature accent. Pulls more of
+// the mutual.solutions cyan/teal into the body of the card.
+const FEK1_GOLD = '#c9a84c'; // forensic gold (halo edge only)
 const FEK1_PALETTE = {
-  bg:        '#000000',
-  bgGrad:    'linear-gradient(180deg,#000000 0%,#0a0a0a 100%)',
-  accent:    '#c9a84c', // forensic gold
-  accentSoft:'#8c7332', // dark gold
+  bg:        '#020617',
+  bgGrad:    'linear-gradient(135deg,#020617 0%,#0a1628 100%)',
+  accent:    '#22d3ee', // mutual cyan
+  accentSoft:'#4a8b9c', // mutual teal
   fg:        '#fff',
   fgDim:     '#94a3b8',
-  logoFile:  'logo-amber.svg',
-  qrBg:      '#000000',
+  logoFile:  'logo-white.svg',
+  qrBg:      '#020617',
 };
 
 // Back-compat single-colour exports — kept for existing decor() snippets.
@@ -169,12 +171,12 @@ const EDGES = {
       <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>`,
   },
   fek1: {
-    sub: 'forensic FEK-1 · gold halo edge only',
+    sub: 'forensic gold halo · mutual cyan body',
     leftInset: 130, rightInset: 96,
     palette: FEK1_PALETTE,
     hideTicks: true,
     decor: () => {
-      const A = FEK1_PALETTE.accent;
+      const A = FEK1_GOLD;
       return `
       <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${A}33 0%, transparent 70%);pointer-events:none"></div>
       <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${A} 12%,${A} 88%,transparent 100%);box-shadow:0 0 18px ${A},0 0 36px ${A}66,0 0 64px ${A}33"></div>
@@ -183,12 +185,12 @@ const EDGES = {
     },
   },
   capture: {
-    sub: 'halo edge · forensic FEK-1 (gold on black)',
+    sub: 'halo edge · forensic gold + mutual cyan',
     leftInset: 130, rightInset: 96,
     palette: FEK1_PALETTE,
-    // Halo edge in forensic gold (replaces cyan in this variant)
+    // Halo edge in forensic gold (signature); body accents stay mutual cyan.
     decor: () => {
-      const A = FEK1_PALETTE.accent;
+      const A = FEK1_GOLD;
       return `
       <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${A}33 0%, transparent 70%);pointer-events:none"></div>
       <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${A} 12%,${A} 88%,transparent 100%);box-shadow:0 0 18px ${A},0 0 36px ${A}66,0 0 64px ${A}33"></div>
