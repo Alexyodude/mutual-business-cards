@@ -232,9 +232,6 @@ function renderFront(key, c) {
   const enTagline = isFek
     ? 'Cameras and mics. Proven real.'
     : 'Authenticity starts at the source.';
-  const koTagline = isFek
-    ? '카메라와 마이크. 진본을 증명합니다.'
-    : '진본은 출처에서 시작됩니다.';
   return `${renderHead(p)}
 <div class="card">
   <div class="grid"></div>
@@ -247,10 +244,9 @@ function renderFront(key, c) {
     <div style="font-weight:800;font-size:96px;letter-spacing:-3.8px;color:${p.fg};line-height:1">${wordmarkText}<span style="font-size:24px;vertical-align:super;font-weight:500;letter-spacing:0;margin-left:4px;color:${p.fgDim}">™</span></div>
   </div>
 
-  <!-- tagline (Korean primary, English secondary) -->
+  <!-- tagline (English-only — Korean lives on the back) -->
   <div style="position:absolute;left:${li}px;bottom:172px;text-align:left;z-index:2">
-    <div class="ko" style="font-weight:700;font-size:36px;color:${p.accentSoft};letter-spacing:-0.8px;line-height:1.2">${koTagline}</div>
-    <div style="margin-top:14px;font-weight:600;font-size:30px;color:${p.fgDim};letter-spacing:-0.4px;line-height:1.3;font-style:italic;${enTaglineExtra}">${enTagline}</div>
+    <div style="font-weight:700;font-size:42px;color:${p.accentSoft};letter-spacing:-0.8px;line-height:1.25;${enTaglineExtra}">${enTagline}</div>
   </div>
 
   <!-- divider -->
@@ -289,42 +285,44 @@ function renderBack(key, c) {
   const ri = e.rightInset;
   // Per-cardholder logo override (e.g. Alex → antimutual logo).
   const logoFile = c.logoFile || p.logoFile;
-  // Wordmark text mirrors the cardholder's brand: Alex carries the antimutual
-  // identity (anti.mutual.solutions); everyone else stays mutual™.
-  const wordmark = c.logoFile === 'logo-antimutual.png'
-    ? `antimutual<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span>`
-    : `mutual<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span>`;
+  // Korean wordmark — back side is Korean-only, so the brand mark is
+  // transliterated. mutual → 뮤추얼, antimutual → 안티뮤추얼.
+  const koWordmark = c.logoFile === 'logo-antimutual.png' ? '안티뮤추얼' : '뮤추얼';
+  // Korean tagline pairs with the FEK-1 / mutual variant on the front.
+  const isFek = (p === FEK1_PALETTE);
+  const koTagline = isFek
+    ? '카메라와 마이크. 진본을 증명합니다.'
+    : '진본은 출처에서 시작됩니다.';
   return `${renderHead(p)}
 <div class="card">
   <div class="grid"></div>
   ${e.decor()}
   ${e.hideTicks ? '' : '<div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>'}
 
-  <!-- small wordmark -->
+  <!-- Korean wordmark -->
   <div style="position:absolute;top:64px;right:${ri}px;display:flex;align-items:center;gap:14px;z-index:2">
     <img src="${logoFile}" style="width:48px;height:48px;object-fit:contain">
-    <div style="font-weight:800;font-size:32px;letter-spacing:-0.8px;color:${p.fg}">${wordmark}</div>
+    <div class="ko" style="font-weight:800;font-size:32px;letter-spacing:-1px;color:${p.fg}">${koWordmark}<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
   </div>
 
-  <!-- name block -->
+  <!-- name block (Korean-only) -->
   <div style="position:absolute;top:172px;left:${li}px;max-width:600px;z-index:2">
-    <div style="font-weight:800;font-size:60px;letter-spacing:-1.8px;color:${p.fg};line-height:1">${c.name}</div>
-    <div class="ko" style="margin-top:10px;font-weight:700;font-size:32px;color:${p.fgDim};letter-spacing:-0.4px">${c.nameKo}</div>
-    <div style="margin-top:18px;font-weight:600;font-size:28px;color:${p.accent};letter-spacing:-0.3px">${c.title}</div>
-    <div class="ko" style="margin-top:6px;font-weight:500;font-size:22px;color:${p.fgDim}">${c.titleKo}</div>
+    <div class="ko" style="font-weight:800;font-size:72px;letter-spacing:-2px;color:${p.fg};line-height:1">${c.nameKo}</div>
+    <div class="ko" style="margin-top:18px;font-weight:600;font-size:30px;color:${p.accent};letter-spacing:-0.4px">${c.titleKo}</div>
     <div style="margin-top:26px;width:96px;height:3px;background:${p.accent}"></div>
+    <div class="ko" style="margin-top:22px;font-weight:500;font-size:22px;color:${p.fgDim};letter-spacing:-0.4px;line-height:1.4">${koTagline}</div>
   </div>
 
-  <!-- contact mono block -->
+  <!-- contact mono block (URLs/emails are language-neutral identifiers) -->
   <div class="mono" style="position:absolute;left:${li}px;bottom:64px;font-size:22px;line-height:1.85;color:${p.fg};letter-spacing:0.1px;font-weight:500;z-index:2">
     <div>${c.email}</div>
     <div>${(c.website || 'https://mutual.solutions').replace(/^https?:\/\//, '')}</div>
     <div>${c.linkedin}</div>
   </div>
 
-  <!-- QR + label -->
+  <!-- QR + Korean label -->
   <img src="${c.qr}" style="position:absolute;right:${ri}px;bottom:96px;width:160px;height:160px;background:${p.qrBg};padding:10px;border-radius:6px;box-shadow:0 0 0 1px ${p.accent}33;z-index:2">
-  <div class="mono" style="position:absolute;right:${ri}px;bottom:64px;font-size:14px;color:${p.fgDim};letter-spacing:1px;text-align:right;width:160px;z-index:2"><span style="color:${p.accent}">SCAN</span> · ADD · <span class="ko">스캔</span></div>
+  <div class="ko" style="position:absolute;right:${ri}px;bottom:64px;font-size:18px;color:${p.accent};letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">스캔하여 방문</div>
 </div>${TAIL}`;
 }
 
