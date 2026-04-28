@@ -151,6 +151,7 @@ const labEdgeRiffs = [
   { key: 'halo',    name: 'Lab Edge Halo',    sub: 'single line · diffuse halo' },
   { key: 'capture', name: 'Lab Edge Capture', sub: 'halo edge · camera-capture viewfinder' },
   { key: 'fek1',    name: 'Lab Edge FEK-1',   sub: 'forensic gold halo · no decorations' },
+  { key: 'gilded',  name: 'Lab Edge Gilded',  sub: 'mutual halo · forensic gold side glow' },
 ];
 const labEdgeVariants = labEdgeRiffs.map(r => ({
   id:   `tech-edge-${r.key}`,

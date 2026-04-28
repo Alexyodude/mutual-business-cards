@@ -7,7 +7,7 @@ const CHROME = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Ap
 const SERVER = 'http://localhost:8765';
 const OUT = path.resolve(__dirname, '..', 'docs', 'assets');
 
-const KEYS = ['dual', 'stack', 'notch', 'pulse', 'frame', 'halo', 'capture', 'fek1'];
+const KEYS = ['dual', 'stack', 'notch', 'pulse', 'frame', 'halo', 'capture', 'fek1', 'gilded'];
 const HOLDERS = ['alex', 'yejun'];
 
 const tasks = [];

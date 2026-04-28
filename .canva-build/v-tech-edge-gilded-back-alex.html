@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1050px;height:600px;background:#0f172a;font-family:'Inter','Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,'Malgun Gothic','Apple SD Gothic Neo',sans-serif;color:#fff;overflow:hidden;-webkit-font-smoothing:antialiased}
+.card{position:relative;width:1050px;height:600px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);background-size:42px 42px;mask-image:linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.95));-webkit-mask-image:linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.95))}
+.tick{position:absolute;width:18px;height:18px;border-color:#4a8b9c}
+.tl{top:42px;left:42px;border-top:1.5px solid;border-left:1.5px solid}
+.tr{top:42px;right:42px;border-top:1.5px solid;border-right:1.5px solid}
+.bl{bottom:42px;left:42px;border-bottom:1.5px solid;border-left:1.5px solid}
+.br{bottom:42px;right:42px;border-bottom:1.5px solid;border-right:1.5px solid}
+.mono{font-family:'JetBrains Mono','Consolas','Menlo','Monaco',monospace}
+.ko{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}
+.serif{font-family:'Playfair Display','Georgia','Times New Roman',serif}
+</style></head><body>
+<div class="card">
+  <div class="grid"></div>
+  
+      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, #c9a84c33 0%, transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,#c9a84c 12%,#c9a84c 88%,transparent 100%);box-shadow:0 0 18px #c9a84c,0 0 36px #c9a84c66,0 0 64px #c9a84c33"></div>
+      <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:#c9a84c;border-radius:50%;box-shadow:0 0 16px #c9a84c"></div>
+      <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:#c9a84c;border-radius:50%;box-shadow:0 0 16px #c9a84c"></div>
+
+
+  <!-- Korean wordmark -->
+  <div style="position:absolute;top:64px;right:96px;display:flex;align-items:center;gap:14px;z-index:2">
+    <img src="logo-antimutual.png" style="width:48px;height:48px;object-fit:contain">
+    <div class="ko" style="font-weight:800;font-size:32px;letter-spacing:-1px;color:#fff">뮤추얼<span style="font-size:13px;vertical-align:super;color:#94a3b8;font-weight:500">™</span></div>
+  </div>
+
+  <!-- name block (Korean — centered, mirrors the English front) -->
+  <div style="position:absolute;top:200px;left:0;right:0;text-align:center;z-index:2">
+    <div class="ko" style="font-weight:800;font-size:60px;letter-spacing:-1.8px;color:#fff;line-height:1">박지훈</div>
+    <div class="ko" style="margin-top:18px;font-weight:600;font-size:28px;color:#22d3ee;letter-spacing:-0.4px">최고기술책임자 · 하드웨어</div>
+    <div style="margin:26px auto 0;width:96px;height:3px;background:#22d3ee"></div>
+  </div>
+
+  <!-- contact mono block (URLs/emails are language-neutral identifiers) -->
+  <div class="mono" style="position:absolute;left:130px;bottom:64px;font-size:22px;line-height:1.85;color:#fff;letter-spacing:0.1px;font-weight:500;z-index:2">
+    <div>alex@mutual.solutions</div>
+    <div>anti.mutual.solutions</div>
+    <div>linkedin.com/in/alexjihoonpark</div>
+  </div>
+
+  <!-- QR + Korean label -->
+  <img src="qr-alex.svg" style="position:absolute;right:96px;bottom:96px;width:160px;height:160px;background:#0f172a;padding:10px;border-radius:6px;box-shadow:0 0 0 1px #22d3ee33;z-index:2">
+  <div class="ko" style="position:absolute;right:96px;bottom:64px;font-size:18px;color:#22d3ee;letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">더 알아보기</div>
+</div></body></html>

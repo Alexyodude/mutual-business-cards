@@ -170,6 +170,21 @@ const EDGES = {
       <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>
       <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>`,
   },
+  gilded: {
+    // Halo's mutual-navy background + FEK-1's forensic-gold side glow.
+    // Uses DEFAULT_PALETTE for the body (cyan accent) but overrides only
+    // the halo edge color to gold for a gilded-edge mutual look.
+    sub: 'mutual halo · forensic gold side glow',
+    leftInset: 130, rightInset: 96,
+    decor: () => {
+      const A = FEK1_GOLD;
+      return `
+      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${A}33 0%, transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${A} 12%,${A} 88%,transparent 100%);box-shadow:0 0 18px ${A},0 0 36px ${A}66,0 0 64px ${A}33"></div>
+      <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>
+      <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>`;
+    },
+  },
   fek1: {
     sub: 'forensic gold halo · mutual cyan body',
     leftInset: 130, rightInset: 96,
