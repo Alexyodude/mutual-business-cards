@@ -67,6 +67,18 @@
   },
   "hotPaths": [
     {
+      "path": "docs\\assets\\v-tech-edge-fek1-back-alex.png",
+      "accessCount": 10,
+      "lastAccessed": 1777379033112,
+      "type": "file"
+    },
+    {
+      "path": "docs\\assets\\v-tech-edge-fek1-front-alex.png",
+      "accessCount": 10,
+      "lastAccessed": 1777380174066,
+      "type": "file"
+    },
+    {
       "path": "docs\\index.html",
       "accessCount": 6,
       "lastAccessed": 1777252893953,
@@ -85,9 +97,9 @@
       "type": "file"
     },
     {
-      "path": "docs\\assets\\v-tech-edge-fek1-back-alex.png",
+      "path": "docs\\assets\\v-tech-edge-gilded-front-alex.png",
       "accessCount": 3,
-      "lastAccessed": 1777294132682,
+      "lastAccessed": 1777381574214,
       "type": "file"
     },
     {
@@ -112,6 +124,12 @@
       "path": "docs\\assets\\v-tech-edge-halo-front.png",
       "accessCount": 2,
       "lastAccessed": 1777267850261,
+      "type": "file"
+    },
+    {
+      "path": "docs\\assets\\v-tech-edge-gilded-back-yejun.png",
+      "accessCount": 2,
+      "lastAccessed": 1777382156174,
       "type": "file"
     },
     {
@@ -181,15 +199,33 @@
       "type": "file"
     },
     {
-      "path": "docs\\assets\\v-tech-edge-fek1-front-alex.png",
-      "accessCount": 1,
-      "lastAccessed": 1777294327426,
-      "type": "file"
-    },
-    {
       "path": "docs\\assets\\v-tech-edge-fek1-front-yejun.png",
       "accessCount": 1,
       "lastAccessed": 1777294327962,
+      "type": "file"
+    },
+    {
+      "path": "docs\\assets\\v-tech-edge-capture-front-alex.png",
+      "accessCount": 1,
+      "lastAccessed": 1777372050361,
+      "type": "file"
+    },
+    {
+      "path": "docs\\assets\\v-tech-edge-halo-back-yejun.png",
+      "accessCount": 1,
+      "lastAccessed": 1777380174736,
+      "type": "file"
+    },
+    {
+      "path": "docs\\assets\\v-tech-edge-gilded-back-alex.png",
+      "accessCount": 1,
+      "lastAccessed": 1777380704999,
+      "type": "file"
+    },
+    {
+      "path": "docs\\assets\\v-tech-edge-gilded-front-yejun.png",
+      "accessCount": 1,
+      "lastAccessed": 1777382155733,
       "type": "file"
     }
   ],
