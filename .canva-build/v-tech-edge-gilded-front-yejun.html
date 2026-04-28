@@ -1,7 +1,8 @@
 <!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1050px;height:600px;background:#0f172a;font-family:'Inter','Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,'Malgun Gothic','Apple SD Gothic Neo',sans-serif;color:#fff;overflow:hidden;-webkit-font-smoothing:antialiased}
+html,body{width:1050px;height:600px;background:#0f172a;font-family:'Pretendard','Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','Inter','Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;color:#fff;overflow:hidden;-webkit-font-smoothing:antialiased}
 .card{position:relative;width:1050px;height:600px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);overflow:hidden}
 .grid{position:absolute;inset:0;background-image:linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);background-size:42px 42px;mask-image:linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.95));-webkit-mask-image:linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.95))}
 .tick{position:absolute;width:18px;height:18px;border-color:#4a8b9c}
@@ -9,8 +10,10 @@ html,body{width:1050px;height:600px;background:#0f172a;font-family:'Inter','Sego
 .tr{top:42px;right:42px;border-top:1.5px solid;border-right:1.5px solid}
 .bl{bottom:42px;left:42px;border-bottom:1.5px solid;border-left:1.5px solid}
 .br{bottom:42px;right:42px;border-bottom:1.5px solid;border-right:1.5px solid}
+/* mono — only contact identifiers (email / website / linkedin). Everything
+   else (Latin or Hangul) uses Pretendard for unified bilingual look. */
 .mono{font-family:'JetBrains Mono','Consolas','Menlo','Monaco',monospace}
-.ko{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}
+.ko{font-family:'Pretendard','Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif}
 .serif{font-family:'Playfair Display','Georgia','Times New Roman',serif}
 </style></head><body>
 <div class="card">
@@ -45,6 +48,6 @@ html,body{width:1050px;height:600px;background:#0f172a;font-family:'Inter','Sego
 
   <!-- QR + English label -->
   <img src="qr-yejun.svg" style="position:absolute;right:96px;bottom:96px;width:160px;height:160px;background:#0f172a;padding:10px;border-radius:6px;box-shadow:0 0 0 1px #22d3ee33;z-index:2">
-  <div class="mono" style="position:absolute;right:96px;bottom:64px;font-size:22px;color:#22d3ee;letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">LEARN MORE</div>
+  <div style="position:absolute;right:96px;bottom:64px;font-size:22px;color:#22d3ee;letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">LEARN MORE</div>
   
 </div></body></html>

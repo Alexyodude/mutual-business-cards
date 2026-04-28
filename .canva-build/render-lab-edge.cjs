@@ -7,7 +7,8 @@ const CHROME = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Ap
 const SERVER = 'http://localhost:8765';
 const OUT = path.resolve(__dirname, '..', 'docs', 'assets');
 
-const KEYS = ['dual', 'stack', 'notch', 'pulse', 'frame', 'halo', 'capture', 'fek1', 'gilded'];
+// Pruned to the canonical three: mixed (gilded), mutual blue (halo), FEK-1.
+const KEYS = ['gilded', 'halo', 'fek1'];
 const HOLDERS = ['alex', 'yejun'];
 
 const tasks = [];
