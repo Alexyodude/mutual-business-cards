@@ -28,7 +28,10 @@ for (const k of KEYS) {
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
   });
   const page = await browser.newPage();
-  await page.setViewport({ width: 1050, height: 600, deviceScaleFactor: 1 });
+  // 3× scale factor → 3150×1800 PNGs (≈900 DPI for 3.5"×2" print).
+  // Override with SCALE=1 env var for fast iteration.
+  const SCALE = parseInt(process.env.SCALE || '3', 10);
+  await page.setViewport({ width: 1050, height: 600, deviceScaleFactor: SCALE });
 
   for (const t of tasks) {
     const url = `${SERVER}/${t.html}`;
