@@ -226,7 +226,7 @@ function renderFront(key, c) {
 <div class="card">
   <div class="grid"></div>
   ${e.decor()}
-  ${e.hideTicks ? '' : '<div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>'}
+
 
   <!-- mutual wordmark (top-right) -->
   <div style="position:absolute;top:64px;right:${ri}px;display:flex;align-items:center;gap:14px;z-index:2">
@@ -287,7 +287,7 @@ function renderBack(key, c) {
 <div class="card">
   <div class="grid"></div>
   ${e.decor()}
-  ${e.hideTicks ? '' : '<div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>'}
+
 
   <!-- Korean wordmark -->
   <div style="position:absolute;top:64px;right:${ri}px;display:flex;align-items:center;gap:14px;z-index:2">
