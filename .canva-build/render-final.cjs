@@ -47,16 +47,16 @@ for (const side of SIDES) {
       await page.goto(url, { waitUntil: 'load', timeout: 12000 });
       await page.evaluate(() => new Promise(r => setTimeout(r, 200)));
       await page.screenshot({ path: png, type: 'png' });
-      // Vector PDF at exact 3.5"x2" trim. The 1050×600 viewport must be
-      // scaled down to 252×144 pt (= 3.5"×2") or Chrome creates extra
-      // pages for overflow. Scale = 252 / 1050 = 0.24.
+      // Vector PDF at exact 3.5"x2" trim. CSS px (96/in) and PDF pt
+      // (72/in) differ — 1050 CSS px is 787.5 pt of natural width.
+      // To fit a 252pt-wide PDF page, scale = 252 / 787.5 = 0.32.
       await page.pdf({
         path: pdf,
         width: '3.5in', height: '2in',
         printBackground: true,
         preferCSSPageSize: false,
         margin: { top: 0, right: 0, bottom: 0, left: 0 },
-        scale: 0.24,
+        scale: 0.32,
         pageRanges: '1',
       });
       const sizePng = (fs.statSync(png).size / 1024).toFixed(0);
