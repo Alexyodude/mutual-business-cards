@@ -146,9 +146,10 @@ function buildVariants() {
 // frame/capture) were pruned per design spec — these three cover the
 // brand range: mutual blue, mixed (blue+gold), and full forensic gold.
 const labEdgeRiffs = [
-  { key: 'gilded', name: 'Mixed',       sub: 'mutual blue body · forensic gold edge' },
-  { key: 'halo',   name: 'Mutual Blue', sub: 'mutual cyan halo on navy' },
-  { key: 'fek1',   name: 'FEK-1',       sub: 'forensic gold halo on near-black' },
+  { key: 'gilded',  name: 'Mixed',         sub: 'mutual navy bg · all forensic gold body + edge' },
+  { key: 'inverse', name: 'Mixed Inverse', sub: 'gold body · mutual cyan side glow' },
+  { key: 'halo',    name: 'Mutual Blue',   sub: 'mutual cyan halo on navy' },
+  { key: 'fek1',    name: 'FEK-1',         sub: 'forensic gold halo on near-black' },
 ];
 const labEdgeVariants = labEdgeRiffs.map(r => ({
   id:   `tech-edge-${r.key}`,

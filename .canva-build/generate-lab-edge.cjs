@@ -54,6 +54,21 @@ const FEK1_PALETTE = {
   qrBg:      '#020617',
 };
 
+// Mixed palette — DEFAULT mutual-navy background but FEK-1 forensic-gold
+// for every body accent (title, divider, QR border, CTA labels). Gives
+// the Mixed (gilded) variant a fully gold body to match its gold halo
+// edge while keeping the brighter navy gradient bg.
+const MIXED_PALETTE = {
+  bg:        '#0f172a',
+  bgGrad:    'linear-gradient(135deg,#0f172a 0%,#1e293b 100%)',
+  accent:    '#c9a84c', // forensic gold
+  accentSoft:'#8c7332', // dark gold
+  fg:        '#fff',
+  fgDim:     '#94a3b8',
+  logoFile:  'logo-white.svg',
+  qrBg:      '#0f172a',
+};
+
 // Back-compat single-colour exports — kept for existing decor() snippets.
 const ACCENT = DEFAULT_PALETTE.accent;
 const ACCENT_SOFT = DEFAULT_PALETTE.accentSoft;
@@ -100,13 +115,29 @@ const EDGES = {
       <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>`,
   },
   gilded: {
-    // Halo's mutual-navy background + FEK-1's forensic-gold side glow.
-    // Uses DEFAULT_PALETTE for the body (cyan accent) but overrides only
-    // the halo edge color to gold for a gilded-edge mutual look.
-    sub: 'mutual halo · forensic gold side glow',
+    // Mixed: mutual navy background + forensic gold halo edge AND gold
+    // body accents (title text, divider, QR border, CTA). Pulls the FEK-1
+    // gold across into the body while keeping the brighter mutual navy bg.
+    sub: 'mutual navy · all forensic gold',
     leftInset: 130, rightInset: 96,
+    palette: MIXED_PALETTE,
     decor: () => {
       const A = FEK1_GOLD;
+      return `
+      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${A}33 0%, transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${A} 12%,${A} 88%,transparent 100%);box-shadow:0 0 18px ${A},0 0 36px ${A}66,0 0 64px ${A}33"></div>
+      <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>
+      <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>`;
+    },
+  },
+  inverse: {
+    // Inverse Mixed: same gold body as Mixed, but the halo side glow is
+    // swapped to mutual cyan. Pairs visually with Mixed as a flipped twin.
+    sub: 'all forensic gold body · mutual cyan side glow',
+    leftInset: 130, rightInset: 96,
+    palette: MIXED_PALETTE,
+    decor: () => {
+      const A = '#22d3ee'; // mutual cyan (overrides palette accent for the edge only)
       return `
       <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${A}33 0%, transparent 70%);pointer-events:none"></div>
       <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${A} 12%,${A} 88%,transparent 100%);box-shadow:0 0 18px ${A},0 0 36px ${A}66,0 0 64px ${A}33"></div>

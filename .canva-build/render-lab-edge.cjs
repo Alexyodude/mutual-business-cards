@@ -7,8 +7,8 @@ const CHROME = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Ap
 const SERVER = 'http://localhost:8765';
 const OUT = path.resolve(__dirname, '..', 'docs', 'assets');
 
-// Pruned to the canonical three: mixed (gilded), mutual blue (halo), FEK-1.
-const KEYS = ['gilded', 'halo', 'fek1'];
+// Canonical four: mixed (gilded), inverse mixed, mutual blue (halo), FEK-1.
+const KEYS = ['gilded', 'inverse', 'halo', 'fek1'];
 const HOLDERS = ['alex', 'yejun'];
 
 const tasks = [];
