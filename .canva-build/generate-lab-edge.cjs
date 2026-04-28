@@ -39,15 +39,15 @@ const DEFAULT_PALETTE = {
   qrBg:      '#0f172a',
 };
 
-// FEK-1 palette — mutual brand on a near-black navy, with the forensic
-// gold reserved for the halo edge as a signature accent. Pulls more of
-// the mutual.solutions cyan/teal into the body of the card.
-const FEK1_GOLD = '#c9a84c'; // forensic gold (halo edge only)
+// FEK-1 palette — all forensic gold on near-black navy. The mutual cyan
+// body accents were dropped per design spec; gold now drives both the
+// halo edge and every secondary accent (title, divider, QR border, CTA).
+const FEK1_GOLD = '#c9a84c'; // forensic gold (halo edge + body accents)
 const FEK1_PALETTE = {
   bg:        '#020617',
   bgGrad:    'linear-gradient(135deg,#020617 0%,#0a1628 100%)',
-  accent:    '#22d3ee', // mutual cyan
-  accentSoft:'#4a8b9c', // mutual teal
+  accent:    '#c9a84c', // forensic gold
+  accentSoft:'#8c7332', // dark gold
   fg:        '#fff',
   fgDim:     '#94a3b8',
   logoFile:  'logo-white.svg',
