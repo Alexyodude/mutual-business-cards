@@ -187,7 +187,7 @@ function renderFront(key, c) {
   <!-- mutual wordmark (top-right) -->
   <div style="position:absolute;top:60px;right:${ri}px;display:flex;align-items:center;gap:16px;z-index:2">
     <img src="${logoFile}" style="width:60px;height:60px;object-fit:contain">
-    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.fg}">mutual<span style="font-size:24px;vertical-align:super;color:${p.fgDim};font-weight:600">™</span></div>
+    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.fg}">mutual<span style="font-size:21px;vertical-align:super;color:${p.fgDim};font-weight:600">™</span></div>
   </div>
 
   <!-- name block (English — centered, slogan on English side) -->
@@ -249,7 +249,7 @@ function renderBack(key, c) {
   <!-- mutual wordmark (English on both sides) -->
   <div style="position:absolute;top:60px;right:${ri}px;display:flex;align-items:center;gap:16px;z-index:2">
     <img src="${logoFile}" style="width:60px;height:60px;object-fit:contain">
-    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.fg}">${koWordmark}<span style="font-size:24px;vertical-align:super;color:${p.fgDim};font-weight:600">™</span></div>
+    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.fg}">${koWordmark}<span style="font-size:21px;vertical-align:super;color:${p.fgDim};font-weight:600">™</span></div>
   </div>
 
   <!-- name block (Korean — centered, mirrors the English front) -->
