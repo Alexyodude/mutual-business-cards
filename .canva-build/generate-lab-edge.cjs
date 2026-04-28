@@ -195,68 +195,63 @@ const EDGES = {
       <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>
       <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>`;
     },
-    // Single gold ring at center — forensic lens / capture seal.
-    frontOverlay: () => {
-      const A = FEK1_PALETTE.accent;
-      return `
-      <div style="position:absolute;left:405px;top:180px;width:240px;height:240px;border:2px solid ${A};border-radius:50%;box-shadow:0 0 30px ${A}55, inset 0 0 30px ${A}22;z-index:1;pointer-events:none"></div>
-      <div style="position:absolute;left:521px;top:296px;width:8px;height:8px;background:${A};border-radius:50%;box-shadow:0 0 12px ${A};z-index:1;pointer-events:none"></div>`;
-    },
+    // Frontside personal info now occupies the full card; the camera-aperture
+    // ring would clash with the contact block, so we drop it. The capture
+    // variant is now visually distinct from fek1 only by hover (gallery
+    // sub-title still says "camera-capture viewfinder"). Effectively a
+    // duplicate of fek1 until we re-introduce a non-overlapping treatment.
   },
 };
 
 // =================================================================
 // FRONT — shared layout, edge treatment swapped per variant
 // =================================================================
+// Each side is a full personal card with the same info — the front is in
+// English, the back is in Korean. Both share the same layout, contact
+// block, and QR code; only the language of the descriptive copy differs.
 function renderFront(key, c) {
   const e = EDGES[key];
   const p = e.palette || DEFAULT_PALETTE;
   const li = e.leftInset;
   const ri = e.rightInset;
-  // Per-cardholder logo + wordmark on the front (Alex carries antimutual,
-  // Yejun stays mutual). c may be null/undefined for legacy callers.
-  const logoFile = (c && c.logoFile) || p.logoFile;
-  const wordmarkText = (c && c.logoFile === 'logo-antimutual.png') ? 'antimutual' : 'mutual';
-  const siteText = c
-    ? (c.website || 'https://mutual.solutions').replace(/^https?:\/\//, '')
-    : 'mutual.solutions';
-  // FEK-1 gets a forensic-flavored badge row (FEK-1 · FORENSIC); every
-  // other variant keeps the canonical mutual badges.
+  // Per-cardholder logo (Alex carries the antimutual mark) — but the
+  // company wordmark always reads "mutual"; antimutual is a subdomain.
+  const logoFile = c.logoFile || p.logoFile;
   const isFek = (p === FEK1_PALETTE);
-  const badgeRow = isFek
-    ? `<div style="display:flex;gap:20px"><span style="color:${p.accent};font-weight:600">FEK-1</span><span>·</span><span style="color:${p.accent};font-weight:600">FORENSIC</span></div>`
-    : `<div style="display:flex;gap:20px"><span style="color:${p.accent};font-weight:600">C2PA</span><span>·</span><span style="color:${p.accent};font-weight:600">ECDSA</span><span>·</span><span style="color:${p.accent};font-weight:600">TrustZone</span></div>`;
-  // FEK-1 uses serif-italic for the English tagline (matches forensic page)
-  // and a shorter antimutual-flavored slogan.
-  const enTaglineExtra = isFek ? `font-family:'Playfair Display','Georgia','Times New Roman',serif;` : '';
   const enTagline = isFek
     ? 'Cameras and mics. Proven real.'
     : 'Authenticity starts at the source.';
+  const taglineExtra = isFek ? `font-family:'Playfair Display','Georgia','Times New Roman',serif;` : '';
   return `${renderHead(p)}
 <div class="card">
   <div class="grid"></div>
   ${e.decor()}
   ${e.hideTicks ? '' : '<div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div>'}
 
-  <!-- wordmark (per-cardholder: antimutual for Alex, mutual otherwise) -->
-  <div style="position:absolute;top:104px;left:${li}px;display:flex;align-items:center;gap:28px;z-index:2">
-    <img src="${logoFile}" style="width:104px;height:104px;object-fit:contain">
-    <div style="font-weight:800;font-size:96px;letter-spacing:-3.8px;color:${p.fg};line-height:1">${wordmarkText}<span style="font-size:24px;vertical-align:super;font-weight:500;letter-spacing:0;margin-left:4px;color:${p.fgDim}">™</span></div>
+  <!-- mutual wordmark (top-right) -->
+  <div style="position:absolute;top:64px;right:${ri}px;display:flex;align-items:center;gap:14px;z-index:2">
+    <img src="${logoFile}" style="width:48px;height:48px;object-fit:contain">
+    <div style="font-weight:800;font-size:32px;letter-spacing:-0.8px;color:${p.fg}">mutual<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
   </div>
 
-  <!-- tagline (English-only — Korean lives on the back) -->
-  <div style="position:absolute;left:${li}px;bottom:172px;text-align:left;z-index:2">
-    <div style="font-weight:700;font-size:42px;color:${p.accentSoft};letter-spacing:-0.8px;line-height:1.25;${enTaglineExtra}">${enTagline}</div>
+  <!-- name block (English) -->
+  <div style="position:absolute;top:172px;left:${li}px;max-width:600px;z-index:2">
+    <div style="font-weight:800;font-size:60px;letter-spacing:-1.8px;color:${p.fg};line-height:1">${c.name}</div>
+    <div style="margin-top:18px;font-weight:600;font-size:28px;color:${p.accent};letter-spacing:-0.3px">${c.title}</div>
+    <div style="margin-top:26px;width:96px;height:3px;background:${p.accent}"></div>
+    <div style="margin-top:22px;font-weight:500;font-size:22px;color:${p.fgDim};letter-spacing:-0.2px;line-height:1.4;${taglineExtra}">${enTagline}</div>
   </div>
 
-  <!-- divider -->
-  <div style="position:absolute;left:${li}px;right:${ri}px;bottom:96px;height:1px;background:${p.fgDim}44"></div>
-
-  <!-- meta row -->
-  <div class="mono" style="position:absolute;left:${li}px;right:${ri}px;bottom:60px;display:flex;justify-content:space-between;align-items:center;font-size:24px;color:${p.fgDim};letter-spacing:0.6px;font-weight:500;z-index:2">
-    ${badgeRow}
-    <div>${siteText}</div>
+  <!-- contact mono block (URLs/emails are language-neutral identifiers) -->
+  <div class="mono" style="position:absolute;left:${li}px;bottom:64px;font-size:22px;line-height:1.85;color:${p.fg};letter-spacing:0.1px;font-weight:500;z-index:2">
+    <div>${c.email}</div>
+    <div>${(c.website || 'https://mutual.solutions').replace(/^https?:\/\//, '')}</div>
+    <div>${c.linkedin}</div>
   </div>
+
+  <!-- QR + English label -->
+  <img src="${c.qr}" style="position:absolute;right:${ri}px;bottom:96px;width:160px;height:160px;background:${p.qrBg};padding:10px;border-radius:6px;box-shadow:0 0 0 1px ${p.accent}33;z-index:2">
+  <div class="mono" style="position:absolute;right:${ri}px;bottom:64px;font-size:18px;color:${p.accent};letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">SCAN TO VISIT</div>
   ${e.frontOverlay ? e.frontOverlay() : ''}
 </div>${TAIL}`;
 }
@@ -285,9 +280,9 @@ function renderBack(key, c) {
   const ri = e.rightInset;
   // Per-cardholder logo override (e.g. Alex → antimutual logo).
   const logoFile = c.logoFile || p.logoFile;
-  // Korean wordmark — back side is Korean-only, so the brand mark is
-  // transliterated. mutual → 뮤추얼, antimutual → 안티뮤추얼.
-  const koWordmark = c.logoFile === 'logo-antimutual.png' ? '안티뮤추얼' : '뮤추얼';
+  // Korean wordmark — company is mutual (뮤추얼) regardless of which logo
+  // mark the cardholder carries. antimutual is a product/subdomain.
+  const koWordmark = '뮤추얼';
   // Korean tagline pairs with the FEK-1 / mutual variant on the front.
   const isFek = (p === FEK1_PALETTE);
   const koTagline = isFek
@@ -305,10 +300,10 @@ function renderBack(key, c) {
     <div class="ko" style="font-weight:800;font-size:32px;letter-spacing:-1px;color:${p.fg}">${koWordmark}<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
   </div>
 
-  <!-- name block (Korean-only) -->
+  <!-- name block (Korean — mirrors the English front layout) -->
   <div style="position:absolute;top:172px;left:${li}px;max-width:600px;z-index:2">
-    <div class="ko" style="font-weight:800;font-size:72px;letter-spacing:-2px;color:${p.fg};line-height:1">${c.nameKo}</div>
-    <div class="ko" style="margin-top:18px;font-weight:600;font-size:30px;color:${p.accent};letter-spacing:-0.4px">${c.titleKo}</div>
+    <div class="ko" style="font-weight:800;font-size:60px;letter-spacing:-1.8px;color:${p.fg};line-height:1">${c.nameKo}</div>
+    <div class="ko" style="margin-top:18px;font-weight:600;font-size:28px;color:${p.accent};letter-spacing:-0.4px">${c.titleKo}</div>
     <div style="margin-top:26px;width:96px;height:3px;background:${p.accent}"></div>
     <div class="ko" style="margin-top:22px;font-weight:500;font-size:22px;color:${p.fgDim};letter-spacing:-0.4px;line-height:1.4">${koTagline}</div>
   </div>
