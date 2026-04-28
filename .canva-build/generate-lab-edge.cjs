@@ -69,27 +69,11 @@ const MIXED_PALETTE = {
   qrBg:      '#0f172a',
 };
 
-// Helper: create a Halo-style variant with a custom accent color. Used
-// for the alternate "mutual color changed" variants (emerald, magenta,
-// amber, lavender). Each gets a navy background like the default halo
-// but with the accent color substituted into both body and edge.
-function accentPalette(accent, accentSoft) {
-  return {
-    bg:        '#0f172a',
-    bgGrad:    'linear-gradient(135deg,#0f172a 0%,#1e293b 100%)',
-    accent, accentSoft,
-    fg:        '#fff',
-    fgDim:     '#94a3b8',
-    logoFile:  'logo-white.svg',
-    qrBg:      '#0f172a',
-  };
-}
-function haloDecor(A) {
-  return `
-      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${A}33 0%, transparent 70%);pointer-events:none"></div>
-      <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${A} 12%,${A} 88%,transparent 100%);box-shadow:0 0 18px ${A},0 0 36px ${A}66,0 0 64px ${A}33"></div>
-      <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>
-      <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>`;
+// Helper: create a palette derivative with a custom wordmark color. Used
+// to colour the "mutual" wordmark text in the four "-mark" variants
+// without altering the rest of the palette.
+function withWordmark(palette, wordmarkColor) {
+  return { ...palette, wordmarkColor };
 }
 
 // Back-compat single-colour exports — kept for existing decor() snippets.
@@ -168,35 +152,66 @@ const EDGES = {
       <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>`;
     },
   },
-  emerald: {
-    // Halo variant with mutual cyan replaced by emerald.
-    sub: 'navy · emerald body + edge',
-    leftInset: 130, rightInset: 96,
-    palette: accentPalette('#10b981', '#059669'),
-    decor: () => haloDecor('#10b981'),
-  },
-  magenta: {
-    sub: 'navy · magenta body + edge',
-    leftInset: 130, rightInset: 96,
-    palette: accentPalette('#ec4899', '#db2777'),
-    decor: () => haloDecor('#ec4899'),
-  },
-  amber: {
-    sub: 'navy · amber body + edge',
-    leftInset: 130, rightInset: 96,
-    palette: accentPalette('#f59e0b', '#d97706'),
-    decor: () => haloDecor('#f59e0b'),
-  },
-  lavender: {
-    sub: 'navy · lavender body + edge',
-    leftInset: 130, rightInset: 96,
-    palette: accentPalette('#a78bfa', '#8b5cf6'),
-    decor: () => haloDecor('#a78bfa'),
-  },
   fek1: {
     sub: 'forensic gold halo · mutual cyan body',
     leftInset: 130, rightInset: 96,
     palette: FEK1_PALETTE,
+    hideTicks: true,
+    decor: () => {
+      const A = FEK1_GOLD;
+      return `
+      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${A}33 0%, transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${A} 12%,${A} 88%,transparent 100%);box-shadow:0 0 18px ${A},0 0 36px ${A}66,0 0 64px ${A}33"></div>
+      <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>
+      <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>`;
+    },
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // "-mark" siblings — same edge + body palette as their canonical
+  // parent, but the "mutual" wordmark text is recolored to the
+  // variant's accent (instead of white) so the brand mark itself
+  // carries the variant's signature color.
+  // ─────────────────────────────────────────────────────────────────
+  'gilded-mark': {
+    sub: 'Mixed · gold wordmark',
+    leftInset: 130, rightInset: 96,
+    palette: withWordmark(MIXED_PALETTE, FEK1_GOLD),
+    decor: () => {
+      const A = FEK1_GOLD;
+      return `
+      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${A}33 0%, transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${A} 12%,${A} 88%,transparent 100%);box-shadow:0 0 18px ${A},0 0 36px ${A}66,0 0 64px ${A}33"></div>
+      <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>
+      <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>`;
+    },
+  },
+  'inverse-mark': {
+    sub: 'Mixed Inverse · gold wordmark',
+    leftInset: 130, rightInset: 96,
+    palette: withWordmark(MIXED_PALETTE, FEK1_GOLD),
+    decor: () => {
+      const A = '#22d3ee';
+      return `
+      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${A}33 0%, transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${A} 12%,${A} 88%,transparent 100%);box-shadow:0 0 18px ${A},0 0 36px ${A}66,0 0 64px ${A}33"></div>
+      <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>
+      <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${A};border-radius:50%;box-shadow:0 0 16px ${A}"></div>`;
+    },
+  },
+  'halo-mark': {
+    sub: 'Mutual Blue · cyan wordmark',
+    leftInset: 130, rightInset: 96,
+    palette: withWordmark(DEFAULT_PALETTE, '#22d3ee'),
+    decor: () => `
+      <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:radial-gradient(ellipse 80px 600px at 0% 50%, ${ACCENT}33 0%, transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:32px;top:80px;bottom:80px;width:3px;background:linear-gradient(180deg,transparent 0%,${ACCENT} 12%,${ACCENT} 88%,transparent 100%);box-shadow:0 0 18px ${ACCENT},0 0 36px ${ACCENT}66,0 0 64px ${ACCENT}33"></div>
+      <div style="position:absolute;left:32px;top:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>
+      <div style="position:absolute;left:32px;bottom:80px;width:3px;height:3px;background:${ACCENT};border-radius:50%;box-shadow:0 0 16px ${ACCENT}"></div>`,
+  },
+  'fek1-mark': {
+    sub: 'FEK-1 · gold wordmark',
+    leftInset: 130, rightInset: 96,
+    palette: withWordmark(FEK1_PALETTE, FEK1_GOLD),
     hideTicks: true,
     decor: () => {
       const A = FEK1_GOLD;
@@ -235,7 +250,7 @@ function renderFront(key, c) {
   <!-- mutual wordmark (top-right) -->
   <div style="position:absolute;top:60px;right:${ri}px;display:flex;align-items:center;gap:16px;z-index:2">
     <img src="${logoFile}" style="width:60px;height:60px;object-fit:contain">
-    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.fg}">mutual<span style="font-size:28px;vertical-align:top;line-height:1;color:${p.fgDim};font-weight:700;margin-left:2px">™</span></div>
+    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.wordmarkColor || p.fg}">mutual<span style="font-size:28px;vertical-align:top;line-height:1;color:${p.fgDim};font-weight:700;margin-left:2px">™</span></div>
   </div>
 
   <!-- name block (English — centered, slogan on English side) -->
@@ -297,7 +312,7 @@ function renderBack(key, c) {
   <!-- mutual wordmark (English on both sides) -->
   <div style="position:absolute;top:60px;right:${ri}px;display:flex;align-items:center;gap:16px;z-index:2">
     <img src="${logoFile}" style="width:60px;height:60px;object-fit:contain">
-    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.fg}">${koWordmark}<span style="font-size:28px;vertical-align:top;line-height:1;color:${p.fgDim};font-weight:700;margin-left:2px">™</span></div>
+    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.wordmarkColor || p.fg}">${koWordmark}<span style="font-size:28px;vertical-align:top;line-height:1;color:${p.fgDim};font-weight:700;margin-left:2px">™</span></div>
   </div>
 
   <!-- name block (Korean — centered, mirrors the English front) -->

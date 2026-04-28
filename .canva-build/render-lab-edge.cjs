@@ -7,10 +7,13 @@ const CHROME = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Ap
 const SERVER = 'http://localhost:8765';
 const OUT = path.resolve(__dirname, '..', 'docs', 'assets');
 
-// Canonical eight: mixed (gilded), inverse mixed, mutual blue (halo),
-// FEK-1, plus four mutual-color-swapped halos (emerald, magenta, amber,
-// lavender).
-const KEYS = ['gilded', 'inverse', 'halo', 'fek1', 'emerald', 'magenta', 'amber', 'lavender'];
+// Canonical eight: the four base variants (gilded, inverse, halo, fek1)
+// plus their "-mark" siblings — same edge + body palette but with the
+// "mutual" wordmark recolored to the variant's accent color.
+const KEYS = [
+  'gilded', 'inverse', 'halo', 'fek1',
+  'gilded-mark', 'inverse-mark', 'halo-mark', 'fek1-mark',
+];
 const HOLDERS = ['alex', 'yejun'];
 
 const tasks = [];

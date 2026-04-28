@@ -146,16 +146,16 @@ function buildVariants() {
 // frame/capture) were pruned per design spec — these three cover the
 // brand range: mutual blue, mixed (blue+gold), and full forensic gold.
 const labEdgeRiffs = [
-  { key: 'gilded',   name: 'Mixed',         sub: 'navy · all forensic gold body + edge' },
-  { key: 'inverse',  name: 'Mixed Inverse', sub: 'gold body · mutual cyan edge' },
-  { key: 'halo',     name: 'Mutual Blue',   sub: 'mutual cyan halo on navy' },
-  { key: 'fek1',     name: 'FEK-1',         sub: 'forensic gold halo on near-black' },
-  // Mutual-color-swapped halos — same Halo treatment with the cyan
-  // accent replaced by other brand colors.
-  { key: 'emerald',  name: 'Mutual Emerald', sub: 'navy · emerald body + edge' },
-  { key: 'magenta',  name: 'Mutual Magenta', sub: 'navy · magenta body + edge' },
-  { key: 'amber',    name: 'Mutual Amber',   sub: 'navy · amber body + edge' },
-  { key: 'lavender', name: 'Mutual Lavender',sub: 'navy · lavender body + edge' },
+  { key: 'gilded',       name: 'Mixed',                 sub: 'navy · all forensic gold body + edge' },
+  { key: 'inverse',      name: 'Mixed Inverse',         sub: 'gold body · mutual cyan edge' },
+  { key: 'halo',         name: 'Mutual Blue',           sub: 'mutual cyan halo on navy' },
+  { key: 'fek1',         name: 'FEK-1',                 sub: 'forensic gold halo on near-black' },
+  // "-mark" siblings: identical layout but the "mutual" wordmark is
+  // colored with the variant's accent (instead of white).
+  { key: 'gilded-mark',  name: 'Mixed · Gold Mark',     sub: 'Mixed with gold mutual™ wordmark' },
+  { key: 'inverse-mark', name: 'Mixed Inverse · Gold Mark', sub: 'Mixed Inverse with gold mutual™ wordmark' },
+  { key: 'halo-mark',    name: 'Mutual Blue · Cyan Mark', sub: 'Mutual Blue with cyan mutual™ wordmark' },
+  { key: 'fek1-mark',    name: 'FEK-1 · Gold Mark',     sub: 'FEK-1 with gold mutual™ wordmark' },
 ];
 const labEdgeVariants = labEdgeRiffs.map(r => ({
   id:   `tech-edge-${r.key}`,
