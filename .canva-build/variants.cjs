@@ -7,7 +7,7 @@ const cardholders = [
   {
     id: 'alex',  name: 'Alex Jihoon Park', nameKo: '박지훈',
     title: 'Co-founder · Hardware', titleKo: '공동창업자 · 하드웨어',
-    email: 'alex@mutual.solutions', linkedin: 'linkedin.com/in/alexjihoonpark',
+    email: 'alex@mutual.solutions', linkedin: 'linkedin.com/in/alexyodude',
     vcardN: 'Park%3BAlex%20Jihoon', vcardFN: 'Alex%20Jihoon%20Park',
     vcardTitle: 'Co-founder%20Hardware', vcardEmail: 'alex%40mutual.solutions',
     // Personal-brand overrides — Alex represents the antimutual subdomain.
@@ -17,7 +17,7 @@ const cardholders = [
   {
     id: 'yejun', name: 'Yejun Jang',       nameKo: '장예준',
     title: 'CEO · AI & Security', titleKo: '대표이사 · AI 보안',
-    email: 'yejun@mutual.solutions', linkedin: 'linkedin.com/in/yejunjang',
+    email: 'yejun@mutual.solutions', linkedin: 'linkedin.com/in/mutantq',
     vcardN: 'Jang%3BYejun', vcardFN: 'Yejun%20Jang',
     vcardTitle: 'CEO%20AI%20%26%20Security', vcardEmail: 'yejun%40mutual.solutions',
     website: 'https://mutual.solutions',

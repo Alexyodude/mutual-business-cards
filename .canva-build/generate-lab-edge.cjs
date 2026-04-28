@@ -187,13 +187,13 @@ function renderFront(key, c) {
 const HOLDERS = [
   { id: 'alex',  name: 'Jihoon (Alex) Park', nameKo: '박지훈',
     title: 'CTO · Hardware', titleKo: 'CTO · 하드웨어',
-    email: 'alex@mutual.solutions', linkedin: 'linkedin.com/in/alexjihoonpark',
+    email: 'alex@mutual.solutions', linkedin: 'linkedin.com/in/alexyodude',
     qr: 'qr-alex.svg',
     website: 'https://anti.mutual.solutions',
     logoFile: 'logo-antimutual.png' },
   { id: 'yejun', name: 'Yejun Jang', nameKo: '장예준',
     title: 'CEO · AI & Security', titleKo: 'CEO · AI 보안',
-    email: 'yejun@mutual.solutions', linkedin: 'linkedin.com/in/yejunjang',
+    email: 'yejun@mutual.solutions', linkedin: 'linkedin.com/in/mutantq',
     qr: 'qr-yejun.svg',
     website: 'https://mutual.solutions' },
 ];
