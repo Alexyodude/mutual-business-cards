@@ -244,21 +244,21 @@ function renderFront(key, c) {
 
 
   <!-- mutual wordmark (top-right) -->
-  <div style="position:absolute;top:64px;right:${ri}px;display:flex;align-items:center;gap:14px;z-index:2">
-    <img src="${logoFile}" style="width:48px;height:48px;object-fit:contain">
-    <div style="font-weight:800;font-size:32px;letter-spacing:-0.8px;color:${p.fg}">mutual<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
+  <div style="position:absolute;top:60px;right:${ri}px;display:flex;align-items:center;gap:16px;z-index:2">
+    <img src="${logoFile}" style="width:60px;height:60px;object-fit:contain">
+    <div style="font-weight:800;font-size:42px;letter-spacing:-1px;color:${p.fg}">mutual<span style="font-size:17px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
   </div>
 
   <!-- name block (English — centered, slogan on English side) -->
-  <div style="position:absolute;top:172px;left:0;right:0;text-align:center;z-index:2">
-    <div style="font-weight:800;font-size:60px;letter-spacing:-1.8px;color:${p.fg};line-height:1">${c.name}</div>
-    <div style="margin-top:18px;font-weight:600;font-size:28px;color:${p.accent};letter-spacing:-0.3px">${c.title}</div>
-    <div style="margin:26px auto 0;width:96px;height:3px;background:${p.accent}"></div>
-    <div style="margin-top:24px;padding:0 96px;font-weight:500;font-size:22px;color:${p.fgDim};letter-spacing:-0.2px;line-height:1.4;${taglineExtra}">${enTagline}</div>
+  <div style="position:absolute;top:160px;left:0;right:0;text-align:center;z-index:2">
+    <div style="font-weight:800;font-size:72px;letter-spacing:-2.2px;color:${p.fg};line-height:1">${c.name}</div>
+    <div style="margin-top:22px;font-weight:600;font-size:34px;color:${p.accent};letter-spacing:-0.4px">${c.title}</div>
+    <div style="margin:28px auto 0;width:96px;height:3px;background:${p.accent}"></div>
+    <div style="margin-top:24px;padding:0 80px;font-weight:500;font-size:26px;color:${p.fgDim};letter-spacing:-0.2px;line-height:1.4;${taglineExtra}">${enTagline}</div>
   </div>
 
   <!-- contact mono block (URLs/emails are language-neutral identifiers) -->
-  <div class="mono" style="position:absolute;left:${li}px;bottom:64px;font-size:22px;line-height:1.85;color:${p.fg};letter-spacing:0.1px;font-weight:500;z-index:2">
+  <div class="mono" style="position:absolute;left:${li}px;bottom:64px;font-size:26px;line-height:1.6;color:${p.fg};letter-spacing:0.1px;font-weight:500;z-index:2">
     <div>${c.email}</div>
     <div>${(c.website || 'https://mutual.solutions').replace(/^https?:\/\//, '')}</div>
     <div>${c.linkedin}</div>
@@ -266,7 +266,7 @@ function renderFront(key, c) {
 
   <!-- QR + English label -->
   <img src="${c.qr}" style="position:absolute;right:${ri}px;bottom:96px;width:160px;height:160px;background:${p.qrBg};padding:10px;border-radius:6px;box-shadow:0 0 0 1px ${p.accent}33;z-index:2">
-  <div class="mono" style="position:absolute;right:${ri}px;bottom:64px;font-size:18px;color:${p.accent};letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">LEARN MORE</div>
+  <div class="mono" style="position:absolute;right:${ri}px;bottom:64px;font-size:22px;color:${p.accent};letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">LEARN MORE</div>
   ${e.frontOverlay ? e.frontOverlay() : ''}
 </div>${TAIL}`;
 }
@@ -305,20 +305,20 @@ function renderBack(key, c) {
 
 
   <!-- Korean wordmark -->
-  <div style="position:absolute;top:64px;right:${ri}px;display:flex;align-items:center;gap:14px;z-index:2">
-    <img src="${logoFile}" style="width:48px;height:48px;object-fit:contain">
-    <div class="ko" style="font-weight:800;font-size:32px;letter-spacing:-1px;color:${p.fg}">${koWordmark}<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
+  <div style="position:absolute;top:60px;right:${ri}px;display:flex;align-items:center;gap:16px;z-index:2">
+    <img src="${logoFile}" style="width:60px;height:60px;object-fit:contain">
+    <div class="ko" style="font-weight:800;font-size:42px;letter-spacing:-1.2px;color:${p.fg}">${koWordmark}<span style="font-size:17px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
   </div>
 
   <!-- name block (Korean — centered, mirrors the English front) -->
-  <div style="position:absolute;top:200px;left:0;right:0;text-align:center;z-index:2">
-    <div class="ko" style="font-weight:800;font-size:60px;letter-spacing:-1.8px;color:${p.fg};line-height:1">${c.nameKo}</div>
-    <div class="ko" style="margin-top:18px;font-weight:600;font-size:28px;color:${p.accent};letter-spacing:-0.4px">${c.titleKo}</div>
-    <div style="margin:26px auto 0;width:96px;height:3px;background:${p.accent}"></div>
+  <div style="position:absolute;top:180px;left:0;right:0;text-align:center;z-index:2">
+    <div class="ko" style="font-weight:800;font-size:72px;letter-spacing:-2.2px;color:${p.fg};line-height:1">${c.nameKo}</div>
+    <div class="ko" style="margin-top:22px;font-weight:600;font-size:34px;color:${p.accent};letter-spacing:-0.4px">${c.titleKo}</div>
+    <div style="margin:28px auto 0;width:96px;height:3px;background:${p.accent}"></div>
   </div>
 
   <!-- contact mono block (URLs/emails are language-neutral identifiers) -->
-  <div class="mono" style="position:absolute;left:${li}px;bottom:64px;font-size:22px;line-height:1.85;color:${p.fg};letter-spacing:0.1px;font-weight:500;z-index:2">
+  <div class="mono" style="position:absolute;left:${li}px;bottom:64px;font-size:26px;line-height:1.6;color:${p.fg};letter-spacing:0.1px;font-weight:500;z-index:2">
     <div>${c.email}</div>
     <div>${(c.website || 'https://mutual.solutions').replace(/^https?:\/\//, '')}</div>
     <div>${c.linkedin}</div>
@@ -326,7 +326,7 @@ function renderBack(key, c) {
 
   <!-- QR + Korean label -->
   <img src="${c.qr}" style="position:absolute;right:${ri}px;bottom:96px;width:160px;height:160px;background:${p.qrBg};padding:10px;border-radius:6px;box-shadow:0 0 0 1px ${p.accent}33;z-index:2">
-  <div class="ko" style="position:absolute;right:${ri}px;bottom:64px;font-size:18px;color:${p.accent};letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">더 알아보기</div>
+  <div class="ko" style="position:absolute;right:${ri}px;bottom:64px;font-size:22px;color:${p.accent};letter-spacing:1px;text-align:right;width:160px;font-weight:600;z-index:2">더 알아보기</div>
 </div>${TAIL}`;
 }
 
