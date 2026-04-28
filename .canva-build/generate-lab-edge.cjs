@@ -236,12 +236,11 @@ function renderFront(key, c) {
     <div style="font-weight:800;font-size:32px;letter-spacing:-0.8px;color:${p.fg}">mutual<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
   </div>
 
-  <!-- name block (English) -->
-  <div style="position:absolute;top:172px;left:${li}px;max-width:600px;z-index:2">
+  <!-- name block (English — centered, no slogan) -->
+  <div style="position:absolute;top:200px;left:0;right:0;text-align:center;z-index:2">
     <div style="font-weight:800;font-size:60px;letter-spacing:-1.8px;color:${p.fg};line-height:1">${c.name}</div>
     <div style="margin-top:18px;font-weight:600;font-size:28px;color:${p.accent};letter-spacing:-0.3px">${c.title}</div>
-    <div style="margin-top:26px;width:96px;height:3px;background:${p.accent}"></div>
-    <div style="margin-top:22px;font-weight:500;font-size:22px;color:${p.fgDim};letter-spacing:-0.2px;line-height:1.4;${taglineExtra}">${enTagline}</div>
+    <div style="margin:26px auto 0;width:96px;height:3px;background:${p.accent}"></div>
   </div>
 
   <!-- contact mono block (URLs/emails are language-neutral identifiers) -->
@@ -297,11 +296,11 @@ function renderBack(key, c) {
     <div class="ko" style="font-weight:800;font-size:32px;letter-spacing:-1px;color:${p.fg}">${koWordmark}<span style="font-size:13px;vertical-align:super;color:${p.fgDim};font-weight:500">™</span></div>
   </div>
 
-  <!-- name block (Korean — mirrors the English front layout, no tagline) -->
-  <div style="position:absolute;top:172px;left:${li}px;max-width:600px;z-index:2">
+  <!-- name block (Korean — centered, mirrors the English front) -->
+  <div style="position:absolute;top:200px;left:0;right:0;text-align:center;z-index:2">
     <div class="ko" style="font-weight:800;font-size:60px;letter-spacing:-1.8px;color:${p.fg};line-height:1">${c.nameKo}</div>
     <div class="ko" style="margin-top:18px;font-weight:600;font-size:28px;color:${p.accent};letter-spacing:-0.4px">${c.titleKo}</div>
-    <div style="margin-top:26px;width:96px;height:3px;background:${p.accent}"></div>
+    <div style="margin:26px auto 0;width:96px;height:3px;background:${p.accent}"></div>
   </div>
 
   <!-- contact mono block (URLs/emails are language-neutral identifiers) -->
